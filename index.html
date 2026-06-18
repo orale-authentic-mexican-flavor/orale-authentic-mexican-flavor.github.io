@@ -1,0 +1,604 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Órale – Authentic Mexican Flavor. Authentic homemade Mexican cuisine in Limerick, Ireland. Cocina mexicana casera auténtica en Limerick, Irlanda." />
+  <title>Órale – Authentic Mexican Flavor</title>
+
+  <style>
+    :root{
+      --chile-red:#C0392B;
+      --nopal-green:#556B2F;
+      --cemp-yellow:#F1C40F;
+      --talavera-blue:#2E86C1;
+      --bg:#0b0f14;
+      --card:#0f1620;
+      --text:#e9eef5;
+      --muted:#b7c0cc;
+      --line:#223042;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius: 16px;
+      --max: 980px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:var(--sans);
+      background:
+        radial-gradient(1200px 800px at 20% -10%, rgba(46,134,193,.25), transparent 60%),
+        radial-gradient(1000px 700px at 95% 10%, rgba(241,196,15,.18), transparent 55%),
+        radial-gradient(900px 700px at 30% 110%, rgba(192,57,43,.18), transparent 55%),
+        var(--bg);
+      color:var(--text);
+      line-height:1.55;
+    }
+    a{color:#9bd1ff; text-decoration:none}
+    a:hover{text-decoration:underline}
+    .wrap{max-width:var(--max); margin:0 auto; padding:28px 18px 60px}
+    header{
+      padding:34px 22px;
+      border:1px solid var(--line);
+      background:linear-gradient(180deg, rgba(15,22,32,.86), rgba(15,22,32,.72));
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      position:relative;
+      overflow:hidden;
+    }
+    header:before{
+      content:"";
+      position:absolute; inset:-2px;
+      background:
+        linear-gradient(90deg, rgba(192,57,43,.55), rgba(241,196,15,.45), rgba(85,107,47,.45), rgba(46,134,193,.45));
+      filter: blur(22px);
+      opacity:.35;
+      z-index:0;
+    }
+    header > *{position:relative; z-index:1}
+    .title{
+      display:flex; gap:12px; align-items:center; flex-wrap:wrap;
+      margin:0 0 10px;
+    }
+    .emoji{font-size:26px}
+    h1{margin:0; font-size:34px; letter-spacing:.2px}
+    .tagline{margin:10px 0 18px; color:var(--muted)}
+    .tagline em{color:#d6deea}
+    .badges{display:flex; gap:10px; flex-wrap:wrap; margin:18px 0 10px}
+    .badge{
+      display:inline-flex; align-items:center; gap:8px;
+      border:1px solid var(--line);
+      background:rgba(0,0,0,.18);
+      padding:8px 12px;
+      border-radius:999px;
+      font-size:13px;
+      color:var(--text);
+    }
+    .dot{width:10px; height:10px; border-radius:50%}
+    .dot.live{background:#31c48d}
+    .dot.private{background:#f05252}
+    .toolbar{
+      display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap;
+      margin-top:10px;
+    }
+    .lang{
+      display:flex; gap:8px; align-items:center; flex-wrap:wrap;
+      color:var(--muted); font-size:13px;
+    }
+    .lang button{
+      border:1px solid var(--line);
+      background:rgba(0,0,0,.22);
+      color:var(--text);
+      padding:7px 10px;
+      border-radius:10px;
+      cursor:pointer;
+      font-family:var(--mono);
+      font-size:12px;
+    }
+    .lang button.active{
+      border-color:rgba(155,209,255,.7);
+      box-shadow:0 0 0 3px rgba(155,209,255,.12);
+    }
+    main{margin-top:18px; display:grid; gap:14px}
+    section{
+      border:1px solid var(--line);
+      background:rgba(15,22,32,.72);
+      border-radius:var(--radius);
+      box-shadow:0 6px 20px rgba(0,0,0,.25);
+      padding:18px 18px;
+    }
+    h2{
+      margin:0 0 10px;
+      font-size:18px;
+      letter-spacing:.2px;
+      display:flex; align-items:center; gap:10px;
+    }
+    .muted{color:var(--muted)}
+    .split{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:14px;
+    }
+    @media (max-width: 820px){ .split{grid-template-columns:1fr} }
+    .card{
+      border:1px solid rgba(34,48,66,.8);
+      background:rgba(0,0,0,.18);
+      border-radius:14px;
+      padding:14px 14px;
+    }
+    ul{margin:10px 0 0 18px}
+    li{margin:7px 0}
+    .menu-item{
+      display:flex; justify-content:space-between; gap:12px; align-items:flex-start;
+      border-bottom:1px dashed rgba(34,48,66,.8);
+      padding:10px 0;
+    }
+    .menu-item:last-child{border-bottom:none}
+    .price{
+      font-family:var(--mono);
+      color:#ffd77a;
+      white-space:nowrap;
+      margin-left:10px;
+    }
+    .v{
+      font-size:12px;
+      font-weight:700;
+      color:#b7ff8a;
+      border:1px solid rgba(183,255,138,.35);
+      padding:2px 8px;
+      border-radius:999px;
+      margin-left:8px;
+    }
+    .spice{
+      display:flex; gap:10px; flex-wrap:wrap; margin-top:10px;
+      font-family:var(--mono);
+      font-size:13px;
+    }
+    .pill{
+      border:1px solid var(--line);
+      background:rgba(0,0,0,.18);
+      padding:8px 10px;
+      border-radius:999px;
+      display:inline-flex;
+      gap:8px; align-items:center;
+    }
+    .swatch{width:10px; height:10px; border-radius:50%}
+    .swatch.blue{background:var(--talavera-blue)}
+    .swatch.yellow{background:var(--cemp-yellow)}
+    .swatch.red{background:var(--chile-red)}
+    .colors{
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap:10px;
+      margin-top:10px;
+      font-family:var(--mono);
+      font-size:12px;
+    }
+    .color{
+      display:flex; justify-content:space-between; align-items:center; gap:10px;
+      padding:10px 12px;
+      border-radius:12px;
+      border:1px solid rgba(34,48,66,.8);
+      background:rgba(0,0,0,.16);
+    }
+    .chip{
+      width:18px; height:18px; border-radius:6px;
+      border:1px solid rgba(255,255,255,.2);
+    }
+    .checklist{list-style:none; padding-left:0; margin-left:0}
+    .checklist li{margin:8px 0; display:flex; gap:10px; align-items:flex-start}
+    .check{
+      width:18px; height:18px; border-radius:5px;
+      background:rgba(49,196,141,.16);
+      border:1px solid rgba(49,196,141,.4);
+      display:inline-flex; align-items:center; justify-content:center;
+      font-size:12px;
+      flex:0 0 auto;
+      margin-top:1px;
+    }
+    footer{
+      margin-top:18px;
+      color:var(--muted);
+      font-size:12px;
+      text-align:center;
+      padding:18px 6px;
+    }
+    .lang-en{display:block}
+    .lang-es{display:block}
+    [data-lang="en"] .lang-es{display:none}
+    [data-lang="es"] .lang-en{display:none}
+    .small{font-size:12px}
+    .contacts a{white-space:nowrap}
+  </style>
+</head>
+
+<body data-lang="en">
+  <div class="wrap">
+
+    <header>
+      <div class="title">
+        <div class="emoji">🌮</div>
+        <h1>Órale – Authentic Mexican Flavor</h1>
+      </div>
+
+      <div class="tagline">
+        <div class="lang-en">Bringing authentic homemade Mexican cuisine to Limerick, Ireland</div>
+        <div class="lang-es"><em>Trayendo cocina mexicana casera auténtica a Limerick, Irlanda</em></div>
+      </div>
+
+      <div class="badges">
+        <a class="badge" href="#" id="websiteLink" aria-label="Website link">
+          <span class="dot live"></span>
+          <span class="lang-en"><strong>Website</strong> Live</span>
+          <span class="lang-es"><strong>Sitio</strong> En vivo</span>
+        </a>
+        <span class="badge">
+          <span class="dot private"></span>
+          <span class="lang-en"><strong>License</strong> Private</span>
+          <span class="lang-es"><strong>Licencia</strong> Privada</span>
+        </span>
+      </div>
+
+      <div class="toolbar">
+        <div class="lang">
+          <span class="muted">Language:</span>
+          <button id="btnEN" class="active" type="button" onclick="setLang('en')">EN</button>
+          <button id="btnES" type="button" onclick="setLang('es')">ES</button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section id="about">
+        <h2>🇲🇽 <span class="lang-en">About</span><span class="lang-es">Acerca de</span></h2>
+
+        <div class="split">
+          <div class="card">
+            <div class="lang-en">
+              <strong>EN:</strong> Órale – Authentic Mexican Flavor is a food business dedicated to bringing the authentic taste of traditional homemade Mexican cuisine to Ireland. We offer traditional Mexican dishes as they are consumed in Mexico, with deep flavors, adjustable spice levels, and clearly marked vegan options.
+            </div>
+            <div class="lang-es">
+              <strong>ES:</strong> <em>Órale – Authentic Mexican Flavor es un negocio gastronómico dedicado a traer a Irlanda el sabor auténtico de la cocina mexicana casera y tradicional. Ofrecemos platillos mexicanos tal y como se consumen en México, con sabores profundos, niveles de picante ajustables y opciones veganas claramente señalizadas.</em>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="muted">
+              <div class="lang-en"><strong>Quick highlights</strong></div>
+              <div class="lang-es"><strong>Resumen rápido</strong></div>
+            </div>
+            <ul>
+              <li><span class="lang-en">Authentic homemade recipes (not fusion)</span><span class="lang-es">Recetas caseras auténticas (no fusión)</span></li>
+              <li><span class="lang-en">Spice levels: no spicy / mild / original</span><span class="lang-es">Picante: sin / poco / normal</span></li>
+              <li><span class="lang-en">Vegan options clearly marked</span><span class="lang-es">Opciones veganas claramente marcadas</span></li>
+              <li><span class="lang-en">Focus: Limerick offices (weekdays) + markets/events (weekends)</span><span class="lang-es">Enfoque: oficinas (entre semana) + mercados/eventos (fines)</span></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="menu">
+        <h2>🍽️ <span class="lang-en">Our Menu</span><span class="lang-es">Nuestro Menú</span></h2>
+
+        <div class="split">
+          <div class="card">
+            <div class="muted"><strong><span class="lang-en">Fixed Dishes</span><span class="lang-es">Platillos Fijos</span></strong></div>
+
+            <div class="menu-item">
+              <div>
+                <strong>Pozole Rojo Jalisco</strong><span class="v">(V)</span><br/>
+                <span class="lang-en">Traditional pork or vegan soup (650ml)</span>
+                <span class="lang-es"><em>Sopa tradicional de cerdo o versión vegana (650ml)</em></span>
+              </div>
+              <div class="price">€14</div>
+            </div>
+
+            <div class="menu-item">
+              <div>
+                <strong>Tacos al Pastor</strong><br/>
+                <span class="lang-en">3 pcs — marinated pork with pineapple</span>
+                <span class="lang-es"><em>3 pz — cerdo marinado con piña</em></span>
+              </div>
+              <div class="price">€12</div>
+            </div>
+
+            <div class="menu-item">
+              <div>
+                <strong>Tacos de Carnitas</strong><br/>
+                <span class="lang-en">3 pcs — slow-cooked pork</span>
+                <span class="lang-es"><em>3 pz — cerdo cocido lentamente</em></span>
+              </div>
+              <div class="price">€12</div>
+            </div>
+
+            <div class="menu-item">
+              <div>
+                <strong>Tacos de Cochinita Pibil</strong><br/>
+                <span class="lang-en">3 pcs — Yucatán-style pulled pork</span>
+                <span class="lang-es"><em>3 pz — cerdo estilo Yucatán</em></span>
+              </div>
+              <div class="price">€12</div>
+            </div>
+
+            <div class="menu-item">
+              <div>
+                <strong>Tacos de Nopales</strong><span class="v">(V)</span><br/>
+                <span class="lang-en">3 pcs — grilled cactus</span>
+                <span class="lang-es"><em>3 pz — nopal asado</em></span>
+              </div>
+              <div class="price">€10</div>
+            </div>
+
+            <div class="menu-item">
+              <div>
+                <strong>Nachos con Guacamole</strong><span class="v">(V)</span><br/>
+                <span class="lang-en">Crispy nachos with fresh guacamole</span>
+                <span class="lang-es"><em>Nachos crujientes con guacamole fresco</em></span>
+              </div>
+              <div class="price">€8</div>
+            </div>
+
+            <div class="menu-item">
+              <div>
+                <strong>Chilaquiles</strong><span class="v">(V)</span><br/>
+                <span class="lang-en">Fried tortilla chips with salsa</span>
+                <span class="lang-es"><em>Totopos fritos con salsa</em></span>
+              </div>
+              <div class="price">€10</div>
+            </div>
+
+            <div class="muted small" style="margin-top:10px">
+              <span class="lang-en"><strong>(V)</strong> = Vegan option available</span>
+              <span class="lang-es"><strong>(V)</strong> = <em>Opción vegana disponible</em></span>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="muted"><strong><span class="lang-en">Drinks</span><span class="lang-es">Bebidas</span></strong></div>
+
+            <div class="menu-item">
+              <div>
+                <strong><span class="lang-en">Aguas Frescas</span><span class="lang-es">Aguas Frescas</span></strong><br/>
+                <span class="lang-en">Horchata, Jamaica, Tamarindo, Lima</span>
+                <span class="lang-es"><em>Horchata, Jamaica, Tamarindo, Lima</em></span>
+              </div>
+              <div class="price">€4</div>
+            </div>
+
+            <div class="menu-item">
+              <div>
+                <strong>Soft Drinks</strong><br/>
+                <span class="lang-en">Regular, Diet, Zero</span>
+                <span class="lang-es"><em>Normal, Diet, Zero</em></span>
+              </div>
+              <div class="price">€3</div>
+            </div>
+
+            <div style="margin-top:14px" class="muted"><strong>🌶️ <span class="lang-en">Spice Levels</span><span class="lang-es">Niveles de Picante</span></strong></div>
+            <div class="spice">
+              <span class="pill"><span class="swatch blue"></span> <span class="lang-en">No Spicy</span><span class="lang-es">Sin Picante</span></span>
+              <span class="pill"><span class="swatch yellow"></span> <span class="lang-en">Mild</span><span class="lang-es">Poco Picante</span></span>
+              <span class="pill"><span class="swatch red"></span> <span class="lang-en">Original</span><span class="lang-es">Picante Normal</span></span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="location">
+        <h2>📍 <span class="lang-en">Location & Hours</span><span class="lang-es">Ubicación y Horarios</span></h2>
+
+        <div class="split">
+          <div class="card">
+            <div class="lang-en">
+              <strong>Weekdays:</strong><br/>
+              Office areas in Limerick
+            </div>
+            <div class="lang-es">
+              <strong>Entre semana:</strong><br/>
+              <em>Zonas de oficinas en Limerick</em>
+            </div>
+            <div style="margin-top:10px" class="lang-en">
+              <strong>Weekends:</strong><br/>
+              Local markets and events<br/>
+              ⏰ 10:00 – 16:00 approx.
+            </div>
+            <div style="margin-top:10px" class="lang-es">
+              <strong>Fines de semana:</strong><br/>
+              <em>Mercados locales y eventos</em><br/>
+              ⏰ 10:00 – 16:00 aprox.
+            </div>
+          </div>
+
+          <div class="card contacts">
+            <div class="muted"><strong><span class="lang-en">Contact</span><span class="lang-es">Contacto</span></strong></div>
+            <p style="margin:10px 0">
+              📧 <span class="lang-en">Email:</span><span class="lang-es">Email:</span>
+              <a href="mailto:orale.mexican.flavor@gmail.com">orale.mexican.flavor@gmail.com</a><br/>
+              📞 <span class="lang-en">Phone:</span><span class="lang-es">Teléfono:</span>
+              <a href="tel:+353899610776">+353 89 961 0776</a><br/>
+              📍 <span class="lang-en">Address:</span><span class="lang-es">Dirección:</span>
+              <span style="white-space:normal">Morgans South, Askeaton, Co. Limerick, V94 E2V5</span><br/>
+              📱 Instagram:
+              <a href="https://instagram.com/orale_mexican_flavor" target="_blank" rel="noopener"> @orale_mexican_flavor</a><br/>
+              📘 Facebook:
+              <a href="https://facebook.com/oralemexicanflavor" target="_blank" rel="noopener"> Órale Mexican Flavor</a>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="colors">
+        <h2>🎨 <span class="lang-en">Brand Colors</span><span class="lang-es">Colores de Marca</span></h2>
+        <div class="colors">
+          <div class="color">
+            <span>🌶️ Chile Red / Rojo Chile</span>
+            <span style="display:flex; gap:10px; align-items:center">
+              <span class="chip" style="background:var(--chile-red)"></span>
+              <code>#C0392B</code>
+            </span>
+          </div>
+          <div class="color">
+            <span>🌵 Nopal Green / Verde Nopal</span>
+            <span style="display:flex; gap:10px; align-items:center">
+              <span class="chip" style="background:var(--nopal-green)"></span>
+              <code>#556B2F</code>
+            </span>
+          </div>
+          <div class="color">
+            <span>🌼 Cempasúchil Yellow / Amarillo</span>
+            <span style="display:flex; gap:10px; align-items:center">
+              <span class="chip" style="background:var(--cemp-yellow)"></span>
+              <code>#F1C40F</code>
+            </span>
+          </div>
+          <div class="color">
+            <span>🏺 Talavera Blue / Azul Talavera</span>
+            <span style="display:flex; gap:10px; align-items:center">
+              <span class="chip" style="background:var(--talavera-blue)"></span>
+              <code>#2E86C1</code>
+            </span>
+          </div>
+        </div>
+      </section>
+
+      <section id="compliance">
+        <h2>🛡️ <span class="lang-en">Food Safety & Compliance</span><span class="lang-es">Seguridad Alimentaria</span></h2>
+        <ul class="checklist">
+          <li><span class="check">✓</span><span class="lang-en">Registered Food Business with HSE (Health Service Executive)</span><span class="lang-es"><em>Negocio de alimentos registrado ante el HSE</em></span></li>
+          <li><span class="check">✓</span><span class="lang-en">HACCP Compliant</span><span class="lang-es"><em>Cumplimiento de HACCP</em></span></li>
+          <li><span class="check">✓</span><span class="lang-en">Public Liability & Product Liability Insurance</span><span class="lang-es"><em>Seguro de responsabilidad pública y de producto</em></span></li>
+          <li><span class="check">✓</span><span class="lang-en">EU Allergen Information Available (14 allergens)</span><span class="lang-es"><em>Información de alérgenos UE disponible (14 alérgenos)</em></span></li>
+        </ul>
+        <div class="card" style="margin-top:10px">
+          <div class="lang-en"><strong>Please ask our staff about allergens.</strong></div>
+          <div class="lang-es"><strong><em>Por favor consulte a nuestro personal sobre alérgenos.</em></strong></div>
+        </div>
+      </section>
+
+      <section id="team-tech">
+        <div class="split">
+          <div class="card">
+            <h2 style="margin-top:0">👥 <span class="lang-en">Team</span><span class="lang-es">Equipo</span></h2>
+            <ul>
+              <li><span class="lang-en"><strong>President:</strong> Vicente Rodríguez Hernández</span><span class="lang-es"><strong>Presidente:</strong> Vicente Rodríguez Hernández</span></li>
+              <li><span class="lang-en"><strong>Accountant:</strong> Vicente Rodríguez Hernández</span><span class="lang-es"><strong>Contador:</strong> Vicente Rodríguez Hernández</span></li>
+              <li><span class="lang-en"><strong>Head Chef:</strong> Aracely Sansores Gongora</span><span class="lang-es"><strong>Chef Ejecutiva:</strong> Aracely Sansores Gongora</span></li>
+              <li><span class="lang-en"><strong>Chef:</strong> (TBD)</span><span class="lang-es"><strong>Chef:</strong> (Por definir)</span></li>
+              <li><span class="lang-en"><strong>Software & Data Systems Engineer:</strong> David Enrique Ochoa Diaz</span><span class="lang-es"><strong>Ingeniería de Software y Datos:</strong> David Enrique Ochoa Diaz</span></li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h2 style="margin-top:0">🚀 <span class="lang-en">Technology</span><span class="lang-es">Tecnología</span></h2>
+
+            <div class="lang-en">
+              This project includes a planned custom management platform:
+              <ul>
+                <li>📦 Inventory & stock control</li>
+                <li>📊 Sales analytics & reporting</li>
+                <li>🍽️ Digital menu with allergen information</li>
+                <li>👥 Customer loyalty program</li>
+                <li>🔐 GDPR compliant data management</li>
+              </ul>
+              <p class="muted"><strong>Tech Stack (Planned):</strong><br/>
+                Backend: Java / SpringBoot<br/>
+                Database: PostgreSQL <br/>
+                Frontend: Vaadin<br/>
+                Hosting: Cloud infrastructure (AWS/GCP)
+              </p>
+            </div>
+
+            <div class="lang-es">
+              <em>Este proyecto contempla una plataforma de gestión planificada:</em>
+              <ul>
+                <li>📦 <em>Inventarios y control de stock</em></li>
+                <li>📊 <em>Analítica de ventas y reportes</em></li>
+                <li>🍽️ <em>Menú digital con alérgenos</em></li>
+                <li>👥 <em>Programa de fidelización</em></li>
+                <li>🔐 <em>Gestión de datos conforme a GDPR</em></li>
+              </ul>
+              <p class="muted"><strong><em>Stack (planificado):</em></strong><br/>
+                <em>Backend:</em> Java / SpringBoot<br/>
+                <em>Base de datos:</em> PostgreSQL<br/>
+                <em>Frontend:</em> Vaadin<br/>
+                <em>Hosting:</em> Infraestructura cloud (AWS/GCP)
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="documents">
+        <h2>📋 <span class="lang-en">Documents</span><span class="lang-es">Documentos</span></h2>
+
+        <div class="card">
+          <div class="muted"><strong><span class="lang-en">Refund Policy</span><span class="lang-es">Política de Reembolso</span></strong></div>
+
+          <div class="lang-en" style="margin-top:10px">
+            Because our food is freshly prepared and perishable, orders cannot be returned once they have been handed over. If your order is incorrect, incomplete, or affected by a quality issue, please contact us within 24 hours of purchase and we will review your case. Where appropriate, we will offer a replacement or a refund at our discretion. This is a short summary — <strong>the full content of the Refund Policy is contained in the PDF below.</strong>
+          </div>
+          <div class="lang-es" style="margin-top:10px">
+            <em>Debido a que nuestros alimentos se preparan al momento y son perecederos, los pedidos no pueden devolverse una vez entregados. Si tu pedido es incorrecto, está incompleto o presenta un problema de calidad, contáctanos dentro de las 24 horas posteriores a la compra y revisaremos tu caso. Cuando corresponda, ofreceremos un reemplazo o un reembolso a nuestra discreción. Este es un resumen breve — <strong>el contenido total de la Política de Reembolso está en el PDF de abajo.</strong></em>
+          </div>
+
+          <div class="menu-item" style="margin-top:12px">
+            <div>
+              <strong><span class="lang-en">Full Refund Policy (PDF)</span><span class="lang-es"><em>Política de Reembolso completa (PDF)</em></span></strong>
+            </div>
+            <div class="price">
+              <a href="./Orale_Refund_Policy_V1.0.pdf" target="_blank" rel="noopener">📄 PDF</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="license">
+        <h2>📄 <span class="lang-en">License</span><span class="lang-es">Licencia</span></h2>
+        <p class="muted" style="margin:0">
+          <span class="lang-en">© 2025 Órale – Authentic Mexican Flavor. All rights reserved. This is a private business project. Unauthorized use is prohibited.</span>
+          <span class="lang-es"><em>© 2025 Órale – Authentic Mexican Flavor. Todos los derechos reservados. Proyecto privado. Uso no autorizado prohibido.</em></span>
+        </p>
+      </section>
+
+      <section id="website">
+        <h2>🌐 <span class="lang-en">Website</span><span class="lang-es">Sitio Web</span></h2>
+        <p style="margin:0">
+          <span class="lang-en">Visit our website:</span>
+          <span class="lang-es">Visita nuestro sitio:</span>
+          <strong><a href="#" id="websiteLink2">orale-authentic-mexican-flavor.github.io</a></strong>
+        </p>
+      </section>
+    </main>
+
+    <footer>
+      <div class="lang-en"><strong>Made with</strong> <span aria-hidden="true">❤️</span> <strong>and</strong> <span aria-hidden="true">🌮</span> <strong>in Limerick, Ireland</strong></div>
+      <div class="lang-es"><strong><em>Hecho con</em></strong> <span aria-hidden="true">❤️</span> <strong><em>y</em></strong> <span aria-hidden="true">🌮</span> <strong><em>en Limerick, Irlanda</em></strong></div>
+    </footer>
+
+  </div>
+
+  <script>
+    // Set your final Pages URL here (update if different)
+    const PAGES_URL = "https://orale-authentic-mexican-flavor.github.io/";
+
+    function setLang(lang){
+      document.body.setAttribute("data-lang", lang);
+      document.getElementById("btnEN").classList.toggle("active", lang === "en");
+      document.getElementById("btnES").classList.toggle("active", lang === "es");
+      try { localStorage.setItem("orale_lang", lang); } catch(e) {}
+    }
+
+    // init links + language preference
+    (function init(){
+      document.getElementById("websiteLink").href = PAGES_URL;
+      document.getElementById("websiteLink2").href = PAGES_URL;
+      document.getElementById("websiteLink2").textContent = PAGES_URL.replace(/^https?:\/\//,"").replace(/\/$/,"");
+
+      let saved = "en";
+      try { saved = localStorage.getItem("orale_lang") || "en"; } catch(e) {}
+      setLang(saved);
+    })();
+  </script>
+</body>
+</html>
