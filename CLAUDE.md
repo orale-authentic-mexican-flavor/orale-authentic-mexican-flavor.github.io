@@ -1,0 +1,31 @@
+# CLAUDE.md
+
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+
+## What this is
+
+The marketing website for Órale – Authentic Mexican Flavor, a Mexican food business in Limerick, Ireland. It is served directly by GitHub Pages from this repo (`orale-authentic-mexican-flavor.github.io`) — there is no build step, bundler, package manager, or test suite. The entire site is `index.html`: a single self-contained HTML file with inline `<style>` and inline `<script>`, plus a handful of image assets and a PDF at the repo root.
+
+## Development workflow
+
+There are no build/lint/test commands — none exist in this repo. To work on the site:
+
+- Edit `index.html` directly.
+- Preview by opening the file in a browser, or serving the directory locally (e.g. `python -m http.server`) so relative asset paths (`hero-food.png`, `dish-pork-red-pozole.png`, etc.) resolve correctly.
+- Changes go live on push to `master` via GitHub Pages — there is no CI/staging environment, so treat commits to `master` as production deploys.
+
+## Architecture of `index.html`
+
+Everything lives in one file, structured top to bottom as:
+
+1. **`<style>` block** — CSS custom properties in `:root` define the brand palette (`--chile`, `--nopal`, `--cempasuchil`, `--talavera` — colors named after the Mexican flag/Talavera pottery motif) and typography (`Fraunces` for display, `DM Sans` for body). All component styles follow.
+2. **Markup sections** in page order: nav → hero → `#order` → `#menu` → `#about` → `#refund` → `#contact` → footer. Decorative inline SVGs (papel picado bunting, sugar skull, cactus, mariachi motifs) are hand-drawn paths embedded directly in the HTML.
+3. **`<script>` block** at the bottom drives two runtime concerns:
+   - **Bilingual content (EN/ES)**: nearly every user-facing element carries `data-en` and `data-es` attributes holding the two language variants. `applyLang()` swaps `innerHTML` for every `[data-en]` element based on the `LANG` variable and re-renders the menu; the language toggle button (`#langBtn`) flips `LANG` and calls `applyLang()`. **When adding or editing any visible text, always set both `data-en` and `data-es`** (and keep the element's own text content in sync with the `data-en` value, since that's the initial render before JS runs).
+   - **Menu data-driven rendering**: the `#menu` section is empty markup (`<div id="menuRoot">`) populated entirely from JS data. `CATS` defines menu categories in display order; `DISHES` is a flat array of dish objects (`cat`, `v` for vegan, `a` for allergen keys, optional `img`, and `en`/`es` sub-objects with `n`/`d` name/description). `ALLERGENS` maps allergen keys to bilingual labels. `renderMenu()` groups `DISHES` by `CATS` order and builds the dish grid, including allergen chips and the vegan badge. **To add/edit/remove a dish or category, edit the `CATS`/`DISHES`/`ALLERGENS` JS objects — do not hand-write dish markup.** Dish prices are intentionally not listed here (`€ —`); pricing lives on the delivery platforms, per the menu note.
+
+## Content notes
+
+- Allergen tagging follows the 14 EU/FSAI statutory allergens (see the `#about` safety box copy) — when adding a dish, set `a: [...]` accurately using the existing `ALLERGENS` keys (`gluten`, `milk`, `soy`, `sesame`, `nuts`, `peanuts`, `sulphites`); use `a: []` if none apply (renders "No statutory allergens declared").
+- External links to keep in sync if the business changes them: Uber Eats / Deliveroo order links (currently placeholder `#`), WhatsApp (`https://wa.me/353899610776`), Instagram/Facebook (placeholder `#`, marked with `EDITAR` comments), Google Business Profile (placeholder `#`).
+- The Refund Policy PDF (`Orale_Refund_Policy_V1.0.pdf`) is linked from both the `#refund` section and the footer via its absolute GitHub Pages URL — if the PDF filename changes, update both links.
