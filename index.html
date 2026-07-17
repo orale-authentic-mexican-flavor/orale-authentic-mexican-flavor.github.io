@@ -155,6 +155,7 @@
     display:flex;align-items:center;justify-content:center;position:relative;border-bottom:1px solid var(--line);}
   .dish-photo svg{width:40px;height:40px;opacity:.5;}
   .dish-photo span{position:absolute;bottom:8px;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:#a8967c;font-weight:700;}
+  .dish-photo img{cursor:zoom-in;}
   .dish-body{padding:18px 20px 20px;display:flex;flex-direction:column;flex:1;}
   .dish-top{display:flex;justify-content:space-between;align-items:baseline;gap:12px;}
   .dish-name{font-family:var(--display);font-weight:600;font-size:1.18rem;line-height:1.2;}
@@ -211,6 +212,23 @@
   footer a:hover{text-decoration:underline;}
 
   :focus-visible{outline:3px solid var(--talavera);outline-offset:2px;border-radius:4px;}
+
+  /* ---------- Lightbox ---------- */
+  .lightbox{
+    position:fixed;inset:0;z-index:200;
+    display:flex;align-items:center;justify-content:center;
+    padding:28px;background:rgba(10,6,4,.9);
+    opacity:0;visibility:hidden;transition:opacity .2s ease;
+  }
+  .lightbox.open{opacity:1;visibility:visible;}
+  .lightbox-img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;border-radius:12px;box-shadow:0 20px 60px rgba(0,0,0,.5);}
+  .lightbox-close{
+    position:absolute;top:16px;right:16px;width:44px;height:44px;
+    display:flex;align-items:center;justify-content:center;
+    background:rgba(255,255,255,.14);color:#fff;border:none;border-radius:50%;
+    font-size:1.7rem;line-height:1;cursor:pointer;transition:background .2s;
+  }
+  .lightbox-close:hover{background:rgba(255,255,255,.3);}
 </style>
 </head>
 <body>
@@ -323,6 +341,7 @@
       <div class="menu-note">
         <span class="veg-key"><span class="veg-badge">V</span><span data-en="Vegan option" data-es="Opción vegana">Vegan option</span></span>
         <span data-en="Prices shown at checkout on each platform." data-es="Los precios se muestran al pagar en cada plataforma.">Prices shown at checkout on each platform.</span>
+        <span data-en="Images are for illustrative purposes only and may not reflect the actual dish." data-es="Las imágenes son ilustrativas y pueden no corresponder al platillo real.">Images are for illustrative purposes only and may not reflect the actual dish.</span>
       </div>
     </div>
     <div id="menuRoot"></div>
@@ -468,6 +487,12 @@
     <span data-en="© 2025 Órale – Authentic Mexican Flavor. All rights reserved. This is a private business project. Unauthorized use is prohibited." data-es="© 2025 Órale – Authentic Mexican Flavor. Todos los derechos reservados. Este es un proyecto de negocio privado. Se prohíbe el uso no autorizado.">© 2025 Órale – Authentic Mexican Flavor. All rights reserved. This is a private business project. Unauthorized use is prohibited.</span>
   </div>
 </footer>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-hidden="true">
+  <button class="lightbox-close" id="lightboxClose" aria-label="Close">&times;</button>
+  <img class="lightbox-img" id="lightboxImg" src="" alt="">
+</div>
 
 <script>
 /* ---------- Papel picado bunting render ---------- */
@@ -617,6 +642,40 @@ document.getElementById("langBtn").addEventListener("click",()=>{
   LANG = LANG==="en" ? "es" : "en";
   applyLang();
 });
+
+/* ---------- Dish photo lightbox ---------- */
+(function(){
+  const lightbox=document.getElementById("lightbox");
+  const lightboxImg=document.getElementById("lightboxImg");
+  const lightboxClose=document.getElementById("lightboxClose");
+
+  function openLightbox(src,alt){
+    lightboxImg.src=src;
+    lightboxImg.alt=alt;
+    lightbox.classList.add("open");
+    lightbox.setAttribute("aria-hidden","false");
+    document.body.style.overflow="hidden";
+    lightboxClose.focus();
+  }
+  function closeLightbox(){
+    lightbox.classList.remove("open");
+    lightbox.setAttribute("aria-hidden","true");
+    document.body.style.overflow="";
+    lightboxImg.src="";
+  }
+
+  document.getElementById("menuRoot").addEventListener("click",e=>{
+    const img=e.target.closest(".dish-photo img");
+    if(img) openLightbox(img.src,img.alt);
+  });
+  lightboxClose.addEventListener("click",closeLightbox);
+  lightbox.addEventListener("click",e=>{
+    if(e.target===lightbox) closeLightbox();
+  });
+  document.addEventListener("keydown",e=>{
+    if(e.key==="Escape" && lightbox.classList.contains("open")) closeLightbox();
+  });
+})();
 
 applyLang();
 </script>
