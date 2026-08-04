@@ -162,6 +162,8 @@
   .dish-price{font-weight:700;color:var(--ink-soft);white-space:nowrap;border:1.5px dashed var(--line);border-radius:8px;padding:3px 10px;font-size:.86rem;}
   .dish-desc{color:var(--ink-soft);font-size:.95rem;margin:10px 0 14px;flex:1;}
   .dish-allergens{display:flex;flex-wrap:wrap;gap:6px;align-items:center;}
+  .dish-more{display:inline-block;margin-top:14px;font-size:.82rem;font-weight:700;color:var(--talavera);text-decoration:none;}
+  .dish-more:hover{text-decoration:underline;}
   .all-label{font-size:.66rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#9a8a78;margin-right:2px;}
   .all-chip{font-size:.72rem;font-weight:600;background:#fdeecb;color:#7a5b16;border-radius:6px;padding:3px 8px;}
   .all-none{font-size:.72rem;color:#8aa08f;font-style:italic;}
@@ -510,6 +512,7 @@
   </div>
 </div>
 
+<script src="dishes-data.js"></script>
 <script>
 /* ---------- Papel picado bunting render ---------- */
 (function(){
@@ -543,16 +546,6 @@
 })();
 
 /* ---------- Menu data ---------- */
-const ALLERGENS={
-  gluten:{en:"Gluten",es:"Gluten"},
-  milk:{en:"Milk",es:"Lácteos"},
-  soy:{en:"Soy",es:"Soja"},
-  sesame:{en:"Sesame",es:"Sésamo"},
-  nuts:{en:"Tree nuts",es:"Frutos de cáscara"},
-  peanuts:{en:"Peanuts",es:"Cacahuete"},
-  sulphites:{en:"Sulphites",es:"Sulfitos"}
-};
-
 const CATS=[
   {id:"pozole", en:"Pozole", es:"Pozole"},
   {id:"chilaquiles", en:"Chilaquiles", es:"Chilaquiles"},
@@ -561,44 +554,6 @@ const CATS=[
   {id:"tacos", en:"Tacos &amp; Tortas", es:"Tacos y Tortas"},
   {id:"gorditas", en:"Gorditas &amp; Empanadas", es:"Gorditas y Empanadas"},
   {id:"mains", en:"Carnitas, Mole &amp; Sides", es:"Carnitas, Mole y Guarniciones"}
-];
-
-const DISHES=[
-  // POZOLE
-  {cat:"pozole",v:false,a:["sulphites"],img:"/img/dish/Pork Red Pozole.png",en:{n:"Pork Red Pozole",d:"Traditional red hominy soup with pork in a dried-chilli broth. Served with lettuce, radish, onion, oregano and lime."},es:{n:"Pozole Rojo de Cerdo",d:"Caldo rojo tradicional de maíz cacahuazintle con carne de cerdo, sazonado con chiles secos. Se sirve con lechuga, rábano, cebolla, orégano y limón."}},
-  {cat:"pozole",v:false,a:["sulphites"],img:"/img/dish/Chicken Red Pozole.png",en:{n:"Chicken Red Pozole",d:"Red hominy soup with shredded chicken in a dried-chilli broth. Served with lettuce, radish, onion, oregano and lime."},es:{n:"Pozole Rojo de Pollo",d:"Caldo rojo de maíz cacahuazintle con pollo deshebrado y chiles secos. Acompañado de lechuga, rábano, cebolla, orégano y limón."}},
-  {cat:"pozole",v:true,a:["sulphites"],img:"/img/dish/Vegan Red Pozole.png",en:{n:"Vegan Red Pozole",d:"Red hominy soup with mushrooms and vegetables in a dried-chilli broth. Served with lettuce, radish, onion, oregano and lime."},es:{n:"Pozole Rojo Vegano",d:"Caldo rojo de maíz cacahuazintle con champiñones y verduras, en base de chiles secos. Servido con lechuga, rábano, cebolla, orégano y limón."}},
-  {cat:"pozole",v:true,a:[],img:"/img/dish/Vegan Green Pozole.png",en:{n:"Vegan Green Pozole",d:"Green hominy soup with pumpkin seed, tomatillo and herbs, with mushrooms and vegetables. Served with lettuce, radish, onion and lime."},es:{n:"Pozole Verde Vegano",d:"Caldo verde de maíz cacahuazintle con pepita, tomate verde y hierbas, con champiñones y verduras. Servido con lechuga, rábano, cebolla y limón."}},
-  // CHILAQUILES
-  {cat:"chilaquiles",v:false,a:["milk"],img:"/img/dish/Green Chilaquiles with Chicken.png",en:{n:"Green Chilaquiles with Chicken",d:"Corn tortilla chips in green tomatillo sauce, topped with shredded chicken, cream, onion and cheese."},es:{n:"Chilaquiles Verdes con Pollo",d:"Totopos de maíz bañados en salsa verde de tomatillo, con pollo deshebrado, crema, cebolla y queso."}},
-  {cat:"chilaquiles",v:false,a:["milk","sulphites"],img:"/img/dish/Red Chilaquiles with Chicken.png",en:{n:"Red Chilaquiles with Chicken",d:"Corn tortilla chips in red chilli sauce, topped with shredded chicken, cream, onion and cheese."},es:{n:"Chilaquiles Rojos con Pollo",d:"Totopos de maíz bañados en salsa roja de chile, con pollo deshebrado, crema, cebolla y queso."}},
-  {cat:"chilaquiles",v:true,a:["soy","sulphites"],img:"/img/dish/Vegan Red Chilaquiles with Mushrooms & Cheese.png",en:{n:"Vegan Red Chilaquiles with Mushrooms &amp; Cheese",d:"Corn tortilla chips in red chilli sauce, topped with sautéed mushrooms, vegan cheese, onion and plant-based cream."},es:{n:"Chilaquiles Rojos Veganos con Setas y Queso",d:"Totopos de maíz en salsa roja de chile, con setas salteadas y queso vegano, cebolla y crema vegetal."}},
-  {cat:"chilaquiles",v:true,a:["soy"],img:"/img/dish/Vegan Green Chilaquiles with Mushrooms & Cheese.png",en:{n:"Vegan Green Chilaquiles with Mushrooms &amp; Cheese",d:"Corn tortilla chips in green tomatillo sauce, topped with sautéed mushrooms, vegan cheese, onion and plant-based cream."},es:{n:"Chilaquiles Verdes Veganos con Setas y Queso",d:"Totopos de maíz en salsa verde de tomatillo, con setas salteadas y queso vegano, cebolla y crema vegetal."}},
-  // YUCATAN
-  {cat:"yucatan",v:false,a:[],img:"/img/dish/Pork Cochinita Pibil.png",en:{n:"Pork Cochinita Pibil",d:"Pork marinated in achiote and sour orange, slow-cooked Yucatán style, with pickled red onion."},es:{n:"Cochinita Pibil de Cerdo",d:"Cerdo marinado en achiote y naranja agria, cocido lento estilo yucateco, con cebolla morada encurtida."}},
-  {cat:"yucatan",v:false,a:[],img:"/img/dish/Chicken Cochinita Pibil.png",en:{n:"Chicken Cochinita Pibil",d:"Chicken marinated in achiote and sour orange, slow-cooked Yucatán style, with pickled red onion."},es:{n:"Cochinita Pibil de Pollo",d:"Pollo marinado en achiote y naranja agria, cocido lento estilo yucateco, con cebolla morada encurtida."}},
-  {cat:"yucatan",v:false,a:[],img:"/img/dish/Cochinita Panuchos.png",en:{n:"Cochinita Panuchos",d:"Bean-stuffed fried corn tortilla topped with cochinita pibil, pickled red onion and avocado."},es:{n:"Panuchos de Cochinita",d:"Tortilla de maíz rellena de frijol, frita y coronada con cochinita pibil, cebolla morada encurtida y aguacate."}},
-  {cat:"yucatan",v:false,a:[],img:"/img/dish/Chicken Panuchos.png",en:{n:"Chicken Panuchos",d:"Bean-stuffed fried corn tortilla topped with shredded chicken, pickled red onion and avocado."},es:{n:"Panuchos de Pollo",d:"Tortilla de maíz rellena de frijol, frita y coronada con pollo deshebrado, cebolla morada encurtida y aguacate."}},
-  // TAMALES
-  {cat:"tamales",v:false,a:["sulphites"],img:"/img/dish/Pork Red Tamales.png",en:{n:"Pork Red Tamales",d:"Nixtamalized corn masa filled with pork in red chilli sauce, wrapped in corn husk and steamed."},es:{n:"Tamales Rojos de Cerdo",d:"Masa de maíz nixtamalizado rellena de cerdo en salsa roja de chile, envuelta en hoja de maíz y cocida al vapor."}},
-  {cat:"tamales",v:false,a:[],img:"/img/dish/Pork Green Tamales.png",en:{n:"Pork Green Tamales",d:"Nixtamalized corn masa filled with pork in green tomatillo sauce, wrapped in corn husk and steamed."},es:{n:"Tamales Verdes de Cerdo",d:"Masa de maíz nixtamalizado rellena de cerdo en salsa verde de tomatillo, envuelta en hoja de maíz y cocida al vapor."}},
-  {cat:"tamales",v:false,a:["sulphites"],img:"/img/dish/Chicken Red Tamales.png",en:{n:"Chicken Red Tamales",d:"Nixtamalized corn masa filled with chicken in red chilli sauce, wrapped in corn husk and steamed."},es:{n:"Tamales Rojos de Pollo",d:"Masa de maíz nixtamalizado rellena de pollo en salsa roja de chile, envuelta en hoja de maíz y cocida al vapor."}},
-  {cat:"tamales",v:false,a:[],img:"/img/dish/Chicken Green Tamales.png",en:{n:"Chicken Green Tamales",d:"Nixtamalized corn masa filled with chicken in green tomatillo sauce, wrapped in corn husk and steamed."},es:{n:"Tamales Verdes de Pollo",d:"Masa de maíz nixtamalizado rellena de pollo en salsa verde de tomatillo, envuelta en hoja de maíz y cocida al vapor."}},
-  {cat:"tamales",v:true,a:["soy","sulphites"],img:"/img/dish/Vegan Red Tamales with Mushrooms & Cheese.png",en:{n:"Vegan Red Tamales with Mushrooms &amp; Cheese",d:"Nixtamalized corn masa filled with mushrooms and vegan cheese in red sauce, wrapped in corn husk and steamed."},es:{n:"Tamales Rojos Veganos con Setas y Queso",d:"Masa de maíz nixtamalizado rellena de setas y queso vegano en salsa roja, envuelta en hoja de maíz y cocida al vapor."}},
-  {cat:"tamales",v:true,a:["soy"],img:"/img/dish/Vegan Green Tamales with Mushrooms & Cheese.png",en:{n:"Vegan Green Tamales with Mushrooms &amp; Cheese",d:"Nixtamalized corn masa filled with mushrooms and vegan cheese in green sauce, wrapped in corn husk and steamed."},es:{n:"Tamales Verdes Veganos con Setas y Queso",d:"Masa de maíz nixtamalizado rellena de setas y queso vegano en salsa verde, envuelta en hoja de maíz y cocida al vapor."}},
-  // TACOS & TORTAS
-  {cat:"tacos",v:false,a:["sulphites"],img:"/img/dish/Tacos al Pastor.png",en:{n:"Tacos al Pastor",d:"Three corn tortilla tacos with pastor-marinated pork, onion, coriander and pineapple."},es:{n:"Tacos al Pastor",d:"Tres tacos de tortilla de maíz con cerdo marinado al pastor, cebolla, cilantro y piña."}},
-  {cat:"tacos",v:false,a:["gluten","sulphites"],img:"/img/dish/Tortas al Pastor.png",en:{n:"Tortas al Pastor",d:"Bolillo roll filled with pastor pork, beans, avocado, onion, coriander and salsa."},es:{n:"Tortas al Pastor",d:"Bolillo relleno de cerdo al pastor, con frijol, aguacate, cebolla, cilantro y salsa."}},
-  {cat:"tacos",v:false,a:["gluten","milk"],img:"/img/dish/Alambre Tortas.png",en:{n:"Alambre Tortas",d:"Bolillo roll filled with alambre: meat with pepper, onion, bacon and melted cheese."},es:{n:"Tortas de Alambre",d:"Bolillo relleno de alambre: carne con pimiento, cebolla, tocino y queso fundido."}},
-  {cat:"tacos",v:false,a:["milk"],img:"/img/dish/Alambre Tacos.png",en:{n:"Alambre Tacos",d:"Three corn tortilla tacos with griddled meat, pepper, onion, bacon and melted cheese."},es:{n:"Tacos de Alambre",d:"Tres tacos de tortilla de maíz con carne a la plancha, pimiento, cebolla, tocino y queso fundido."}},
-  // GORDITAS & EMPANADAS
-  {cat:"gorditas",v:false,a:["milk"],img:"/img/dish/Alambre Gorditas.png",en:{n:"Alambre Gorditas",d:"Thick corn masa pockets filled with alambre: griddled meat with pepper, onion, bacon and melted cheese."},es:{n:"Gorditas de Alambre",d:"Masa de maíz gruesa rellena de alambre: carne a la plancha con pimiento, cebolla, tocino y queso fundido."}},
-  {cat:"gorditas",v:true,a:["soy"],img:"/img/dish/Vegan Gorditas with Mushrooms & Cheese.png",en:{n:"Vegan Gorditas with Mushrooms &amp; Cheese",d:"Thick corn masa pockets filled with sautéed mushrooms and vegan cheese, with pepper and onion."},es:{n:"Gorditas Veganas con Setas y Queso",d:"Masa de maíz gruesa rellena de setas salteadas y queso vegano, con pimiento y cebolla."}},
-  {cat:"gorditas",v:false,a:["milk"],img:"/img/dish/Cheese Empanadas.png",en:{n:"Cheese Empanadas",d:"Golden corn masa turnovers filled with melted cheese, served with salsa."},es:{n:"Empanadas de Queso",d:"Masa de maíz dorada rellena de queso fundido, servida con salsa."}},
-  // MAINS
-  {cat:"mains",v:false,a:["sulphites"],img:"/img/dish/Carnitas al Pastor.png",en:{n:"Carnitas al Pastor",d:"Pastor-marinated slow-cooked pork, crisped and juicy, with onion and coriander."},es:{n:"Carnitas al Pastor",d:"Cerdo confitado y marinado al estilo pastor, dorado y jugoso, con cebolla y cilantro."}},
-  {cat:"mains",v:false,a:["gluten","peanuts","nuts","sesame","sulphites"],img:"/img/dish/dish-pork-red-pozole.png",en:{n:"Chicken in Red Mole",d:"Chicken in a red mole of chillies, spices and chocolate, served with rice."},es:{n:"Mole Rojo de Pollo",d:"Pollo bañado en mole rojo de chiles, especias y chocolate, servido con arroz."}},
-  {cat:"mains",v:true,a:[],img:"/img/dish/Mexican Rice.png",en:{n:"Mexican Rice",d:"Red rice cooked with tomato, onion, garlic and vegetables."},es:{n:"Arroz a la Mexicana",d:"Arroz rojo guisado con tomate, cebolla, ajo y verduras."}}
 ];
 
 let LANG="en";
@@ -622,6 +577,7 @@ function renderMenu(){
         chips=`<span class="all-label">${allLabel}:</span><span class="all-none">${noneLabel}</span>`;
       }
       const photoLabel = LANG==="en" ? "Photo coming soon" : "Foto próximamente";
+      const seeMoreLabel = LANG==="en" ? "See more" : "Ver más";
       const photo = d.img
         ? `<div class="dish-photo" style="background:none;padding:0;"><img src="${d.img}" alt="${t.n}" style="width:100%;height:100%;object-fit:cover;"></div>`
         : `<div class="dish-photo">
@@ -637,6 +593,7 @@ function renderMenu(){
           </div>
           <p class="dish-desc">${t.d}</p>
           <div class="dish-allergens">${chips}</div>
+          <a class="dish-more" href="dish.html?id=${d.id}">${seeMoreLabel} →</a>
         </div>
       </div>`;
     });
