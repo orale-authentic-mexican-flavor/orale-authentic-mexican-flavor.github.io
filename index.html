@@ -578,8 +578,9 @@ function renderMenu(){
       }
       const photoLabel = LANG==="en" ? "Photo coming soon" : "Foto próximamente";
       const seeMoreLabel = LANG==="en" ? "See more" : "Ver más";
+      const largeSrc = d.img ? d.img.replace(/\.webp$/i,"-large.webp") : "";
       const photo = d.img
-        ? `<div class="dish-photo" style="background:none;padding:0;"><img src="${d.img}" alt="${t.n}" style="width:100%;height:100%;object-fit:cover;"></div>`
+        ? `<div class="dish-photo" style="background:none;padding:0;"><img src="${d.img}" alt="${t.n}" width="${d.imgW}" height="${d.imgH}" loading="lazy" data-large="${largeSrc}" style="width:100%;height:100%;object-fit:cover;"></div>`
         : `<div class="dish-photo">
           <svg viewBox="0 0 24 24" fill="none" stroke="#c9b48f" stroke-width="1.6"><path d="M3 16.5 8 11l4 4 3-3 6 6"/><circle cx="8.5" cy="8" r="1.8"/><rect x="2.5" y="3.5" width="19" height="17" rx="2"/></svg>
           <span>${photoLabel}</span>
@@ -639,7 +640,7 @@ document.getElementById("langBtn").addEventListener("click",()=>{
 
   document.getElementById("menuRoot").addEventListener("click",e=>{
     const img=e.target.closest(".dish-photo img");
-    if(img) openLightbox(img.src,img.alt);
+    if(img) openLightbox(img.dataset.large || img.src, img.alt);
   });
   lightboxClose.addEventListener("click",closeLightbox);
   lightbox.addEventListener("click",e=>{

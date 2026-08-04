@@ -263,8 +263,9 @@ function renderDish(){
   }
 
   const photoLabel = LANG==="en" ? "Photo coming soon" : "Foto próximamente";
+  const largeSrc = DISH.img ? DISH.img.replace(/\.webp$/i,"-large.webp") : "";
   const photo = DISH.img
-    ? `<div class="dish-detail-photo"><img src="${DISH.img}" alt="${t.n}"></div>`
+    ? `<div class="dish-detail-photo"><img src="${DISH.img}" alt="${t.n}" width="${DISH.imgW}" height="${DISH.imgH}" loading="lazy" data-large="${largeSrc}"></div>`
     : `<div class="dish-detail-photo">
         <svg viewBox="0 0 24 24" fill="none" stroke="#c9b48f" stroke-width="1.6"><path d="M3 16.5 8 11l4 4 3-3 6 6"/><circle cx="8.5" cy="8" r="1.8"/><rect x="2.5" y="3.5" width="19" height="17" rx="2"/></svg>
         <span>${photoLabel}</span>
@@ -349,7 +350,7 @@ document.getElementById("langBtn").addEventListener("click",()=>{
 
   document.getElementById("dishRoot").addEventListener("click",e=>{
     const img=e.target.closest(".dish-detail-photo img");
-    if(img) openLightbox(img.src,img.alt);
+    if(img) openLightbox(img.dataset.large || img.src, img.alt);
   });
   lightboxClose.addEventListener("click",closeLightbox);
   lightbox.addEventListener("click",e=>{
