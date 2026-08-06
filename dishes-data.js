@@ -235,7 +235,7 @@ const DISHES=[
     howToEat:{en:"The griddled meat, pepper, onion, bacon and melted cheese come piled onto small corn tortillas, ready to eat. Add salsa to taste and eat each taco by hand, folded in half.",
         es:"La carne a la plancha, el pimiento, la cebolla, el tocino y el queso fundido llegan servidos sobre pequeñas tortillas de maíz, listos para comer. Añade salsa al gusto y come cada taco con la mano, doblado a la mitad."}},
 
-  {id:"grilled-pork-torta",cat:"tacos",v:false,a:["gluten"],img:"",video:"",
+  {id:"grilled-pork-torta",cat:"tacos",v:false,a:["gluten"],img:"/img/dish/Grilled Pork Torta.webp",imgW:800,imgH:500,video:"",
     en:{n:"Grilled Pork Torta",d:"A 23 cm baguette spread with refried black beans, filled with grilled pork in small pieces, lettuce, sliced tomato, sliced onion and mashed avocado."},
     es:{n:"Torta de Cerdo Asado",d:"Baguette de 23 cm embarrado con frijoles negros, relleno de cerdo asado en trozos pequeños, lechuga, tomate en rodajas, cebolla en rodajas y aguacate en puré."},
     culture:{en:"The torta is Mexico's everyday take on the sandwich, and this one is built on a crisp 23 cm baguette-style roll instead of the more common bolillo. Piled with grilled pork, refried black beans, fresh vegetables and mashed avocado, it's the kind of hearty, filling food eaten at torta stands and small shops any time hunger calls — a quick lunch, an after-work bite, or a full meal on its own. Like most tortas, it's a staple of modern Mexican urban food culture rather than an older, ancestral dish.",
