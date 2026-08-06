@@ -154,7 +154,7 @@ const DISHES=[
     howToEat:{en:"Unwrap the tamal from its corn husk or banana leaf at the table — the wrapping is just that, not for eating — and enjoy the masa and pork filling with your hands or a fork. A little extra salsa on the side is common if you want more kick.",
         es:"Desenvuelve el tamal de su hoja de maíz o de plátano en la mesa — la hoja es solo el envoltorio, no se come — y disfruta la masa y el relleno de cerdo con las manos o con tenedor. Es común añadir un poco de salsa aparte si quieres más picor."}},
 
-  {id:"chicken-red-tamales",cat:"tamales",v:false,a:["sulphites"],img:"/img/dish/Chicken Red Tamales.webp",imgW:800,imgH:498,video:"",
+  {id:"chicken-red-tamales",cat:"tamales",v:false,a:["sulphites"],img:"/img/dish/Chicken Red Tamales.webp",imgW:800,imgH:498,video:"MP39R82er18",
     en:{n:"Chicken Red Tamales",d:"Nixtamalized corn masa filled with chicken in red chilli sauce, wrapped in corn husk or banana leaf and steamed."},
     es:{n:"Tamales Rojos de Pollo",d:"Masa de maíz nixtamalizado rellena de pollo en salsa roja de chile, envuelta en hoja de maíz o de plátano y cocida al vapor."},
     culture:{en:"This chicken version follows the same tradition as the classic pork tamale — nixtamalized corn masa steamed in corn husk or banana leaf, a technique with deep roots in Mesoamerican cooking. Tamales are a dish of gathering and celebration, often made together by families in large batches. The red chile sauce gives it a warm, earthy heat typical of tamales across the country. The wrapping matters too: corn husk gives a milder, more traditional aroma typical of central and northern Mexico, while banana leaf lends a deeper, herbal fragrance associated with the country's southeast.",
