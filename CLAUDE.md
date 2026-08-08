@@ -6,6 +6,27 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 The marketing website for Órale – Authentic Mexican Flavor, a Mexican food business in Limerick, Ireland. It is served directly by GitHub Pages from this repo (`orale-authentic-mexican-flavor.github.io`) — there is no build step, bundler, package manager, or test suite. The entire site is `index.html`: a single self-contained HTML file with inline `<style>` and inline `<script>`, plus a handful of image assets and a PDF at the repo root.
 
+## Reglas de trabajo — Órale
+
+### Git y control de versiones
+- NO crees ramas, NO hagas commits, NO hagas push, NI crees Pull Requests de forma
+  automática. Realiza cualquier operación de git ÚNICAMENTE si yo lo pido de forma
+  explícita en el momento.
+- Al terminar los cambios, déjalos SIN commitear y avísame qué archivos modificaste.
+  Yo reviso y decido cuándo commitear, crear la rama y el PR.
+- Antes de cualquier operación de git (branch, add, commit, push, PR), pídeme
+  confirmación explícita.
+- master es la rama de producción (GitHub Pages publica desde ahí). Nunca hagas
+  cambios directos ni operaciones de git sobre master sin mi confirmación.
+
+### Estilo del sitio
+- El sitio es bilingüe EN/ES con inglés por defecto (toggle data-en/data-es + LANG).
+- Todo texto de interfaz nuevo debe ser bilingüe. Los nombres de platillos y de
+  personas se mantienen en español en ambos idiomas.
+- Respeta la paleta, tipografías, botones .btn, papel picado y favicon existentes.
+- No dupliques los datos de platillos: viven solo en dishes-data.js.
+- No rompas funcionalidad existente (menú, toggle, secciones, imágenes, video, QR).
+
 ## Development workflow
 
 There are no build/lint/test commands — none exist in this repo. To work on the site:

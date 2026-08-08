@@ -119,6 +119,8 @@
   .info-block{margin-top:34px;}
   .info-title{font-size:1.5rem;color:var(--talavera);font-weight:700;margin-bottom:12px;}
   .info-block p{color:var(--ink-soft);font-size:1.02rem;margin:0;}
+  .review-cta{text-align:center;}
+  .review-cta p{margin-bottom:16px;}
 
   .video-wrap{position:relative;width:100%;aspect-ratio:16/9;border-radius:14px;overflow:hidden;border:1px solid var(--line);background:
       repeating-linear-gradient(45deg,#f0e6cf 0 14px,#f6eedb 14px 28px);}
@@ -277,6 +279,8 @@ function renderDish(){
   const howTitle = LANG==="en" ? "How to eat it" : "Cómo se come";
   const videoTitle = LANG==="en" ? "Watch" : "Video";
   const videoComingSoon = LANG==="en" ? "Video coming soon" : "Video próximamente";
+  const reviewPrompt = LANG==="en" ? "Tried this dish? Leave us a review on Google." : "¿Probaste este platillo? Déjanos una reseña en Google.";
+  const reviewBtnLabel = LANG==="en" ? "⭐ Review us on Google" : "⭐ Déjanos una reseña en Google";
 
   const videoHtml = DISH.video
     ? `<div class="video-wrap"><iframe src="https://www.youtube.com/embed/${DISH.video}" title="${t.n}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>`
@@ -309,6 +313,10 @@ function renderDish(){
     <div class="info-block">
       <h2 class="info-title">${videoTitle}</h2>
       ${videoHtml}
+    </div>
+    <div class="info-block review-cta">
+      <p>${reviewPrompt}</p>
+      <a href="https://g.page/r/CZBb8ePc_IHBEBM/review" target="_blank" rel="noopener" class="btn btn-primary">${reviewBtnLabel}</a>
     </div>
   `;
 }
