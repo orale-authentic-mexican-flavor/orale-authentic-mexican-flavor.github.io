@@ -90,10 +90,46 @@
     padding:7px 12px;border-radius:999px;cursor:pointer;transition:all .2s;
   }
   .lang-toggle:hover{background:var(--talavera);color:#fff;}
-  .nav-toggle{display:none;}
-  @media(max-width:860px){
-    .nav-links a{display:none;}
-    .nav-links .lang-toggle{display:inline-block;}
+  .nav-actions{display:flex;align-items:center;gap:10px;}
+  .nav-toggle{
+    display:none;flex-direction:column;justify-content:center;align-items:center;gap:5px;
+    width:44px;height:44px;border:1.5px solid var(--line);border-radius:10px;
+    background:transparent;cursor:pointer;padding:0;flex:0 0 auto;
+  }
+  .nav-toggle-bar{display:block;width:20px;height:2px;background:var(--ink);border-radius:2px;transition:transform .2s,opacity .2s;}
+  .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(1){transform:translateY(7px) rotate(45deg);}
+  .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(2){opacity:0;}
+  .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+  .nav-overlay{
+    position:fixed;inset:0;background:rgba(36,23,18,.45);z-index:60;
+    opacity:0;pointer-events:none;transition:opacity .25s ease;
+  }
+  .nav-overlay.is-open{opacity:1;pointer-events:auto;}
+  .nav-panel{
+    position:fixed;top:0;right:0;bottom:0;width:min(300px,84vw);
+    background:var(--paper);z-index:61;box-shadow:-8px 0 24px rgba(0,0,0,.18);
+    transform:translateX(100%);transition:transform .28s ease;
+    display:flex;flex-direction:column;padding:18px;
+  }
+  .nav-panel.is-open{transform:translateX(0);}
+  .nav-panel-head{display:flex;justify-content:flex-end;margin-bottom:8px;}
+  .nav-panel-close{
+    width:44px;height:44px;border:none;border-radius:50%;
+    background:rgba(0,0,0,.06);color:var(--ink);font-size:1.6rem;line-height:1;
+    cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s;
+  }
+  .nav-panel-close:hover{background:rgba(0,0,0,.12);}
+  .nav-panel-links{display:flex;flex-direction:column;gap:2px;}
+  .nav-panel-links a{
+    display:flex;align-items:center;min-height:44px;padding:12px 10px;
+    text-decoration:none;font-size:1rem;font-weight:600;letter-spacing:.02em;
+    color:var(--ink);border-bottom:1px solid var(--line);transition:color .2s;
+  }
+  .nav-panel-links a:hover{color:var(--chile);}
+  .nav-overlay[hidden],.nav-panel[hidden]{display:none;}
+  @media(max-width:760px){
+    .nav-links{display:none;}
+    .nav-toggle{display:flex;}
   }
 
   /* ---------- Hero ---------- */
@@ -241,6 +277,12 @@
   .soon-card .soon-text{display:block;font-family:var(--display);font-size:1.4rem;font-weight:700;color:var(--nopal);}
   .soon-card .lightbox-close{color:var(--ink);background:rgba(0,0,0,.06);}
   .soon-card .lightbox-close:hover{background:rgba(0,0,0,.12);}
+
+  /* ---------- Mobile: single-column cards ---------- */
+  @media(max-width:600px){
+    section{padding:48px 0;}
+    .dish-grid,.order-grid,.team-grid{grid-template-columns:1fr;}
+  }
 </style>
 </head>
 <body>
@@ -264,10 +306,30 @@
       <a href="#about" data-en="About" data-es="Nosotros">About</a>
       <a href="#refund" data-en="Refunds" data-es="Reembolsos">Refunds</a>
       <a href="#contact" data-en="Contact" data-es="Contacto">Contact</a>
-      <button class="lang-toggle" id="langBtn" aria-label="Switch language">ES</button>
     </nav>
+    <div class="nav-actions">
+      <button class="lang-toggle" id="langBtn" aria-label="Switch language">ES</button>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navPanel">
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </button>
+    </div>
   </div>
 </header>
+<div class="nav-overlay" id="navOverlay" hidden></div>
+<aside class="nav-panel" id="navPanel" role="dialog" aria-modal="true" aria-label="Navigation menu" hidden>
+  <div class="nav-panel-head">
+    <button class="nav-panel-close" id="navPanelClose" aria-label="Close menu">&times;</button>
+  </div>
+  <nav class="nav-panel-links">
+    <a href="#order" data-en="Order" data-es="Pedir">Order</a>
+    <a href="#menu" data-en="Menu" data-es="Menú">Menu</a>
+    <a href="#about" data-en="About" data-es="Nosotros">About</a>
+    <a href="#refund" data-en="Refunds" data-es="Reembolsos">Refunds</a>
+    <a href="#contact" data-en="Contact" data-es="Contacto">Contact</a>
+  </nav>
+</aside>
 
 <!-- HERO -->
 <section class="hero" id="top">
@@ -626,6 +688,64 @@ document.getElementById("langBtn").addEventListener("click",()=>{
   LANG = LANG==="en" ? "es" : "en";
   applyLang();
 });
+
+(function(){
+  const navToggle=document.getElementById("navToggle");
+  const navPanel=document.getElementById("navPanel");
+  const navOverlay=document.getElementById("navOverlay");
+  const navPanelClose=document.getElementById("navPanelClose");
+  let closeTimer=null;
+
+  function trapFocus(e){
+    if(e.key==="Escape"){ closeNavPanel(); return; }
+    if(e.key!=="Tab") return;
+    const focusables=navPanel.querySelectorAll("button, a[href]");
+    if(!focusables.length) return;
+    const first=focusables[0], last=focusables[focusables.length-1];
+    if(e.shiftKey && document.activeElement===first){ e.preventDefault(); last.focus(); }
+    else if(!e.shiftKey && document.activeElement===last){ e.preventDefault(); first.focus(); }
+  }
+
+  function openNavPanel(){
+    clearTimeout(closeTimer);
+    navPanel.hidden=false;
+    navOverlay.hidden=false;
+    requestAnimationFrame(()=>{
+      navPanel.classList.add("is-open");
+      navOverlay.classList.add("is-open");
+    });
+    navToggle.setAttribute("aria-expanded","true");
+    document.body.style.overflow="hidden";
+    navPanelClose.focus();
+    document.addEventListener("keydown",trapFocus);
+  }
+
+  function closeNavPanel(){
+    navPanel.classList.remove("is-open");
+    navOverlay.classList.remove("is-open");
+    navToggle.setAttribute("aria-expanded","false");
+    document.body.style.overflow="";
+    document.removeEventListener("keydown",trapFocus);
+    navToggle.focus();
+    clearTimeout(closeTimer);
+    closeTimer=setTimeout(()=>{
+      navPanel.hidden=true;
+      navOverlay.hidden=true;
+    },300);
+  }
+
+  navToggle.addEventListener("click",()=>{
+    navPanel.classList.contains("is-open") ? closeNavPanel() : openNavPanel();
+  });
+  navPanelClose.addEventListener("click",closeNavPanel);
+  navOverlay.addEventListener("click",closeNavPanel);
+  navPanel.querySelectorAll(".nav-panel-links a").forEach(a=>{
+    a.addEventListener("click",closeNavPanel);
+  });
+  window.addEventListener("resize",()=>{
+    if(window.innerWidth>760 && navPanel.classList.contains("is-open")) closeNavPanel();
+  });
+})();
 
 /* ---------- Dish photo lightbox ---------- */
 (function(){
