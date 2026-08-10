@@ -636,7 +636,7 @@ function renderMenu(){
   const allLabel = LANG==="en" ? "Allergens" : "Alérgenos";
   const noneLabel = LANG==="en" ? "No statutory allergens declared" : "Sin alérgenos de declaración obligatoria";
   CATS.forEach(cat=>{
-    const items=DISHES.filter(d=>d.cat===cat.id);
+    const items=DISHES.filter(d=>d.cat===cat.id && d.active!==false);
     if(!items.length) return;
     html+=`<div class="menu-cat"><h3 class="menu-cat-title">${cat[LANG]}</h3><div class="dish-grid">`;
     items.forEach(d=>{

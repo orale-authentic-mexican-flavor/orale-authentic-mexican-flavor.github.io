@@ -9,9 +9,15 @@ const ALLERGENS={
   sulphites:{en:"Sulphites",es:"Sulfitos"}
 };
 
+/* Visibility: add "active:false" to a dish object to hide it from the menu (index.html)
+   and its detail page (dish.html) without deleting it — e.g. seasonal, sold out or not
+   yet published dishes. Omitting the field, or setting "active:true", keeps the dish
+   visible (safe default). QR scripts should keep generating codes for inactive dishes
+   too, so the printed QR isn't lost; dish.html shows a friendly "not available" message
+   if it's scanned. */
 const DISHES=[
   // POZOLE
-  {id:"pork-red-pozole",cat:"pozole",v:false,a:["sulphites"],img:"/img/dish/Pork Red Pozole.webp",imgW:800,imgH:498,video:"JwxzduQJLkA",
+  {id:"pork-red-pozole",cat:"pozole",v:false,active:true,a:["sulphites"],img:"/img/dish/Pork Red Pozole.webp",imgW:800,imgH:498,video:"JwxzduQJLkA",
     en:{n:"Pork Red Pozole",d:"Traditional red hominy soup with pork in a dried-chilli broth. Served with lettuce, radish, onion, oregano and lime."},
     es:{n:"Pozole Rojo de Cerdo",d:"Caldo rojo tradicional de maíz cacahuazintle con carne de cerdo, sazonado con chiles secos. Se sirve con lechuga, rábano, cebolla, orégano y limón."},
     culture:{en:"Pozole is one of Mexico's great communal dishes — a hominy soup that has deep roots in Mesoamerican corn cuisine and is still served at celebrations, Independence gatherings and family Sundays across the country. The red version gets its colour and depth from dried chiles, and every region adds its own touch to the broth. Sharing a big pot of pozole is as much about the company around the table as the soup itself.",
@@ -21,7 +27,7 @@ const DISHES=[
     howToEat:{en:"The bowl arrives with the broth, hominy and pork already together; the lettuce, radish, onion, oregano and lime come on the side so you can add exactly what you like. Stir them in to taste, squeeze the lime over the top, and eat it with a spoon while it's hot — a little extra chile or salsa on the side is normal if you want more heat.",
         es:"El plato llega con el caldo, el maíz y la carne ya combinados; la lechuga, el rábano, la cebolla, el orégano y el limón se sirven aparte para que agregues justo lo que te guste. Incorpóralos al gusto, exprime el limón encima y cómelo con cuchara mientras está caliente — es normal añadir un poco más de chile o salsa aparte si quieres más picor."}},
 
-  {id:"chicken-red-pozole",cat:"pozole",v:false,a:["sulphites"],img:"/img/dish/Chicken Red Pozole.webp",imgW:800,imgH:498,video:"",
+  {id:"chicken-red-pozole",cat:"pozole",v:false,active:true,a:["sulphites"],img:"/img/dish/Chicken Red Pozole.webp",imgW:800,imgH:498,video:"",
     en:{n:"Chicken Red Pozole",d:"Red hominy soup with shredded chicken in a dried-chilli broth. Served with lettuce, radish, onion, oregano and lime."},
     es:{n:"Pozole Rojo de Pollo",d:"Caldo rojo de maíz cacahuazintle con pollo deshebrado y chiles secos. Acompañado de lechuga, rábano, cebolla, orégano y limón."},
     culture:{en:"This is the chicken version of one of Mexico's most iconic communal soups — a red hominy broth with roots in Mesoamerican corn cuisine, traditionally shared at celebrations and family gatherings. Chicken makes it a lighter take on the classic pork pozole, while keeping the same dried-chile broth and toppings. It's a dish built for sharing, with everyone dressing their own bowl at the table.",
@@ -31,7 +37,7 @@ const DISHES=[
     howToEat:{en:"The broth, hominy and shredded chicken come together in the bowl, while lettuce, radish, onion, oregano and lime sit on the side to add as you like. Mix them in to taste and eat with a spoon; extra chile or salsa can be added if you want it spicier.",
         es:"El caldo, el maíz y el pollo deshebrado llegan juntos en el plato, mientras que la lechuga, el rábano, la cebolla, el orégano y el limón se sirven aparte para agregar a tu gusto. Incorpóralos al gusto y come con cuchara; puedes añadir más chile o salsa si lo quieres más picoso."}},
 
-  {id:"vegan-red-pozole",cat:"pozole",v:true,a:["sulphites"],img:"/img/dish/Vegan Red Pozole.webp",imgW:800,imgH:498,video:"",
+  {id:"vegan-red-pozole",cat:"pozole",v:true,active:true,a:["sulphites"],img:"/img/dish/Vegan Red Pozole.webp",imgW:800,imgH:498,video:"",
     en:{n:"Vegan Red Pozole",d:"Red hominy soup with mushrooms and vegetables in a dried-chilli broth. Served with lettuce, radish, onion, oregano and lime."},
     es:{n:"Pozole Rojo Vegano",d:"Caldo rojo de maíz cacahuazintle con champiñones y verduras, en base de chiles secos. Servido con lechuga, rábano, cebolla, orégano y limón."},
     culture:{en:"This plant-based version keeps the soul of red pozole — a hominy soup with roots in Mesoamerican corn cuisine — while swapping the meat for mushrooms and vegetables in the same dried-chile broth. It's a way for anyone to join in a dish that's traditionally at the centre of Mexican celebrations and family meals. The heart of the dish, the corn and the broth, stays true to the original.",
@@ -41,7 +47,7 @@ const DISHES=[
     howToEat:{en:"The broth with hominy, mushrooms and vegetables comes ready in the bowl; lettuce, radish, onion, oregano and lime are served on the side to mix in to taste. Eat it with a spoon while hot, adding lime and extra chile as you like.",
         es:"El caldo con maíz, champiñones y verduras llega listo en el plato; la lechuga, el rábano, la cebolla, el orégano y el limón se sirven aparte para agregar al gusto. Cómelo con cuchara mientras está caliente, añadiendo limón y chile extra si así lo deseas."}},
 
-  {id:"vegan-green-pozole",cat:"pozole",v:true,a:[],img:"/img/dish/Vegan Green Pozole.webp",imgW:800,imgH:498,video:"",
+  {id:"vegan-green-pozole",cat:"pozole",v:true,active:true,a:[],img:"/img/dish/Vegan Green Pozole.webp",imgW:800,imgH:498,video:"",
     en:{n:"Vegan Green Pozole",d:"Green hominy soup with pumpkin seed, tomatillo and herbs, with mushrooms and vegetables. Served with lettuce, radish, onion and lime."},
     es:{n:"Pozole Verde Vegano",d:"Caldo verde de maíz cacahuazintle con pepita, tomate verde y hierbas, con champiñones y verduras. Servido con lechuga, rábano, cebolla y limón."},
     culture:{en:"Green pozole swaps the dried-chile broth for one built on pumpkin seed, tomatillo and herbs, a style found in central and southern Mexico. This vegan version keeps that bright, herby broth and fills it with mushrooms and vegetables in place of meat. Like its red counterpart, it's a dish meant to be shared and dressed at the table.",
@@ -52,7 +58,7 @@ const DISHES=[
         es:"El caldo verde llega con el maíz, los champiñones y las verduras ya incluidos; la lechuga, el rábano, la cebolla y el limón se sirven aparte para agregar a tu gusto. Incorpóralos y come con cuchara, exprimiendo limón encima al gusto."}},
 
   // CHILAQUILES
-  {id:"green-chilaquiles-with-chicken",cat:"chilaquiles",v:false,a:["milk"],img:"/img/dish/Green Chilaquiles with Chicken.webp",imgW:800,imgH:498,video:"",
+  {id:"green-chilaquiles-with-chicken",cat:"chilaquiles",v:false,active:true,a:["milk"],img:"/img/dish/Green Chilaquiles with Chicken.webp",imgW:800,imgH:498,video:"",
     en:{n:"Green Chilaquiles with Chicken",d:"Corn tortilla chips in green tomatillo sauce, topped with shredded chicken, cream, onion and cheese."},
     es:{n:"Chilaquiles Verdes con Pollo",d:"Totopos de maíz bañados en salsa verde de tomatillo, con pollo deshebrado, crema, cebolla y queso."},
     culture:{en:"Chilaquiles are a classic Mexican breakfast and brunch dish, born from the practical, no-waste habit of reviving day-old tortillas by frying them and bathing them in salsa. The green version uses a tomatillo sauce, bright and tangy, and topping it with chicken turns it into a full meal. It's comfort food, usually eaten at home or at a family-run fonda rather than a formal restaurant.",
@@ -62,7 +68,7 @@ const DISHES=[
     howToEat:{en:"The tortilla chips arrive already bathed in the green sauce and topped with chicken, cream, onion and cheese, so everything is ready to eat straight away. Mix it gently with your fork so the chips soak up the sauce, and eat while warm before the chips soften too much.",
         es:"Los totopos llegan ya bañados en la salsa verde y coronados con pollo, crema, cebolla y queso, así que todo está listo para comer de inmediato. Mézclalo suavemente con el tenedor para que los totopos absorban la salsa, y cómelo caliente antes de que se ablanden demasiado."}},
 
-  {id:"red-chilaquiles-with-chicken",cat:"chilaquiles",v:false,a:["milk","sulphites"],img:"/img/dish/Red Chilaquiles with Chicken.webp",imgW:800,imgH:498,video:"",
+  {id:"red-chilaquiles-with-chicken",cat:"chilaquiles",v:false,active:true,a:["milk","sulphites"],img:"/img/dish/Red Chilaquiles with Chicken.webp",imgW:800,imgH:498,video:"",
     en:{n:"Red Chilaquiles with Chicken",d:"Corn tortilla chips in red chilli sauce, topped with shredded chicken, cream, onion and cheese."},
     es:{n:"Chilaquiles Rojos con Pollo",d:"Totopos de maíz bañados en salsa roja de chile, con pollo deshebrado, crema, cebolla y queso."},
     culture:{en:"Like its green cousin, red chilaquiles turn leftover tortillas into a beloved breakfast dish, this time bathed in a red chile sauce instead of tomatillo. It's everyday home cooking with deep roots in Mexican kitchens, often the go-to plate for a hearty morning meal. Adding chicken makes it substantial enough to serve any time of day.",
@@ -72,7 +78,7 @@ const DISHES=[
     howToEat:{en:"The chips come already coated in the red sauce and topped with chicken, cream, onion and cheese. Mix everything together with your fork before eating so each bite gets some sauce and topping, and enjoy it while it's still warm.",
         es:"Los totopos llegan ya bañados en la salsa roja y coronados con pollo, crema, cebolla y queso. Mezcla todo con el tenedor antes de comer para que cada bocado tenga salsa y aderezo, y disfrútalo mientras aún está caliente."}},
 
-  {id:"vegan-red-chilaquiles-with-mushrooms-cheese",cat:"chilaquiles",v:true,a:["soy","sulphites"],img:"/img/dish/Vegan Red Chilaquiles with Mushrooms & Cheese.webp",imgW:800,imgH:498,video:"",
+  {id:"vegan-red-chilaquiles-with-mushrooms-cheese",cat:"chilaquiles",v:true,active:true,a:["soy","sulphites"],img:"/img/dish/Vegan Red Chilaquiles with Mushrooms & Cheese.webp",imgW:800,imgH:498,video:"",
     en:{n:"Vegan Red Chilaquiles with Mushrooms &amp; Cheese",d:"Corn tortilla chips in red chilli sauce, topped with sautéed mushrooms, vegan cheese, onion and plant-based cream."},
     es:{n:"Chilaquiles Rojos Veganos con Setas y Queso",d:"Totopos de maíz en salsa roja de chile, con setas salteadas y queso vegano, cebolla y crema vegetal."},
     culture:{en:"This is a plant-based take on one of Mexico's favourite ways to use up day-old tortillas, keeping the classic red chile sauce but replacing the usual meat and dairy with sautéed mushrooms and vegan cheese. Chilaquiles have always been humble, resourceful home cooking, and this version keeps that same everyday, comforting spirit. It's a dish equally at home for breakfast or a late lunch.",
@@ -82,7 +88,7 @@ const DISHES=[
     howToEat:{en:"The chips arrive coated in red sauce with sautéed mushrooms, vegan cheese, onion and plant-based cream already on top. Give it a gentle stir with your fork so the sauce coats every chip, and eat it warm.",
         es:"Los totopos llegan bañados en salsa roja con setas salteadas, queso vegano, cebolla y crema vegetal ya encima. Mézclalo suavemente con el tenedor para que la salsa cubra cada totopo, y cómelo caliente."}},
 
-  {id:"vegan-green-chilaquiles-with-mushrooms-cheese",cat:"chilaquiles",v:true,a:["soy"],img:"/img/dish/Vegan Green Chilaquiles with Mushrooms & Cheese.webp",imgW:800,imgH:498,video:"",
+  {id:"vegan-green-chilaquiles-with-mushrooms-cheese",cat:"chilaquiles",v:true,active:true,a:["soy"],img:"/img/dish/Vegan Green Chilaquiles with Mushrooms & Cheese.webp",imgW:800,imgH:498,video:"",
     en:{n:"Vegan Green Chilaquiles with Mushrooms &amp; Cheese",d:"Corn tortilla chips in green tomatillo sauce, topped with sautéed mushrooms, vegan cheese, onion and plant-based cream."},
     es:{n:"Chilaquiles Verdes Veganos con Setas y Queso",d:"Totopos de maíz en salsa verde de tomatillo, con setas salteadas y queso vegano, cebolla y crema vegetal."},
     culture:{en:"The green, tomatillo-based version of chilaquiles gets the same plant-based treatment here, with sautéed mushrooms and vegan cheese standing in for meat and dairy. It's rooted in the same resourceful home-cooking tradition of giving stale tortillas new life in a bath of salsa. Bright, tangy and comforting, it's a dish Mexicans grow up eating at the family table.",
@@ -93,7 +99,7 @@ const DISHES=[
         es:"Los totopos llegan ya bañados en salsa verde con setas, queso vegano, cebolla y crema vegetal encima. Mezcla suavemente con el tenedor para que la salsa cubra todo de manera uniforme, y cómelo caliente."}},
 
   // YUCATAN
-  {id:"pork-cochinita-pibil",cat:"yucatan",v:false,a:[],img:"/img/dish/Pork Cochinita Pibil.webp",imgW:800,imgH:498,video:"",
+  {id:"pork-cochinita-pibil",cat:"yucatan",v:false,active:true,a:[],img:"/img/dish/Pork Cochinita Pibil.webp",imgW:800,imgH:498,video:"",
     en:{n:"Pork Cochinita Pibil",d:"Pork marinated in achiote and sour orange, slow-cooked Yucatán style, with pickled red onion."},
     es:{n:"Cochinita Pibil de Cerdo",d:"Cerdo marinado en achiote y naranja agria, cocido lento estilo yucateco, con cebolla morada encurtida."},
     culture:{en:"Cochinita pibil is one of the signature dishes of the Yucatán Peninsula, with roots in Maya cooking traditions of marinating meat in achiote and slow-cooking it wrapped and buried in a pit. Today it's usually made in an oven or slow cooker, but the achiote-and-sour-orange marinade and the deep red colour stay true to its Yucatecan roots. It's a dish closely tied to the region's identity, served at everything from family meals to festive gatherings.",
@@ -103,7 +109,7 @@ const DISHES=[
     howToEat:{en:"The pork comes already tender and shredded, with the pickled red onion served on top or on the side to spoon over each bite. Scoop it up with warm tortillas, folding them around the meat, and add extra onion or salsa to taste as you go.",
         es:"El cerdo llega tierno y deshebrado, con la cebolla morada encurtida servida encima o aparte para poner sobre cada bocado. Recógelo con tortillas calientes, doblándolas alrededor de la carne, y añade más cebolla o salsa al gusto conforme comes."}},
 
-  {id:"chicken-cochinita-pibil",cat:"yucatan",v:false,a:[],img:"/img/dish/Chicken Cochinita Pibil.webp",imgW:800,imgH:498,video:"",
+  {id:"chicken-cochinita-pibil",cat:"yucatan",v:false,active:true,a:[],img:"/img/dish/Chicken Cochinita Pibil.webp",imgW:800,imgH:498,video:"",
     en:{n:"Chicken Cochinita Pibil",d:"Chicken marinated in achiote and sour orange, slow-cooked Yucatán style, with pickled red onion."},
     es:{n:"Cochinita Pibil de Pollo",d:"Pollo marinado en achiote y naranja agria, cocido lento estilo yucateco, con cebolla morada encurtida."},
     culture:{en:"This is a chicken variation on cochinita pibil, the Yucatán Peninsula's celebrated achiote-marinated slow-cooked dish rooted in Maya cooking traditions. Chicken offers a lighter alternative while keeping the same sour-orange and achiote marinade that defines the style. It carries the same regional identity as the classic pork version, just in a leaner form.",
@@ -113,7 +119,7 @@ const DISHES=[
     howToEat:{en:"The chicken arrives tender and ready to eat, topped or accompanied by pickled red onion to add over each bite. Wrap it in warm tortillas and add extra onion or salsa to taste.",
         es:"El pollo llega tierno y listo para comer, coronado o acompañado de cebolla morada encurtida para agregar sobre cada bocado. Envuélvelo en tortillas calientes y añade más cebolla o salsa al gusto."}},
 
-  {id:"cochinita-panuchos",cat:"yucatan",v:false,a:[],img:"/img/dish/Cochinita Panuchos.webp",imgW:800,imgH:498,video:"",
+  {id:"cochinita-panuchos",cat:"yucatan",v:false,active:true,a:[],img:"/img/dish/Cochinita Panuchos.webp",imgW:800,imgH:498,video:"",
     en:{n:"Cochinita Panuchos",d:"Bean-stuffed fried corn tortilla topped with cochinita pibil, pickled red onion and avocado."},
     es:{n:"Panuchos de Cochinita",d:"Tortilla de maíz rellena de frijol, frita y coronada con cochinita pibil, cebolla morada encurtida y aguacate."},
     culture:{en:"Panuchos are a Yucatecan street-food classic: a corn tortilla stuffed with beans, fried until crisp, then piled high with toppings. Topping them with cochinita pibil brings together two pillars of the region's cuisine in one bite. They're typically eaten as a snack or light meal, especially popular at markets and family gatherings in the Yucatán.",
@@ -123,7 +129,7 @@ const DISHES=[
     howToEat:{en:"Panuchos come fully assembled — the crisp bean-stuffed tortilla topped with cochinita, pickled onion and avocado — so you eat them straight from the plate with your hands, in a few bites. Add extra salsa on top if you want more heat.",
         es:"Los panuchos llegan completamente armados — la tortilla crujiente rellena de frijol, coronada con cochinita, cebolla encurtida y aguacate — así que se comen directamente del plato con las manos, en pocos bocados. Añade más salsa encima si quieres más picor."}},
 
-  {id:"chicken-panuchos",cat:"yucatan",v:false,a:[],img:"/img/dish/Chicken Panuchos.webp",imgW:800,imgH:498,video:"",
+  {id:"chicken-panuchos",cat:"yucatan",v:false,active:true,a:[],img:"/img/dish/Chicken Panuchos.webp",imgW:800,imgH:498,video:"",
     en:{n:"Chicken Panuchos",d:"Bean-stuffed fried corn tortilla topped with shredded chicken, pickled red onion and avocado."},
     es:{n:"Panuchos de Pollo",d:"Tortilla de maíz rellena de frijol, frita y coronada con pollo deshebrado, cebolla morada encurtida y aguacate."},
     culture:{en:"This version of the Yucatecan panucho swaps cochinita pibil for shredded chicken, but keeps the same bean-stuffed, crisp-fried tortilla base that defines the dish. Panuchos are a staple of Yucatán street food, popular at markets and casual family meals. The pickled onion and avocado on top are as much a part of its identity as the tortilla itself.",
@@ -134,7 +140,7 @@ const DISHES=[
         es:"El panucho llega listo para comer, coronado con pollo deshebrado, cebolla morada encurtida y aguacate — tómalo con las manos y cómelo en pocos bocados. Agrega salsa encima al gusto si lo prefieres más picoso."}},
 
   // TAMALES
-  {id:"pork-red-tamales",cat:"tamales",v:false,a:["sulphites"],img:"/img/dish/Pork Red Tamales.webp",imgW:800,imgH:498,video:"",
+  {id:"pork-red-tamales",cat:"tamales",v:false,active:true,a:["sulphites"],img:"/img/dish/Pork Red Tamales.webp",imgW:800,imgH:498,video:"",
     en:{n:"Pork Red Tamales",d:"Nixtamalized corn masa filled with pork in red chilli sauce, wrapped in corn husk or banana leaf and steamed."},
     es:{n:"Tamales Rojos de Cerdo",d:"Masa de maíz nixtamalizado rellena de cerdo en salsa roja de chile, envuelta en hoja de maíz o de plátano y cocida al vapor."},
     culture:{en:"Tamales are one of the oldest and most widespread dishes in Mexico, made from nixtamalized corn masa and steamed in a wrapping — corn husk or banana leaf — a technique with deep roots in Mesoamerican cooking. They're closely tied to celebration and community: families and neighbours often gather to make big batches together. The red chile filling with pork is one of the most classic versions found across the country. The wrapping matters too: corn husk gives a milder, more traditional aroma typical of central and northern Mexico, while banana leaf lends a deeper, herbal fragrance associated with the country's southeast.",
@@ -144,7 +150,7 @@ const DISHES=[
     howToEat:{en:"The tamal comes wrapped in corn husk or banana leaf — unwrap it at the table, peeling the wrapping away from the masa rather than eating it. Eat it with your hands or a fork straight from the wrapping, and add extra salsa on the side to taste.",
         es:"El tamal llega envuelto en hoja de maíz o de plátano — desenvuélvelo en la mesa, despegando la hoja de la masa (la hoja no se come). Cómelo con las manos o con tenedor directamente desde la hoja, y añade salsa aparte al gusto."}},
 
-  {id:"pork-green-tamales",cat:"tamales",v:false,a:[],img:"/img/dish/Pork Green Tamales.webp",imgW:800,imgH:498,video:"",
+  {id:"pork-green-tamales",cat:"tamales",v:false,active:true,a:[],img:"/img/dish/Pork Green Tamales.webp",imgW:800,imgH:498,video:"",
     en:{n:"Pork Green Tamales",d:"Nixtamalized corn masa filled with pork in green tomatillo sauce, wrapped in corn husk or banana leaf and steamed."},
     es:{n:"Tamales Verdes de Cerdo",d:"Masa de maíz nixtamalizado rellena de cerdo en salsa verde de tomatillo, envuelta en hoja de maíz o de plátano y cocida al vapor."},
     culture:{en:"This is the green, tomatillo-sauce version of Mexico's classic corn tamale, a dish with deep roots in Mesoamerican corn cooking and steamed in corn husk or banana leaf the traditional way. Tamales are strongly associated with gatherings and celebration, often made in big batches to share. The bright, tangy green filling is a favourite alternative to the red chile version. The wrapping matters too: corn husk gives a milder, more traditional aroma typical of central and northern Mexico, while banana leaf lends a deeper, herbal fragrance associated with the country's southeast.",
@@ -154,7 +160,7 @@ const DISHES=[
     howToEat:{en:"Unwrap the tamal from its corn husk or banana leaf at the table — the wrapping is just that, not for eating — and enjoy the masa and pork filling with your hands or a fork. A little extra salsa on the side is common if you want more kick.",
         es:"Desenvuelve el tamal de su hoja de maíz o de plátano en la mesa — la hoja es solo el envoltorio, no se come — y disfruta la masa y el relleno de cerdo con las manos o con tenedor. Es común añadir un poco de salsa aparte si quieres más picor."}},
 
-  {id:"chicken-red-tamales",cat:"tamales",v:false,a:["sulphites"],img:"/img/dish/Chicken Red Tamales.webp",imgW:800,imgH:498,video:"MP39R82er18",
+  {id:"chicken-red-tamales",cat:"tamales",v:false,active:true,a:["sulphites"],img:"/img/dish/Chicken Red Tamales.webp",imgW:800,imgH:498,video:"MP39R82er18",
     en:{n:"Chicken Red Tamales",d:"Nixtamalized corn masa filled with chicken in red chilli sauce, wrapped in corn husk or banana leaf and steamed."},
     es:{n:"Tamales Rojos de Pollo",d:"Masa de maíz nixtamalizado rellena de pollo en salsa roja de chile, envuelta en hoja de maíz o de plátano y cocida al vapor."},
     culture:{en:"This chicken version follows the same tradition as the classic pork tamale — nixtamalized corn masa steamed in corn husk or banana leaf, a technique with deep roots in Mesoamerican cooking. Tamales are a dish of gathering and celebration, often made together by families in large batches. The red chile sauce gives it a warm, earthy heat typical of tamales across the country. The wrapping matters too: corn husk gives a milder, more traditional aroma typical of central and northern Mexico, while banana leaf lends a deeper, herbal fragrance associated with the country's southeast.",
@@ -164,7 +170,7 @@ const DISHES=[
     howToEat:{en:"Peel back the corn husk or banana leaf at the table to reveal the masa and chicken filling — the wrapping isn't eaten. Eat it with your hands or a fork, adding extra salsa on the side to taste.",
         es:"Despega la hoja de maíz o de plátano en la mesa para revelar la masa y el relleno de pollo — la hoja no se come. Cómelo con las manos o con tenedor, añadiendo salsa aparte al gusto."}},
 
-  {id:"chicken-green-tamales",cat:"tamales",v:false,a:[],img:"/img/dish/Chicken Green Tamales.webp",imgW:800,imgH:498,video:"",
+  {id:"chicken-green-tamales",cat:"tamales",v:false,active:true,a:[],img:"/img/dish/Chicken Green Tamales.webp",imgW:800,imgH:498,video:"",
     en:{n:"Chicken Green Tamales",d:"Nixtamalized corn masa filled with chicken in green tomatillo sauce, wrapped in corn husk or banana leaf and steamed."},
     es:{n:"Tamales Verdes de Pollo",d:"Masa de maíz nixtamalizado rellena de pollo en salsa verde de tomatillo, envuelta en hoja de maíz o de plátano y cocida al vapor."},
     culture:{en:"The green version of this chicken tamale carries the same deep Mesoamerican roots as all corn tamales, steamed in corn husk or banana leaf in the traditional way. Making tamales is often a communal activity in Mexican households, tied to celebration and shared effort. The tomatillo-based filling gives it a fresher, tangier profile than its red counterpart. The wrapping matters too: corn husk gives a milder, more traditional aroma typical of central and northern Mexico, while banana leaf lends a deeper, herbal fragrance associated with the country's southeast.",
@@ -174,7 +180,7 @@ const DISHES=[
     howToEat:{en:"Unwrap the corn husk or banana leaf at the table before eating — it's just the wrapping. Eat the masa and chicken filling with your hands or a fork, adding extra salsa to taste if you like.",
         es:"Desenvuelve la hoja de maíz o de plátano en la mesa antes de comer — es solo el envoltorio. Come la masa y el relleno de pollo con las manos o con tenedor, añadiendo salsa extra al gusto si lo deseas."}},
 
-  {id:"vegan-red-tamales-with-mushrooms-cheese",cat:"tamales",v:true,a:["soy","sulphites"],img:"/img/dish/Vegan Red Tamales with Mushrooms & Cheese.webp",imgW:800,imgH:498,video:"",
+  {id:"vegan-red-tamales-with-mushrooms-cheese",cat:"tamales",v:true,active:true,a:["soy","sulphites"],img:"/img/dish/Vegan Red Tamales with Mushrooms & Cheese.webp",imgW:800,imgH:498,video:"",
     en:{n:"Vegan Red Tamales with Mushrooms &amp; Cheese",d:"Nixtamalized corn masa filled with mushrooms and vegan cheese in red sauce, wrapped in corn husk or banana leaf and steamed."},
     es:{n:"Tamales Rojos Veganos con Setas y Queso",d:"Masa de maíz nixtamalizado rellena de setas y queso vegano en salsa roja, envuelta en hoja de maíz o de plátano y cocida al vapor."},
     culture:{en:"This plant-based tamale keeps the traditional nixtamalized corn masa and steaming in corn husk or banana leaf of Mexico's classic tamales, a technique with deep roots in Mesoamerican cooking, while filling it with mushrooms and vegan cheese in red sauce instead of meat. Tamales have always been a dish of sharing and celebration, and this version lets more people join in. It keeps the same comforting, homemade character as the original. The wrapping matters too: corn husk gives a milder, more traditional aroma typical of central and northern Mexico, while banana leaf lends a deeper, herbal fragrance associated with the country's southeast.",
@@ -184,7 +190,7 @@ const DISHES=[
     howToEat:{en:"Peel away the corn husk or banana leaf at the table — it's only the wrapping — to reveal the masa filled with mushrooms and vegan cheese. Eat it with your hands or a fork, adding extra salsa on the side to taste.",
         es:"Despega la hoja de maíz o de plátano en la mesa — es solo el envoltorio — para revelar la masa rellena de setas y queso vegano. Cómelo con las manos o con tenedor, añadiendo salsa aparte al gusto."}},
 
-  {id:"vegan-green-tamales-with-mushrooms-cheese",cat:"tamales",v:true,a:["soy"],img:"/img/dish/Vegan Green Tamales with Mushrooms & Cheese.webp",imgW:800,imgH:498,video:"",
+  {id:"vegan-green-tamales-with-mushrooms-cheese",cat:"tamales",v:true,active:true,a:["soy"],img:"/img/dish/Vegan Green Tamales with Mushrooms & Cheese.webp",imgW:800,imgH:498,video:"",
     en:{n:"Vegan Green Tamales with Mushrooms &amp; Cheese",d:"Nixtamalized corn masa filled with mushrooms and vegan cheese in green sauce, wrapped in corn husk or banana leaf and steamed."},
     es:{n:"Tamales Verdes Veganos con Setas y Queso",d:"Masa de maíz nixtamalizado rellena de setas y queso vegano en salsa verde, envuelta en hoja de maíz o de plátano y cocida al vapor."},
     culture:{en:"The green sauce version of this vegan tamale follows the same steaming tradition in corn husk or banana leaf as every Mexican tamale, rooted deep in Mesoamerican corn cooking. Swapping meat for mushrooms and vegan cheese keeps the dish's communal, celebratory spirit accessible to more people at the table. It's a fresher, tangier take thanks to the tomatillo-based sauce. The wrapping matters too: corn husk gives a milder, more traditional aroma typical of central and northern Mexico, while banana leaf lends a deeper, herbal fragrance associated with the country's southeast.",
@@ -195,7 +201,7 @@ const DISHES=[
         es:"Desenvuelve la hoja de maíz o de plátano en la mesa antes de comer — es solo el envoltorio, no se come. Disfruta la masa y el relleno de setas con las manos o con tenedor, añadiendo salsa al gusto."}},
 
   // TACOS & TORTAS
-  {id:"tacos-al-pastor",cat:"tacos",v:false,a:["sulphites"],img:"/img/dish/Tacos al Pastor.webp",imgW:800,imgH:498,video:"",
+  {id:"tacos-al-pastor",cat:"tacos",v:false,active:true,a:["sulphites"],img:"/img/dish/Tacos al Pastor.webp",imgW:800,imgH:498,video:"",
     en:{n:"Tacos al Pastor",d:"Three corn tortilla tacos with pastor-marinated pork, onion, coriander and pineapple."},
     es:{n:"Tacos al Pastor",d:"Tres tacos de tortilla de maíz con cerdo marinado al pastor, cebolla, cilantro y piña."},
     culture:{en:"Tacos al pastor grew out of Lebanese-Mexican immigrant cooking, which brought spit-roasted, shawarma-style meat to central Mexico, where it was adapted with local chiles and a pineapple garnish to become one of Mexico's most beloved taquería dishes. It's quintessential street food, usually eaten standing at a taco stand rather than at a formal sit-down meal. Its mix of influences makes it a genuinely Mexican dish, even though it's a relatively modern creation rather than a prehispanic one.",
@@ -205,7 +211,7 @@ const DISHES=[
     howToEat:{en:"The pastor-marinated pork comes piled onto small corn tortillas with onion, coriander and pineapple already on top. Add salsa to taste, then eat each taco by hand in a couple of bites — a squeeze of lime on top is common too.",
         es:"El cerdo marinado al pastor llega servido sobre pequeñas tortillas de maíz, con cebolla, cilantro y piña ya encima. Añade salsa al gusto y come cada taco con la mano en un par de bocados — también es común exprimirle un poco de limón."}},
 
-  {id:"tortas-al-pastor",cat:"tacos",v:false,a:["gluten","sulphites"],img:"/img/dish/Tortas al Pastor.webp",imgW:800,imgH:498,video:"",
+  {id:"tortas-al-pastor",cat:"tacos",v:false,active:true,a:["gluten","sulphites"],img:"/img/dish/Tortas al Pastor.webp",imgW:800,imgH:498,video:"",
     en:{n:"Tortas al Pastor",d:"Bolillo roll filled with pastor pork, beans, avocado, onion, coriander and salsa."},
     es:{n:"Tortas al Pastor",d:"Bolillo relleno de cerdo al pastor, con frijol, aguacate, cebolla, cilantro y salsa."},
     culture:{en:"The torta is Mexico's answer to the sandwich, built on a crusty bolillo roll and filled with whatever's cooking — here, the same pastor-marinated pork found in tacos al pastor. Like tacos al pastor, the filling traces back to Lebanese-Mexican immigrant cooking rather than an older tradition. Tortas are everyday, on-the-go food, sold at stalls and small shops across the country.",
@@ -215,7 +221,7 @@ const DISHES=[
     howToEat:{en:"The torta arrives assembled — pastor pork, beans, avocado, onion, coriander and salsa all inside the roll — so it's eaten by hand like a sandwich. Take it in both hands and bite in; extra salsa can be added on the side to taste.",
         es:"La torta llega armada — cerdo al pastor, frijol, aguacate, cebolla, cilantro y salsa, todo dentro del bolillo — así que se come con las manos como un sándwich. Tómala con ambas manos y muerde; se puede añadir más salsa aparte al gusto."}},
 
-  {id:"alambre-tortas",cat:"tacos",v:false,a:["gluten","milk"],img:"/img/dish/Alambre Tortas.webp",imgW:800,imgH:498,video:"",
+  {id:"alambre-tortas",cat:"tacos",v:false,active:true,a:["gluten","milk"],img:"/img/dish/Alambre Tortas.webp",imgW:800,imgH:498,video:"",
     en:{n:"Alambre Tortas",d:"Bolillo roll filled with alambre: meat with pepper, onion, bacon and melted cheese."},
     es:{n:"Tortas de Alambre",d:"Bolillo relleno de alambre: carne con pimiento, cebolla, tocino y queso fundido."},
     culture:{en:"Alambre is a modern taquería creation — griddled meat cooked together with pepper, onion, bacon and melted cheese — popular as a hearty, shareable filling rather than a dish with any ancient origin. Stuffed into a bolillo roll, it becomes a torta de alambre, a filling, everyday sandwich found at taco stands and torterías. It's a good example of how Mexican street food keeps evolving with new combinations.",
@@ -225,7 +231,7 @@ const DISHES=[
     howToEat:{en:"The torta comes filled and ready — alambre, melted cheese and all — so it's eaten by hand like a sandwich. Add salsa on the side to taste if you want extra heat.",
         es:"La torta llega rellena y lista — alambre, queso fundido y todo — así que se come con las manos como un sándwich. Añade salsa aparte al gusto si quieres más picor."}},
 
-  {id:"alambre-tacos",cat:"tacos",v:false,a:["milk"],img:"/img/dish/Alambre Tacos.webp",imgW:800,imgH:498,video:"",
+  {id:"alambre-tacos",cat:"tacos",v:false,active:true,a:["milk"],img:"/img/dish/Alambre Tacos.webp",imgW:800,imgH:498,video:"",
     en:{n:"Alambre Tacos",d:"Three corn tortilla tacos with griddled meat, pepper, onion, bacon and melted cheese."},
     es:{n:"Tacos de Alambre",d:"Tres tacos de tortilla de maíz con carne a la plancha, pimiento, cebolla, tocino y queso fundido."},
     culture:{en:"Alambre — griddled meat with pepper, onion, bacon and melted cheese — is a modern taquería favourite rather than a traditional or ancient dish, popular for how well its smoky, cheesy flavours work in a taco. It's often ordered as a shareable plate among friends. Its popularity shows how Mexican taco culture keeps inventing new combinations alongside the classics.",
@@ -235,7 +241,7 @@ const DISHES=[
     howToEat:{en:"The griddled meat, pepper, onion, bacon and melted cheese come piled onto small corn tortillas, ready to eat. Add salsa to taste and eat each taco by hand, folded in half.",
         es:"La carne a la plancha, el pimiento, la cebolla, el tocino y el queso fundido llegan servidos sobre pequeñas tortillas de maíz, listos para comer. Añade salsa al gusto y come cada taco con la mano, doblado a la mitad."}},
 
-  {id:"grilled-pork-torta",cat:"tacos",v:false,a:["gluten"],img:"/img/dish/Grilled Pork Torta.webp",imgW:800,imgH:500,video:"",
+  {id:"grilled-pork-torta",cat:"tacos",v:false,active:true,a:["gluten"],img:"/img/dish/Grilled Pork Torta.webp",imgW:800,imgH:500,video:"",
     en:{n:"Grilled Pork Torta",d:"A 23 cm baguette spread with refried black beans, filled with grilled pork in small pieces, lettuce, sliced tomato, sliced onion and mashed avocado."},
     es:{n:"Torta de Cerdo Asado",d:"Baguette de 23 cm embarrado con frijoles negros, relleno de cerdo asado en trozos pequeños, lechuga, tomate en rodajas, cebolla en rodajas y aguacate en puré."},
     culture:{en:"The torta is Mexico's everyday take on the sandwich, and this one is built on a crisp 23 cm baguette-style roll instead of the more common bolillo. Piled with grilled pork, refried black beans, fresh vegetables and mashed avocado, it's the kind of hearty, filling food eaten at torta stands and small shops any time hunger calls — a quick lunch, an after-work bite, or a full meal on its own. Like most tortas, it's a staple of modern Mexican urban food culture rather than an older, ancestral dish.",
@@ -246,7 +252,7 @@ const DISHES=[
         es:"La torta llega armada y lista para comer — cerdo asado, frijoles negros, lechuga, tomate, cebolla y aguacate machacado, todo dentro del baguette — así que se come con las manos como un sándwich mexicano abundante. Cada mordida mezcla el cerdo, el frijol, el aguacate y las verduras frescas, y se puede añadir salsa o más chile aparte al gusto si se desea más picor."}},
 
   // GORDITAS & EMPANADAS
-  {id:"alambre-gorditas",cat:"gorditas",v:false,a:["milk"],img:"/img/dish/Alambre Gorditas.webp",imgW:800,imgH:498,video:"",
+  {id:"alambre-gorditas",cat:"gorditas",v:false,active:true,a:["milk"],img:"/img/dish/Alambre Gorditas.webp",imgW:800,imgH:498,video:"",
     en:{n:"Alambre Gorditas",d:"Thick corn masa pockets filled with alambre: griddled meat with pepper, onion, bacon and melted cheese."},
     es:{n:"Gorditas de Alambre",d:"Masa de maíz gruesa rellena de alambre: carne a la plancha con pimiento, cebolla, tocino y queso fundido."},
     culture:{en:"Gorditas are thick pockets of corn masa, split open and stuffed with a filling — a format found across Mexico's street food. Filling them with alambre, a modern taquería mix of griddled meat, pepper, onion, bacon and melted cheese, brings together two staples of everyday Mexican eating rather than an ancient dish. They're a filling, hands-on snack sold at stalls and markets.",
@@ -256,7 +262,7 @@ const DISHES=[
     howToEat:{en:"The gordita arrives already filled — open it slightly at the seam if it isn't already, and eat it by hand, bite by bite, so the filling doesn't spill out. Add salsa to taste as you go.",
         es:"La gordita llega ya rellena — ábrela un poco por la orilla si no lo está, y cómela con la mano, bocado a bocado, para que no se derrame el relleno. Añade salsa al gusto conforme comes."}},
 
-  {id:"vegan-gorditas-with-mushrooms-cheese",cat:"gorditas",v:true,a:["soy"],img:"/img/dish/Vegan Gorditas with Mushrooms & Cheese.webp",imgW:800,imgH:498,video:"",
+  {id:"vegan-gorditas-with-mushrooms-cheese",cat:"gorditas",v:true,active:true,a:["soy"],img:"/img/dish/Vegan Gorditas with Mushrooms & Cheese.webp",imgW:800,imgH:498,video:"",
     en:{n:"Vegan Gorditas with Mushrooms &amp; Cheese",d:"Thick corn masa pockets filled with sautéed mushrooms and vegan cheese, with pepper and onion."},
     es:{n:"Gorditas Veganas con Setas y Queso",d:"Masa de maíz gruesa rellena de setas salteadas y queso vegano, con pimiento y cebolla."},
     culture:{en:"This is a plant-based take on the gordita, the thick corn masa pocket found in street food across Mexico, filled here with sautéed mushrooms and vegan cheese instead of meat. Gorditas are humble, everyday food, and this version keeps that same accessible, snackable spirit. It's a good example of how classic Mexican formats adapt to different diets.",
@@ -266,7 +272,7 @@ const DISHES=[
     howToEat:{en:"The gordita comes filled with mushrooms, vegan cheese, pepper and onion — open it slightly if needed and eat it by hand, bite by bite. Add salsa to taste.",
         es:"La gordita llega rellena de setas, queso vegano, pimiento y cebolla — ábrela un poco si hace falta y cómela con la mano, bocado a bocado. Añade salsa al gusto."}},
 
-  {id:"cheese-empanadas",cat:"gorditas",v:false,a:["milk"],img:"/img/dish/Cheese Empanadas.webp",imgW:800,imgH:498,video:"",
+  {id:"cheese-empanadas",cat:"gorditas",v:false,active:true,a:["milk"],img:"/img/dish/Cheese Empanadas.webp",imgW:800,imgH:498,video:"",
     en:{n:"Cheese Empanadas",d:"Golden corn masa turnovers filled with melted cheese, served with salsa."},
     es:{n:"Empanadas de Queso",d:"Masa de maíz dorada rellena de queso fundido, servida con salsa."},
     culture:{en:"Empanadas made from corn masa and filled with cheese are a simple, comforting street-food staple found at markets and stalls across Mexico. Their golden, fried masa shell and melted cheese centre make them a favourite quick bite for all ages. They're often sold alongside other antojitos (little cravings) like gorditas and quesadillas.",
@@ -277,7 +283,7 @@ const DISHES=[
         es:"La empanada llega caliente y lista, con salsa servida aparte para remojar o poner encima. Cómela con la mano, mordiendo desde la orilla, y remoja cada bocado en salsa al gusto."}},
 
   // MAINS
-  {id:"carnitas-al-pastor",cat:"mains",v:false,a:["sulphites"],img:"/img/dish/Carnitas al Pastor.webp",imgW:800,imgH:498,video:"",
+  {id:"carnitas-al-pastor",cat:"mains",v:false,active:true,a:["sulphites"],img:"/img/dish/Carnitas al Pastor.webp",imgW:800,imgH:498,video:"",
     en:{n:"Carnitas al Pastor",d:"Pastor-marinated slow-cooked pork, crisped and juicy, with onion and coriander."},
     es:{n:"Carnitas al Pastor",d:"Cerdo confitado y marinado al estilo pastor, dorado y jugoso, con cebolla y cilantro."},
     culture:{en:"Carnitas is a classic Mexican way of slow-cooking pork until tender and then crisping it, traditionally associated with the state of Michoacán. This version gives it a pastor-style marinade, borrowing the seasoning of tacos al pastor — itself a modern, Lebanese-Mexican-influenced creation — to add a different layer of flavour to the classic technique. It's hearty, rustic food meant to be eaten fresh and hot.",
@@ -287,7 +293,7 @@ const DISHES=[
     howToEat:{en:"The pork arrives crisped and juicy, topped with onion and coriander, ready to eat as is or scooped into warm tortillas if you have them on the side. Add salsa and a squeeze of lime to taste.",
         es:"El cerdo llega dorado y jugoso, coronado con cebolla y cilantro, listo para comer tal cual o para meter en tortillas calientes si las tienes aparte. Añade salsa y un toque de limón al gusto."}},
 
-  {id:"chicken-in-red-mole",cat:"mains",v:false,a:["gluten","peanuts","nuts","sesame","sulphites"],img:"/img/dish/dish-pork-red-pozole.webp",imgW:800,imgH:436,video:"",
+  {id:"chicken-in-red-mole",cat:"mains",v:false,active:true,a:["gluten","peanuts","nuts","sesame","sulphites"],img:"/img/dish/dish-pork-red-pozole.webp",imgW:800,imgH:436,video:"",
     en:{n:"Chicken in Red Mole",d:"Chicken in a red mole of chillies, spices and chocolate, served with rice."},
     es:{n:"Mole Rojo de Pollo",d:"Pollo bañado en mole rojo de chiles, especias y chocolate, servido con arroz."},
     culture:{en:"Mole is one of Mexico's most iconic sauces, a complex blend of chiles, spices and chocolate that varies from family to family and region to region. It has roots stretching back to Mesoamerican and colonial-era cooking traditions and is often reserved for special occasions and celebrations. Serving it over chicken with rice is one of the most classic and widely loved ways to enjoy it.",
@@ -297,7 +303,7 @@ const DISHES=[
     howToEat:{en:"The chicken arrives already covered in the mole sauce, with rice served alongside. Eat it with a fork, mixing a bit of rice into the sauce on your plate, and use tortillas on the side if you have them to scoop up extra sauce.",
         es:"El pollo llega ya bañado en la salsa de mole, con arroz servido aparte. Cómelo con tenedor, mezclando un poco de arroz con la salsa en tu plato, y usa tortillas aparte si las tienes para recoger la salsa restante."}},
 
-  {id:"mexican-rice",cat:"mains",v:true,a:[],img:"/img/dish/Mexican Rice.webp",imgW:800,imgH:498,video:"",
+  {id:"mexican-rice",cat:"mains",v:true,active:true,a:[],img:"/img/dish/Mexican Rice.webp",imgW:800,imgH:498,video:"",
     en:{n:"Mexican Rice",d:"Red rice cooked with tomato, onion, garlic and vegetables."},
     es:{n:"Arroz a la Mexicana",d:"Arroz rojo guisado con tomate, cebolla, ajo y verduras."},
     culture:{en:"Red rice, cooked with tomato, onion, garlic and vegetables, is a staple side dish found on nearly every Mexican table, alongside beans and tortillas. It's simple, everyday cooking rather than a festive dish, but it's the reliable companion to countless main courses. Its tomato base gives it the warm red colour it's known for.",

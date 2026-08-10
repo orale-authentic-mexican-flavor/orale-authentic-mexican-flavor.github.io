@@ -308,6 +308,17 @@ function renderDish(){
     return;
   }
 
+  if(DISH.active===false){
+    const title = LANG==="en" ? "Not available" : "No disponible";
+    const msg = LANG==="en"
+      ? "This dish isn't available right now."
+      : "Este platillo no está disponible por ahora.";
+    const backLabel = LANG==="en" ? "Back to menu" : "Volver al menú";
+    root.innerHTML=`<div class="not-found"><h2>${title}</h2><p>${msg}</p><a class="btn btn-out" href="index.html#menu">${backLabel}</a></div>`;
+    document.title = LANG==="en" ? "Not available · Órale" : "No disponible · Órale";
+    return;
+  }
+
   const t=DISH[LANG];
   document.title = `${t.n} · Órale`;
 

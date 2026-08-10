@@ -19,6 +19,13 @@ The marketing website for Órale – Authentic Mexican Flavor, a Mexican food bu
 - master es la rama de producción (GitHub Pages publica desde ahí). Nunca hagas
   cambios directos ni operaciones de git sobre master sin mi confirmación.
 
+### Verificación y pruebas
+- NO levantes servidores locales (python -m http.server, npx serve, live-server, etc.).
+- NO uses plugins ni automatización de navegador (Chrome, Playwright, etc.) para probar.
+- El usuario levanta el servidor y revisa los cambios manualmente cuando lo decide.
+- Al terminar una tarea, describe qué archivos cambiaste y qué debe revisar el usuario,
+  pero NO ejecutes pruebas por tu cuenta ni intentes verificar en ejecución.
+
 ### Estilo del sitio
 - El sitio es bilingüe EN/ES con inglés por defecto (toggle data-en/data-es + LANG).
 - Todo texto de interfaz nuevo debe ser bilingüe. Los nombres de platillos y de
