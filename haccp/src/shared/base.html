@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="{{lang}}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Plan HACCP v{{version}} – {{empresa}}</title>
+  <link rel="stylesheet" href="../shared/styles.css">
+</head>
+<body>
+
+  <!-- =====================================================================
+       HEADER FIJO (solo pantalla, oculto en print via CSS)
+       ===================================================================== -->
+  <header class="header-fijo">
+    <div class="logo">
+      <span class="logo-rojo">ÓRALE</span>
+      <span class="logo-verde">AUTHENTIC MEXICAN FLAVOR</span>
+    </div>
+    <p class="subtexto-empresa">{{empresa}} | CRO: {{cro}}</p>
+    <p class="version-info">Plan HACCP v{{version}} | {{fechaEmision}}</p>
+  </header>
+
+  <!-- =====================================================================
+       BOTONES FIJOS (top right)
+       ===================================================================== -->
+  <div class="controles-vista">
+    <button type="button" id="btn-toggle-vista" class="btn-vista-impresion">Vista Impresión</button>
+    <button type="button" id="btn-imprimir" class="btn-imprimir">Imprimir</button>
+  </div>
+
+  <!-- =====================================================================
+       SIDEBAR NAVEGACIÓN
+       ===================================================================== -->
+  <nav class="sidebar">
+    <a class="nav-link" href="#seccion-1">1. Introducción y Alcance</a>
+    <a class="nav-link subseccion" href="#seccion-1">1.1 Propósito</a>
+    <a class="nav-link subseccion" href="#seccion-1">1.2 Alcance</a>
+    <a class="nav-link subseccion" href="#seccion-1">1.3 Marco Regulatorio</a>
+
+    <a class="nav-link" href="#seccion-2">2. Equipo HACCP</a>
+
+    <a class="nav-link" href="#seccion-3">3. Descripción de Productos</a>
+    <a class="nav-link subseccion" href="#seccion-3">3.1 Descripción General</a>
+    <a class="nav-link subseccion" href="#seccion-3">3.2 Tabla de Productos</a>
+
+    <a class="nav-link" href="#seccion-4">4. Diagramas de Flujo</a>
+    <a class="nav-link subseccion" href="#seccion-4">4.1 Venta en Calle</a>
+
+    <a class="nav-link" href="#seccion-5">5. Análisis de Peligros</a>
+    <a class="nav-link subseccion" href="#seccion-5">5.1 Leyenda de Riesgo</a>
+    <a class="nav-link subseccion" href="#seccion-5">5.2 Tabla de Análisis</a>
+
+    <a class="nav-link" href="#seccion-6">6. Puntos Críticos de Control</a>
+    <a class="nav-link subseccion" href="#seccion-6">PCC 1 – Cocción</a>
+    <a class="nav-link subseccion" href="#seccion-6">PCC 2 – Enfriamiento</a>
+    <a class="nav-link subseccion" href="#seccion-6">PCC 3 – Mantenimiento en Caliente</a>
+
+    <a class="nav-link" href="#seccion-7">7. Monitoreo y Acciones Correctivas</a>
+    <a class="nav-link subseccion" href="#seccion-7">7.1 Resumen de Monitoreo</a>
+    <a class="nav-link subseccion" href="#seccion-7">7.2 Equipamiento</a>
+    <a class="nav-link subseccion" href="#seccion-7">7.3 Protocolo de Acción Correctiva</a>
+
+    <a class="nav-link" href="#seccion-8">8. Verificación y Revisión</a>
+    <a class="nav-link subseccion" href="#seccion-8">8.1 Actividades de Verificación</a>
+    <a class="nav-link subseccion" href="#seccion-8">8.2 Gestión de Quejas</a>
+
+    <a class="nav-link" href="#seccion-9">9. Documentación y Registros</a>
+    <a class="nav-link subseccion" href="#seccion-9">9.1 Formatos Obligatorios</a>
+
+    <a class="nav-link" href="#seccion-10">10. Programas Prerrequisito</a>
+    <a class="nav-link subseccion" href="#seccion-10">10.1 Higiene Personal</a>
+    <a class="nav-link subseccion" href="#seccion-10">10.2 Limpieza y Desinfección</a>
+    <a class="nav-link subseccion" href="#seccion-10">10.3 Organización del Refrigerador</a>
+    <a class="nav-link subseccion" href="#seccion-10">10.4 Gestión del Agua</a>
+    <a class="nav-link subseccion" href="#seccion-10">10.5 Manejo de Residuos</a>
+    <a class="nav-link subseccion" href="#seccion-10">10.6 Mantenimiento de Utensilios</a>
+
+    <a class="nav-link" href="#seccion-11">11. Gestión de Alérgenos</a>
+    <a class="nav-link subseccion" href="#seccion-11">11.1 Tabla de Alérgenos</a>
+    <a class="nav-link subseccion" href="#seccion-11">11.2 Comunicación al Cliente</a>
+
+    <a class="nav-link" href="#seccion-12">12. Consideraciones Específicas</a>
+    <a class="nav-link subseccion" href="#seccion-12">12.1 Cocina Doméstica y Venta en Calle</a>
+
+    <a class="nav-link" href="#seccion-13">13. Formatos HACCP</a>
+    <a class="nav-link subseccion" href="#seccion-13">HACCP-01 al HACCP-09</a>
+
+    <a class="nav-link" href="#seccion-14">14. Aprobación y Firma</a>
+
+    <a class="nav-link" href="#anexo">Anexo. Equipamiento Mínimo</a>
+  </nav>
+
+  <!-- =====================================================================
+       CONTENIDO PRINCIPAL
+       ===================================================================== -->
+  <main class="contenido">
+
+    <section id="seccion-1" class="seccion">
+      <h1>1. Introducción y Alcance</h1>
+      <div class="seccion-contenido"></div>
+    </section>
+
+    <section id="seccion-2" class="seccion">
+      <h1>2. Equipo HACCP</h1>
+      <div class="seccion-contenido"></div>
+    </section>
+
+    <section id="seccion-3" class="seccion">
+      <h1>3. Descripción de Productos</h1>
+      <div class="seccion-contenido"></div>
+    </section>
+
+    <section id="seccion-4" class="seccion">
+      <h1>4. Diagramas de Flujo</h1>
+      <div class="seccion-contenido"></div>
+    </section>
+
+    <section id="seccion-5" class="seccion">
+      <h1>5. Análisis de Peligros</h1>
+      <div class="seccion-contenido"></div>
+    </section>
+
+    <section id="seccion-6" class="seccion">
+      <h1>6. Puntos Críticos de Control</h1>
+      <div class="seccion-contenido"></div>
+    </section>
+
+    <section id="seccion-7" class="seccion">
+      <h1>7. Monitoreo y Acciones Correctivas</h1>
+      <div class="seccion-contenido"></div>
+    </section>
+
+    <section id="seccion-8" class="seccion">
+      <h1>8. Verificación y Revisión</h1>
+      <div class="seccion-contenido"></div>
+    </section>
+
+    <section id="seccion-9" class="seccion">
+      <h1>9. Documentación y Registros</h1>
+      <div class="seccion-contenido"></div>
+    </section>
+
+    <section id="seccion-10" class="seccion">
+      <h1>10. Programas Prerrequisito</h1>
+      <div class="seccion-contenido"></div>
+    </section>
+
+    <section id="seccion-11" class="seccion">
+      <h1>11. Gestión de Alérgenos</h1>
+      <div class="seccion-contenido"></div>
+    </section>
+
+    <section id="seccion-12" class="seccion">
+      <h1>12. Consideraciones Específicas</h1>
+      <div class="seccion-contenido"></div>
+    </section>
+
+    <section id="seccion-13" class="seccion">
+      <h1>13. Formatos HACCP</h1>
+      <div class="seccion-contenido"></div>
+    </section>
+
+    <section id="seccion-14" class="seccion">
+      <h1>14. Aprobación y Firma</h1>
+      <div class="seccion-contenido"></div>
+    </section>
+
+    <section id="anexo" class="seccion">
+      <h1>Anexo. Equipamiento Mínimo</h1>
+      <div class="seccion-contenido"></div>
+    </section>
+
+    <!-- ===================================================================
+         FOOTER DEL DOCUMENTO
+         NOTA: se usa la clase "pie-documento" (no "print-footer") porque
+         "print-footer" ya está definida en styles.css como el pie FIJO que
+         se repite en cada página impresa (con su propio texto generado por
+         CSS vía ::after). Reutilizar ese nombre aquí duplicaría el texto y
+         forzaría position:fixed sobre este footer de una sola vez al final
+         del documento. Pendiente: agregar estilos para .pie-documento en
+         styles.css.
+         =================================================================== -->
+    <footer class="pie-documento">
+      {{empresa}} · CRO {{cro}} · {{contacto.email}} · {{contacto.telefono}}
+    </footer>
+
+  </main>
+
+  <!-- =====================================================================
+       SCRIPTS
+       ===================================================================== -->
+
+  <!-- Toggle vista impresión / normal + botón imprimir -->
+  <script>
+    (function () {
+      var btnToggle = document.getElementById('btn-toggle-vista');
+      var btnImprimir = document.getElementById('btn-imprimir');
+
+      btnToggle.addEventListener('click', function () {
+        var enVistaImpresion = document.body.classList.toggle('print-preview');
+        btnToggle.textContent = enVistaImpresion ? 'Vista Normal' : 'Vista Impresión';
+      });
+
+      btnImprimir.addEventListener('click', function () {
+        window.print();
+      });
+    })();
+  </script>
+
+  <!-- Sección activa en sidebar mediante IntersectionObserver -->
+  <script>
+    (function () {
+      var navLinks = document.querySelectorAll('.sidebar .nav-link');
+      var secciones = document.querySelectorAll('.contenido .seccion');
+
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          var id = entry.target.id;
+          navLinks.forEach(function (link) {
+            var esActivo = link.getAttribute('href') === '#' + id;
+            link.classList.toggle('activo', esActivo);
+          });
+        });
+      }, { threshold: 0.3 });
+
+      secciones.forEach(function (seccion) {
+        observer.observe(seccion);
+      });
+    })();
+  </script>
+
+  <!-- TODO: <script src="../shared/print-pagination.js"></script> -->
+
+</body>
+</html>
