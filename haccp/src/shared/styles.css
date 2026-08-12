@@ -238,15 +238,21 @@ tr:nth-child(even) {
   background-color: var(--color-gris-claro);
 }
 
-.celda-riesgo-alto {
+/* Selectores "tr.clase" para ganar en especificidad a tr:nth-child(odd/even)
+   de arriba (0,1,1 vs 0,1,0 de ".clase" sola) — sin esto, el color de riesgo
+   de una fila completa (Sección 5) queda tapado por el rayado alterno. */
+.celda-riesgo-alto,
+tr.celda-riesgo-alto {
   background-color: #FFEBEE;
 }
 
-.celda-riesgo-medio {
+.celda-riesgo-medio,
+tr.celda-riesgo-medio {
   background-color: #FFFDE7;
 }
 
-.celda-ok {
+.celda-ok,
+tr.celda-ok {
   background-color: #E8F5E9;
 }
 
@@ -408,7 +414,7 @@ body.print-preview .seccion {
   }
 
   .print-header::after {
-    content: "ÓRALE – AUTHENTIC MEXICAN FLAVOR LIMITED | Plan HACCP v1.3 | CRO: 805512";
+    content: var(--print-header-text);
   }
 
   .print-footer {
@@ -422,6 +428,6 @@ body.print-preview .seccion {
        está implementado por ningún navegador mainstream. La numeración real
        requiere un script beforeprint/afterprint en el HTML que consuma este
        CSS (pendiente hasta que exista ese HTML — ver memoria del proyecto). */
-    content: "Documento confidencial – Uso interno y regulatorio";
+    content: var(--print-footer-text);
   }
 }
