@@ -112,12 +112,12 @@ module.exports = {
 
       s8: "8. Verification and Review",
       s8_1: "8.1 Verification Activities",
-      s8_2: "8.2 Complaints Management",
+      s8_2: "8.2 Customer Complaint Management",
 
       s9: "9. Documentation and Records",
       s9_1: "9.1 Mandatory Formats",
 
-      s10: "10. Prerequisite Programmes",
+      s10: "10. Prerequisite Programmes (PRPs)",
       s10_1: "10.1 Personal Hygiene",
       s10_2: "10.2 Cleaning and Disinfection",
       s10_3: "10.3 Refrigerator Organisation",

@@ -715,13 +715,486 @@ const SECCION_6 = `
 </table>
 `;
 
+const SECCION_7 = `
+<h2 id="sec-7-1">7.1 CCP Monitoring Summary</h2>
+<table>
+  <thead>
+    <tr>
+      <th>CCP</th>
+      <th>Hazard</th>
+      <th>Critical limit</th>
+      <th>What to measure?</th>
+      <th>How?</th>
+      <th>Frequency</th>
+      <th>Responsible</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="celda-riesgo-alto">
+      <td>CCP1</td>
+      <td>Pathogen survival</td>
+      <td>≥75°C internal</td>
+      <td>Internal temperature</td>
+      <td>Probe thermometer</td>
+      <td>Every cooked batch</td>
+      <td>{{responsables.chef}}</td>
+    </tr>
+    <tr>
+      <td>CCP2</td>
+      <td>Growth in the danger zone</td>
+      <td>&lt;5°C within 6 h</td>
+      <td>Core temperature</td>
+      <td>Probe thermometer</td>
+      <td>Every 30–60 min</td>
+      <td>{{responsables.chef}}</td>
+    </tr>
+    <tr class="celda-riesgo-alto">
+      <td>CCP3</td>
+      <td>Growth during service</td>
+      <td>≥63°C during service</td>
+      <td>Chafing dish temperature</td>
+      <td>Probe thermometer</td>
+      <td>Every 2 hours</td>
+      <td>{{responsables.operaciones}}</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="sec-7-2">7.2 Required Measuring Equipment</h2>
+<ul>
+  <li>Digital probe thermometers (minimum 2 units): calibrated
+  monthly. One remains in the domestic kitchen; the other is
+  taken to the point of sale.</li>
+  <li>Domestic refrigerator thermometer: checked twice a day
+  (morning and evening). Target temperature &lt;5°C.</li>
+  <li>All readings are recorded on paper (HACCP forms) and in the
+  digital management tools maintained by the Operations & Compliance
+  Manager.</li>
+</ul>
+
+<h2 id="sec-7-3">7.3 General Corrective Action Protocol</h2>
+<ol>
+  <li>Identify the deviation from the critical limit.</li>
+  <li>Set aside and label the affected product as
+  <strong>'QUARANTINED – DO NOT SERVE'</strong>.</li>
+  <li>Assess whether it can be recovered (further cooking) or
+  must be discarded.</li>
+  <li>Record the deviation, the action taken and the outcome on
+  the corresponding form.</li>
+  <li>Inform the Director / HACCP Manager during the same shift.</li>
+  <li>Review the root cause to implement preventive measures.</li>
+</ol>
+`;
+
+const SECCION_8 = `
+<h2 id="sec-8-1">8.1 Verification Activities</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Activity</th>
+      <th>Description</th>
+      <th>Frequency</th>
+      <th>Responsible</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Review of CCP records</td>
+      <td>Verify that all control sheets are complete and free
+      of out-of-limit values without a documented correction.</td>
+      <td>Weekly</td>
+      <td>{{responsables.director}} / {{responsables.chef}}</td>
+    </tr>
+    <tr class="alt">
+      <td>Thermometer calibration</td>
+      <td>Check against ice water (0°C) and boiling water (100°C).</td>
+      <td>Monthly</td>
+      <td>{{responsables.chef}}</td>
+    </tr>
+    <tr>
+      <td>Internal HACCP audit</td>
+      <td>Verification of the whole chain: domestic kitchen,
+      transport and point of sale.</td>
+      <td>Quarterly</td>
+      <td>{{responsables.director}}</td>
+    </tr>
+    <tr class="alt">
+      <td>HACCP plan review</td>
+      <td>Update following: menu changes, a change of kitchen,
+      new staff, complaints or an HSE inspection.</td>
+      <td>Every 6 months or on change</td>
+      <td>{{responsables.director}}</td>
+    </tr>
+    <tr>
+      <td>HSE inspection</td>
+      <td>Cooperate fully. Present all records. Implement
+      corrections within the indicated timeframes.</td>
+      <td>As required</td>
+      <td>{{responsables.director}} / {{responsables.chef}}</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="sec-8-2">8.2 Customer Complaint Management</h2>
+<ul>
+  <li>Any complaint related to food safety will be recorded by
+  the Operations & Compliance Manager with: date, description,
+  product involved and action taken (HACCP-07).</li>
+  <li>The Director will be notified immediately of any serious
+  complaint.</li>
+  <li>In the event of a probable foodborne illness case involving
+  more than 2 people linked to Órale, HSE Environmental Health
+  will be notified within the legal timeframe (24–48 hours).</li>
+</ul>
+`;
+
+const SECCION_9 = `
+<p>All HACCP records will be kept for a minimum of 3 years in
+physical format (HACCP folder) and/or in the business's digital
+management tools. The Operations & Compliance Manager is
+responsible for keeping them available for HSE inspection at
+any time.</p>
+
+<h2 id="sec-9-1">9.1 Mandatory Recording Formats</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Format</th>
+      <th>Description</th>
+      <th>Frequency</th>
+      <th>Applies to</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>HACCP-01</td>
+      <td>Cooking temperature control</td>
+      <td>Every cooked batch</td>
+      <td>Domestic kitchen</td>
+    </tr>
+    <tr class="alt">
+      <td>HACCP-02</td>
+      <td>Rapid cooling control</td>
+      <td>Every cooling process</td>
+      <td>Domestic kitchen</td>
+    </tr>
+    <tr>
+      <td>HACCP-03</td>
+      <td>Service temperature control</td>
+      <td>Every 2 hours during service</td>
+      <td>Point of sale</td>
+    </tr>
+    <tr class="alt">
+      <td>HACCP-04</td>
+      <td>Goods receiving control</td>
+      <td>Every supplier delivery</td>
+      <td>Domestic kitchen</td>
+    </tr>
+    <tr>
+      <td>HACCP-05</td>
+      <td>Domestic refrigerator temperature control</td>
+      <td>Twice a day</td>
+      <td>Domestic kitchen</td>
+    </tr>
+    <tr class="alt">
+      <td>HACCP-06</td>
+      <td>Daily cleaning and disinfection record</td>
+      <td>At the close of each day</td>
+      <td>Kitchen and point of sale</td>
+    </tr>
+    <tr>
+      <td>HACCP-07</td>
+      <td>Incident and corrective action record</td>
+      <td>On every incident</td>
+      <td>All</td>
+    </tr>
+    <tr class="alt">
+      <td>HACCP-08</td>
+      <td>Thermometer calibration record</td>
+      <td>Monthly</td>
+      <td>All</td>
+    </tr>
+    <tr>
+      <td>HACCP-09</td>
+      <td>Staff training record</td>
+      <td>On hire + annually</td>
+      <td>All</td>
+    </tr>
+  </tbody>
+</table>
+`;
+
+const SECCION_10 = `
+<h2 id="sec-10-1">10.1 Personal Hygiene</h2>
+<ul>
+  <li>Handwashing: hot water + soap + minimum 20 seconds.
+  Mandatory before starting preparation, after touching raw meat,
+  after using the toilet, after touching a phone/money/rubbish,
+  and after coughing or sneezing.</li>
+  <li>The domestic kitchen has hot water, soap and paper towels
+  available at the sink — used as the handwashing station
+  throughout preparation.</li>
+  <li>At the point of sale: a portable handwashing station with
+  water, soap and disposable paper towels is mandatory at every
+  operation.</li>
+  <li>Workwear: clean apron and hairnet or cap throughout
+  preparation. Short, clean nails. No jewellery on hands or
+  wrists while handling food.</li>
+  <li>Sick staff: prohibited from handling food while showing
+  gastrointestinal symptoms, vomiting, diarrhoea, skin infections
+  on the hands, or active respiratory infections.</li>
+</ul>
+
+<h2 id="sec-10-2">10.2 Cleaning and Disinfection of the Domestic Kitchen</h2>
+<ul>
+  <li>Before each session: clean and disinfect all surfaces with
+  a product approved for food use.</li>
+  <li>Procedure:
+    <ol>
+      <li>Clean (remove physical residue)</li>
+      <li>Rinse</li>
+      <li>Disinfect</li>
+      <li>Final rinse</li>
+      <li>Air dry</li>
+    </ol>
+  </li>
+  <li>Cutting boards: wash with hot water and soap after each
+  use. Disinfect at the end of the session.</li>
+  <li>Utensils: wash in the dishwasher or by hand with hot water
+  and soap. Dry with disposable paper towels, not reusable cloths.</li>
+  <li>Cleaning record in HACCP-06 at the end of each day.</li>
+</ul>
+
+<h2 id="sec-10-3">10.3 Domestic Refrigerator Organisation</h2>
+<ul>
+  <li><strong>Top shelf:</strong> cooked food ready for
+  consumption.</li>
+  <li><strong>Middle shelf:</strong> dairy, eggs, prepared
+  ingredients.</li>
+  <li><strong>Bottom shelf:</strong> raw meats in airtight
+  containers to prevent dripping.</li>
+  <li><strong>Vegetable drawer:</strong> fresh vegetables.</li>
+  <li>Target temperature: &lt;5°C. Checked twice a day. Recorded
+  in HACCP-05.</li>
+  <li>Do not overload the refrigerator — air circulation is
+  needed to maintain a uniform temperature.</li>
+</ul>
+
+<h2 id="sec-10-4">10.4 Water Management</h2>
+<ul>
+  <li>Mains drinking water from the apartment for all food
+  preparation.</li>
+  <li>Portable handwashing station at the point of sale: potable
+  bottled water in a jerry can with tap, liquid soap and paper
+  towels. Wastewater in a separate container.</li>
+</ul>
+
+<h2 id="sec-10-5">10.5 Waste Management</h2>
+<ul>
+  <li>Organic waste from the domestic kitchen: sealed bags,
+  disposed of in the building's bins in accordance with Limerick
+  City & County Council regulations.</li>
+  <li>Leftovers from the point of sale: not reused the next day.
+  Disposed of the same day.</li>
+  <li>Used oil: stored in an airtight container and disposed of
+  at an authorised collection point.</li>
+</ul>
+
+<h2 id="sec-10-6">10.6 Utensil and Equipment Maintenance</h2>
+<ul>
+  <li>Chafing dishes: washed and disinfected after each use.
+  Lid integrity checked before each day's service.</li>
+  <li>Probe thermometers: cleaned with alcohol before and after
+  each measurement. Calibrated monthly, recorded in HACCP-08.</li>
+  <li>Cutting boards: weekly visual inspection — discarded if
+  they show deep cuts.</li>
+  <li>Knives: kept sharp and in good condition. Stored in
+  individual guards.</li>
+</ul>
+`;
+
+const SECCION_11 = `
+<h2 id="sec-11-1">11.1 Allergens Present in the Menu</h2>
+<p>In accordance with Regulation (EU) No. 1169/2011, Órale
+actively manages the 14 allergens subject to mandatory
+declaration.</p>
+<table>
+  <thead>
+    <tr>
+      <th>Dish</th>
+      <th>Gluten</th>
+      <th>Dairy</th>
+      <th>Egg</th>
+      <th>Tree Nuts</th>
+      <th>Soya</th>
+      <th>Sulphites</th>
+      <th>Sesame</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Pozole Rojo (V)</td>
+      <td>Check</td><td>No</td><td>No</td>
+      <td>No</td><td>No</td><td>Possible</td><td>No</td>
+    </tr>
+    <tr class="alt">
+      <td>Tacos al Pastor</td>
+      <td>Yes (tortilla)</td><td>Possible</td><td>No</td>
+      <td>No</td><td>No</td><td>Yes (chile)</td><td>No</td>
+    </tr>
+    <tr>
+      <td>Tacos Carnitas</td>
+      <td>Yes (tortilla)</td><td>No</td><td>No</td>
+      <td>No</td><td>No</td><td>Possible</td><td>No</td>
+    </tr>
+    <tr class="alt">
+      <td>Tacos Cochinita</td>
+      <td>Yes (tortilla)</td><td>No</td><td>No</td>
+      <td>No</td><td>No</td><td>Possible</td><td>No</td>
+    </tr>
+    <tr>
+      <td>Nachos + Guacamole (V)</td>
+      <td>Yes (nachos)</td><td>Yes (cheese)</td><td>No</td>
+      <td>No</td><td>No</td><td>Possible</td><td>No</td>
+    </tr>
+    <tr class="alt">
+      <td>Chilaquiles (V)</td>
+      <td>Yes (tortilla)</td><td>Yes (cream/cheese)</td>
+      <td>Possible</td><td>No</td><td>No</td><td>Possible</td><td>No</td>
+    </tr>
+    <tr>
+      <td>Taco de Nopales (V)</td>
+      <td>Yes (tortilla)</td><td>No</td><td>No</td>
+      <td>No</td><td>No</td><td>No</td><td>No</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="sec-11-2">11.2 Allergen Communication to Customers</h2>
+<ul>
+  <li>Signage at the point of sale:
+  <em>'For allergen information, please ask a member of staff.'</em></li>
+  <li>Digital menu (QR) and physical menu updated by the
+  Operations & Compliance Manager after every recipe or supplier
+  change.</li>
+  <li>Staff trained to answer allergen questions correctly.</li>
+  <li>For customers with severe allergies: communicate that the
+  kitchen is not 100% free of cross-contact traces.</li>
+</ul>
+`;
+
+const SECCION_12 = `
+<h2 id="sec-12-1">12.1 Domestic Kitchen and Street Trading</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Aspect</th>
+      <th>Specific requirement</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Preparation kitchen</td>
+      <td>
+        <ul>
+          <li>Domestic apartment, Limerick</li>
+          <li>Standard kitchen: hob, extractor fan, oven,
+          refrigerator, hot water</li>
+          <li>Subject to inspection and approval by HSE
+          (Premises Ref: {{hse.premisesRef}})</li>
+        </ul>
+      </td>
+    </tr>
+    <tr class="alt">
+      <td>Raw/cooked separation</td>
+      <td>
+        <ul>
+          <li>Colour-coded boards: red (raw meat), green
+          (vegetables), yellow (poultry)</li>
+          <li>Knives kept separate in individual guards</li>
+          <li>Raw items on the bottom shelf of the refrigerator</li>
+          <li>Cooked items on the top shelf of the refrigerator</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>Production scale</td>
+      <td>
+        <ul>
+          <li>Volume matched to domestic capacity</li>
+          <li>Example: 20 servings of 650 ml pozole per day</li>
+          <li>Apartment equipment capacity is never exceeded</li>
+        </ul>
+      </td>
+    </tr>
+    <tr class="alt">
+      <td>Transport</td>
+      <td>
+        <ul>
+          <li>Covered, pre-heated chafing dishes</li>
+          <li>Maximum time: 1 hour</li>
+          <li>Temperature verified on arrival (&gt;63°C)</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>Handwashing at the point of sale</td>
+      <td>
+        <ul>
+          <li>Portable station mandatory at every operation</li>
+          <li>Jerry can with tap, drinking water, soap and
+          paper towels</li>
+          <li>Separate container for wastewater</li>
+        </ul>
+      </td>
+    </tr>
+    <tr class="alt">
+      <td>Point-of-sale handler</td>
+      <td>
+        <ul>
+          <li>Single handler</li>
+          <li>All food arrives fully cooked</li>
+          <li>No raw meat is handled on the street</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>Maximum exposure time</td>
+      <td>
+        <ul>
+          <li>Hot food: maximum 2 hours from arrival</li>
+          <li>Leftovers discarded at closing</li>
+          <li>Not reused the next day</li>
+        </ul>
+      </td>
+    </tr>
+    <tr class="alt">
+      <td>Casual Trading Licence</td>
+      <td>
+        <ul>
+          <li>A copy of the LCCC authorisation is kept at the
+          point of sale at all times</li>
+          <li>Operates only at authorised locations and times</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+`;
+
 const SECCIONES = {
   'seccion-1': SECCION_1,
   'seccion-2': SECCION_2,
   'seccion-3': SECCION_3,
   'seccion-4': SECCION_4,
   'seccion-5': SECCION_5,
-  'seccion-6': SECCION_6
+  'seccion-6': SECCION_6,
+  'seccion-7': SECCION_7,
+  'seccion-8': SECCION_8,
+  'seccion-9': SECCION_9,
+  'seccion-10': SECCION_10,
+  'seccion-11': SECCION_11,
+  'seccion-12': SECCION_12
 };
 
 // ---------------------------------------------------------------------------
