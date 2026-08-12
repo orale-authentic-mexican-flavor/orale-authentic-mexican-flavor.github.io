@@ -1,0 +1,7 @@
+# Orale HACCP
+/haccp/config.js
+/haccp/outputs/
+/haccp/node_modules/
+*.docx
+*.pdf
+*.xlsx

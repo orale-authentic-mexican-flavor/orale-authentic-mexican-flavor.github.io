@@ -1,0 +1,17 @@
+{
+  "name": "orale-haccp",
+  "version": "1.3.0",
+  "description": "HACCP Plan and Recording Formats generator for Orale Authentic Mexican Flavor Limited",
+  "main": "haccp.js",
+  "scripts": {
+    "generate": "node src/es/haccp_es.js && node src/en/haccp_en.js",
+    "generate:es": "node src/es/haccp_es.js",
+    "generate:en": "node src/en/haccp_en.js"
+  },
+  "dependencies": {
+    "docx": "^9.6.1"
+  },
+  "author": "David Enrique Ochoa Diaz",
+  "license": "UNLICENSED",
+  "private": true
+}

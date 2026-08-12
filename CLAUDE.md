@@ -57,3 +57,17 @@ Everything lives in one file, structured top to bottom as:
 - Allergen tagging follows the 14 EU/FSAI statutory allergens (see the `#about` safety box copy) — when adding a dish, set `a: [...]` accurately using the existing `ALLERGENS` keys (`gluten`, `milk`, `soy`, `sesame`, `nuts`, `peanuts`, `sulphites`); use `a: []` if none apply (renders "No statutory allergens declared").
 - External links to keep in sync if the business changes them: Uber Eats / Deliveroo order links (currently placeholder `#`), WhatsApp (`https://wa.me/353899610776`), Instagram/Facebook (placeholder `#`, marked with `EDITAR` comments), Google Business Profile (placeholder `#`).
 - The Refund Policy PDF (`Orale_Refund_Policy_V1.0.pdf`) is linked from both the `#refund` section and the footer via its absolute GitHub Pages URL — if the PDF filename changes, update both links.
+
+## Estructura del repositorio
+
+### /web — Sitio web estático
+Servido por GitHub Pages desde /web/.
+Configuración: Settings → Pages → Source → /web.
+No mover index.html fuera de /web/.
+Archivos principales: index.html, dish.html, dishes-data.js.
+
+### /haccp — Documentos HACCP
+Scripts de generación del Plan HACCP v1.3.
+Ver instrucciones específicas en CLAUDE.md del repo HACCP.
+No copiar config.js al repo — está en .gitignore.
+No ejecutar npm install ni generar outputs sin autorización explícita.
