@@ -3,10 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Plan HACCP v{{version}} – {{empresa}}</title>
+  <title>{{ui.planLabel}} v{{version}} – {{empresa}}</title>
   <link rel="stylesheet" href="../shared/styles.css">
+  <style>
+    :root {
+      --print-header-text: "ÓRALE – AUTHENTIC MEXICAN FLAVOR LIMITED | {{ui.planLabel}} v{{version}} | CRO: {{cro}}";
+      --print-footer-text: "{{ui.printFooterText}}";
+    }
+  </style>
 </head>
 <body>
+
+  <!-- =====================================================================
+       ENCABEZADO Y PIE DE IMPRESIÓN (solo visibles dentro de @media print,
+       ver styles.css .print-header/.print-footer). Su texto sale de las
+       custom properties --print-header-text / --print-footer-text
+       definidas arriba en el <style> del <head>. Sin este par de divs, las
+       reglas de styles.css no tienen a qué aplicarse y nunca se ven.
+       ===================================================================== -->
+  <div class="print-header"></div>
+  <div class="print-footer"></div>
 
   <!-- =====================================================================
        HEADER FIJO (solo pantalla, oculto en print via CSS)
@@ -17,77 +33,77 @@
       <span class="logo-verde">AUTHENTIC MEXICAN FLAVOR</span>
     </div>
     <p class="subtexto-empresa">{{empresa}} | CRO: {{cro}}</p>
-    <p class="version-info">Plan HACCP v{{version}} | {{fechaEmision}}</p>
+    <p class="version-info">{{ui.planLabel}} v{{version}} | {{fechaEmision}}</p>
   </header>
 
   <!-- =====================================================================
        BOTONES FIJOS (top right)
        ===================================================================== -->
   <div class="controles-vista">
-    <button type="button" id="btn-toggle-vista" class="btn-vista-impresion">Vista Impresión</button>
-    <button type="button" id="btn-imprimir" class="btn-imprimir">Imprimir</button>
+    <button type="button" id="btn-toggle-vista" class="btn-vista-impresion">{{ui.btnVistaImpresion}}</button>
+    <button type="button" id="btn-imprimir" class="btn-imprimir">{{ui.btnImprimir}}</button>
   </div>
 
   <!-- =====================================================================
        SIDEBAR NAVEGACIÓN
        ===================================================================== -->
   <nav class="sidebar">
-    <a class="nav-link" href="#seccion-1">1. Introducción y Alcance</a>
-    <a class="nav-link subseccion" href="#seccion-1">1.1 Propósito</a>
-    <a class="nav-link subseccion" href="#seccion-1">1.2 Alcance</a>
-    <a class="nav-link subseccion" href="#seccion-1">1.3 Marco Regulatorio</a>
+    <a class="nav-link" href="#seccion-1">{{nav.s1}}</a>
+    <a class="nav-link subseccion" href="#seccion-1">{{nav.s1_1}}</a>
+    <a class="nav-link subseccion" href="#seccion-1">{{nav.s1_2}}</a>
+    <a class="nav-link subseccion" href="#seccion-1">{{nav.s1_3}}</a>
 
-    <a class="nav-link" href="#seccion-2">2. Equipo HACCP</a>
+    <a class="nav-link" href="#seccion-2">{{nav.s2}}</a>
 
-    <a class="nav-link" href="#seccion-3">3. Descripción de Productos</a>
-    <a class="nav-link subseccion" href="#seccion-3">3.1 Descripción General</a>
-    <a class="nav-link subseccion" href="#seccion-3">3.2 Tabla de Productos</a>
+    <a class="nav-link" href="#seccion-3">{{nav.s3}}</a>
+    <a class="nav-link subseccion" href="#seccion-3">{{nav.s3_1}}</a>
+    <a class="nav-link subseccion" href="#seccion-3">{{nav.s3_2}}</a>
 
-    <a class="nav-link" href="#seccion-4">4. Diagramas de Flujo</a>
-    <a class="nav-link subseccion" href="#seccion-4">4.1 Venta en Calle</a>
+    <a class="nav-link" href="#seccion-4">{{nav.s4}}</a>
+    <a class="nav-link subseccion" href="#seccion-4">{{nav.s4_1}}</a>
 
-    <a class="nav-link" href="#seccion-5">5. Análisis de Peligros</a>
-    <a class="nav-link subseccion" href="#seccion-5">5.1 Leyenda de Riesgo</a>
-    <a class="nav-link subseccion" href="#seccion-5">5.2 Tabla de Análisis</a>
+    <a class="nav-link" href="#seccion-5">{{nav.s5}}</a>
+    <a class="nav-link subseccion" href="#seccion-5">{{nav.s5_1}}</a>
+    <a class="nav-link subseccion" href="#seccion-5">{{nav.s5_2}}</a>
 
-    <a class="nav-link" href="#seccion-6">6. Puntos Críticos de Control</a>
-    <a class="nav-link subseccion" href="#seccion-6">PCC 1 – Cocción</a>
-    <a class="nav-link subseccion" href="#seccion-6">PCC 2 – Enfriamiento</a>
-    <a class="nav-link subseccion" href="#seccion-6">PCC 3 – Mantenimiento en Caliente</a>
+    <a class="nav-link" href="#seccion-6">{{nav.s6}}</a>
+    <a class="nav-link subseccion" href="#seccion-6">{{nav.pcc1}}</a>
+    <a class="nav-link subseccion" href="#seccion-6">{{nav.pcc2}}</a>
+    <a class="nav-link subseccion" href="#seccion-6">{{nav.pcc3}}</a>
 
-    <a class="nav-link" href="#seccion-7">7. Monitoreo y Acciones Correctivas</a>
-    <a class="nav-link subseccion" href="#seccion-7">7.1 Resumen de Monitoreo</a>
-    <a class="nav-link subseccion" href="#seccion-7">7.2 Equipamiento</a>
-    <a class="nav-link subseccion" href="#seccion-7">7.3 Protocolo de Acción Correctiva</a>
+    <a class="nav-link" href="#seccion-7">{{nav.s7}}</a>
+    <a class="nav-link subseccion" href="#seccion-7">{{nav.s7_1}}</a>
+    <a class="nav-link subseccion" href="#seccion-7">{{nav.s7_2}}</a>
+    <a class="nav-link subseccion" href="#seccion-7">{{nav.s7_3}}</a>
 
-    <a class="nav-link" href="#seccion-8">8. Verificación y Revisión</a>
-    <a class="nav-link subseccion" href="#seccion-8">8.1 Actividades de Verificación</a>
-    <a class="nav-link subseccion" href="#seccion-8">8.2 Gestión de Quejas</a>
+    <a class="nav-link" href="#seccion-8">{{nav.s8}}</a>
+    <a class="nav-link subseccion" href="#seccion-8">{{nav.s8_1}}</a>
+    <a class="nav-link subseccion" href="#seccion-8">{{nav.s8_2}}</a>
 
-    <a class="nav-link" href="#seccion-9">9. Documentación y Registros</a>
-    <a class="nav-link subseccion" href="#seccion-9">9.1 Formatos Obligatorios</a>
+    <a class="nav-link" href="#seccion-9">{{nav.s9}}</a>
+    <a class="nav-link subseccion" href="#seccion-9">{{nav.s9_1}}</a>
 
-    <a class="nav-link" href="#seccion-10">10. Programas Prerrequisito</a>
-    <a class="nav-link subseccion" href="#seccion-10">10.1 Higiene Personal</a>
-    <a class="nav-link subseccion" href="#seccion-10">10.2 Limpieza y Desinfección</a>
-    <a class="nav-link subseccion" href="#seccion-10">10.3 Organización del Refrigerador</a>
-    <a class="nav-link subseccion" href="#seccion-10">10.4 Gestión del Agua</a>
-    <a class="nav-link subseccion" href="#seccion-10">10.5 Manejo de Residuos</a>
-    <a class="nav-link subseccion" href="#seccion-10">10.6 Mantenimiento de Utensilios</a>
+    <a class="nav-link" href="#seccion-10">{{nav.s10}}</a>
+    <a class="nav-link subseccion" href="#seccion-10">{{nav.s10_1}}</a>
+    <a class="nav-link subseccion" href="#seccion-10">{{nav.s10_2}}</a>
+    <a class="nav-link subseccion" href="#seccion-10">{{nav.s10_3}}</a>
+    <a class="nav-link subseccion" href="#seccion-10">{{nav.s10_4}}</a>
+    <a class="nav-link subseccion" href="#seccion-10">{{nav.s10_5}}</a>
+    <a class="nav-link subseccion" href="#seccion-10">{{nav.s10_6}}</a>
 
-    <a class="nav-link" href="#seccion-11">11. Gestión de Alérgenos</a>
-    <a class="nav-link subseccion" href="#seccion-11">11.1 Tabla de Alérgenos</a>
-    <a class="nav-link subseccion" href="#seccion-11">11.2 Comunicación al Cliente</a>
+    <a class="nav-link" href="#seccion-11">{{nav.s11}}</a>
+    <a class="nav-link subseccion" href="#seccion-11">{{nav.s11_1}}</a>
+    <a class="nav-link subseccion" href="#seccion-11">{{nav.s11_2}}</a>
 
-    <a class="nav-link" href="#seccion-12">12. Consideraciones Específicas</a>
-    <a class="nav-link subseccion" href="#seccion-12">12.1 Cocina Doméstica y Venta en Calle</a>
+    <a class="nav-link" href="#seccion-12">{{nav.s12}}</a>
+    <a class="nav-link subseccion" href="#seccion-12">{{nav.s12_1}}</a>
 
-    <a class="nav-link" href="#seccion-13">13. Formatos HACCP</a>
-    <a class="nav-link subseccion" href="#seccion-13">HACCP-01 al HACCP-09</a>
+    <a class="nav-link" href="#seccion-13">{{nav.s13}}</a>
+    <a class="nav-link subseccion" href="#seccion-13">{{nav.s13_1}}</a>
 
-    <a class="nav-link" href="#seccion-14">14. Aprobación y Firma</a>
+    <a class="nav-link" href="#seccion-14">{{nav.s14}}</a>
 
-    <a class="nav-link" href="#anexo">Anexo. Equipamiento Mínimo</a>
+    <a class="nav-link" href="#anexo">{{nav.anexo}}</a>
   </nav>
 
   <!-- =====================================================================
@@ -96,77 +112,77 @@
   <main class="contenido">
 
     <section id="seccion-1" class="seccion">
-      <h1>1. Introducción y Alcance</h1>
+      <h1>{{nav.s1}}</h1>
       <div class="seccion-contenido"></div>
     </section>
 
     <section id="seccion-2" class="seccion">
-      <h1>2. Equipo HACCP</h1>
+      <h1>{{nav.s2}}</h1>
       <div class="seccion-contenido"></div>
     </section>
 
     <section id="seccion-3" class="seccion">
-      <h1>3. Descripción de Productos</h1>
+      <h1>{{nav.s3}}</h1>
       <div class="seccion-contenido"></div>
     </section>
 
     <section id="seccion-4" class="seccion">
-      <h1>4. Diagramas de Flujo</h1>
+      <h1>{{nav.s4}}</h1>
       <div class="seccion-contenido"></div>
     </section>
 
     <section id="seccion-5" class="seccion">
-      <h1>5. Análisis de Peligros</h1>
+      <h1>{{nav.s5}}</h1>
       <div class="seccion-contenido"></div>
     </section>
 
     <section id="seccion-6" class="seccion">
-      <h1>6. Puntos Críticos de Control</h1>
+      <h1>{{nav.s6}}</h1>
       <div class="seccion-contenido"></div>
     </section>
 
     <section id="seccion-7" class="seccion">
-      <h1>7. Monitoreo y Acciones Correctivas</h1>
+      <h1>{{nav.s7}}</h1>
       <div class="seccion-contenido"></div>
     </section>
 
     <section id="seccion-8" class="seccion">
-      <h1>8. Verificación y Revisión</h1>
+      <h1>{{nav.s8}}</h1>
       <div class="seccion-contenido"></div>
     </section>
 
     <section id="seccion-9" class="seccion">
-      <h1>9. Documentación y Registros</h1>
+      <h1>{{nav.s9}}</h1>
       <div class="seccion-contenido"></div>
     </section>
 
     <section id="seccion-10" class="seccion">
-      <h1>10. Programas Prerrequisito</h1>
+      <h1>{{nav.s10}}</h1>
       <div class="seccion-contenido"></div>
     </section>
 
     <section id="seccion-11" class="seccion">
-      <h1>11. Gestión de Alérgenos</h1>
+      <h1>{{nav.s11}}</h1>
       <div class="seccion-contenido"></div>
     </section>
 
     <section id="seccion-12" class="seccion">
-      <h1>12. Consideraciones Específicas</h1>
+      <h1>{{nav.s12}}</h1>
       <div class="seccion-contenido"></div>
     </section>
 
     <section id="seccion-13" class="seccion">
-      <h1>13. Formatos HACCP</h1>
+      <h1>{{nav.s13}}</h1>
       <div class="seccion-contenido"></div>
     </section>
 
     <section id="seccion-14" class="seccion">
-      <h1>14. Aprobación y Firma</h1>
+      <h1>{{nav.s14}}</h1>
       <div class="seccion-contenido"></div>
     </section>
 
     <section id="anexo" class="seccion">
-      <h1>Anexo. Equipamiento Mínimo</h1>
+      <h1>{{nav.anexo}}</h1>
       <div class="seccion-contenido"></div>
     </section>
 
@@ -198,7 +214,7 @@
 
       btnToggle.addEventListener('click', function () {
         var enVistaImpresion = document.body.classList.toggle('print-preview');
-        btnToggle.textContent = enVistaImpresion ? 'Vista Normal' : 'Vista Impresión';
+        btnToggle.textContent = enVistaImpresion ? '{{ui.btnVistaNormal}}' : '{{ui.btnVistaImpresion}}';
       });
 
       btnImprimir.addEventListener('click', function () {
