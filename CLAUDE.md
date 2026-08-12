@@ -20,11 +20,20 @@ The marketing website for Órale – Authentic Mexican Flavor, a Mexican food bu
   cambios directos ni operaciones de git sobre master sin mi confirmación.
 
 ### Verificación y pruebas
-- NO levantes servidores locales (python -m http.server, npx serve, live-server, etc.).
-- NO uses plugins ni automatización de navegador (Chrome, Playwright, etc.) para probar.
-- El usuario levanta el servidor y revisa los cambios manualmente cuando lo decide.
-- Al terminar una tarea, describe qué archivos cambiaste y qué debe revisar el usuario,
-  pero NO ejecutes pruebas por tu cuenta ni intentes verificar en ejecución.
+- NO levantes servidores locales (python -m http.server, npx serve, live-server, etc.)
+  ni uses plugins o automatización de navegador (Chrome, Playwright, etc.) de forma
+  proactiva.
+- Puedes levantar el servidor a petición del usuario, pero primero pregunta y
+  espera confirmación explícita antes de iniciarlo.
+- Cuando el usuario pida explícitamente levantar el servidor y verificar
+  funcionalidades, puedes usar automatización de navegador y herramientas
+  relacionadas para hacer pruebas funcionales de lo levantado.
+- Fuera de ese caso explícito, el usuario levanta el servidor y revisa los
+  cambios manualmente cuando lo decide.
+- Al terminar una tarea, describe qué archivos cambiaste y qué debe revisar el
+  usuario, pero NO ejecutes pruebas por tu cuenta ni intentes verificar en
+  ejecución salvo que el usuario lo haya solicitado explícitamente como se
+  indica arriba.
 
 ### Estilo del sitio
 - El sitio es bilingüe EN/ES con inglés por defecto (toggle data-en/data-es + LANG).
