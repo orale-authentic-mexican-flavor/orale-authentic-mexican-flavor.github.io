@@ -60,10 +60,10 @@ Everything lives in one file, structured top to bottom as:
 
 ## Estructura del repositorio
 
-### /web — Sitio web estático
-Servido por GitHub Pages desde /web/.
-Configuración: Settings → Pages → Source → /web.
-No mover index.html fuera de /web/.
+### /docs — Sitio web estático
+Servido por GitHub Pages desde /docs/.
+Configuración: Settings → Pages → Source → /docs.
+No mover index.html fuera de /docs/.
 Archivos principales: index.html, dish.html, dishes-data.js.
 
 ### /haccp — Documentos HACCP
