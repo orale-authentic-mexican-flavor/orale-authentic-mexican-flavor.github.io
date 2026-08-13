@@ -35,10 +35,14 @@ npm run generate:en     # Solo inglés
 ```
 
 **Outputs:**
-- `/outputs/es/HACCP_Orale_v1.3_ES.html`
-- `/outputs/en/HACCP_Orale_v1.3_EN.html`
-- `/outputs/es/HACCP_Formatos_v1.3_ES.html`
-- `/outputs/en/HACCP_Formatos_v1.3_EN.html`
+- `docs/haccp/es/HACCP_Orale_v1.3_ES.html`
+- `docs/haccp/en/HACCP_Orale_v1.3_EN.html`
+- `docs/haccp/es/HACCP_Formatos_v1.3_ES.html`
+- `docs/haccp/en/HACCP_Formatos_v1.3_EN.html`
+
+**URLs públicas (GitHub Pages):**
+- https://orale-authentic-mexican-flavor.github.io/haccp/es/HACCP_Orale_v1.3_ES.html
+- https://orale-authentic-mexican-flavor.github.io/haccp/en/HACCP_Orale_v1.3_EN.html
 
 **Control de versiones HACCP:**
 
@@ -84,10 +88,14 @@ npm run generate:en     # English only
 ```
 
 **Outputs:**
-- `/outputs/es/HACCP_Orale_v1.3_ES.html`
-- `/outputs/en/HACCP_Orale_v1.3_EN.html`
-- `/outputs/es/HACCP_Formatos_v1.3_ES.html`
-- `/outputs/en/HACCP_Formatos_v1.3_EN.html`
+- `docs/haccp/es/HACCP_Orale_v1.3_ES.html`
+- `docs/haccp/en/HACCP_Orale_v1.3_EN.html`
+- `docs/haccp/es/HACCP_Formatos_v1.3_ES.html`
+- `docs/haccp/en/HACCP_Formatos_v1.3_EN.html`
+
+**Public URLs (GitHub Pages):**
+- https://orale-authentic-mexican-flavor.github.io/haccp/es/HACCP_Orale_v1.3_ES.html
+- https://orale-authentic-mexican-flavor.github.io/haccp/en/HACCP_Orale_v1.3_EN.html
 
 **HACCP version control:**
 
