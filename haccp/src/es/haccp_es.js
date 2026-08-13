@@ -152,8 +152,10 @@ const SECCION_2 = `
 </table>
 <p class="nota"><em>Requisito de formación: Todo el personal que
 manipule alimentos deberá contar con Food Safety Level 1 como mínimo.
-El Operations & Compliance Manager deberá acreditar Food Safety
-Level 2 y HACCP antes de su incorporación.</em></p>
+El Operations & Compliance Manager cuenta con certificado de
+Food Safety Level 1. Se compromete a obtener Food Safety Level 2
+y certificación HACCP en un plazo máximo de 6 meses desde la
+fecha de emisión de este documento.</em></p>
 `;
 
 const SECCION_3 = `

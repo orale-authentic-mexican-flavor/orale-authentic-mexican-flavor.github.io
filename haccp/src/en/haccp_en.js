@@ -151,8 +151,9 @@ const SECCION_2 = `
 </table>
 <p class="nota"><em>Training requirement: All staff who handle food
 must hold at least Food Safety Level 1. The Operations & Compliance
-Manager must hold Food Safety Level 2 and HACCP certification
-before taking up the role.</em></p>
+Manager holds a Food Safety Level 1 certificate and commits to
+obtaining Food Safety Level 2 and HACCP certification within a
+maximum of 6 months from the issue date of this document.</em></p>
 `;
 
 const SECCION_3 = `
