@@ -14,8 +14,8 @@ const LANG = 'en';
 
 const BASE_HTML_PATH = path.join(__dirname, '..', 'shared', 'base.html');
 const STYLES_SRC_PATH = path.join(__dirname, '..', 'shared', 'styles.css');
-const STYLES_DEST_PATH = path.join(__dirname, '..', '..', 'outputs', 'shared', 'styles.css');
-const OUTPUT_PATH = path.join(__dirname, '..', '..', 'outputs', 'en', 'HACCP_Orale_v1.3_EN.html');
+const STYLES_DEST_PATH = path.join(__dirname, '..', '..', 'outputs', 'private', 'shared', 'styles.css');
+const OUTPUT_PATH = path.join(__dirname, '..', '..', 'outputs', 'private', 'en', 'HACCP_Orale_v1.3_EN.html');
 
 // ---------------------------------------------------------------------------
 // Content for Sections 1–6 (HTML injected into each div.seccion-contenido)
@@ -1182,6 +1182,234 @@ const SECCION_12 = `
 </table>
 `;
 
+const SECCION_13 = (function () {
+  function blankRows(numRows, numCols) {
+    const cell = '<td>&nbsp;</td>';
+    let out = '';
+    for (let i = 0; i < numRows; i++) {
+      out += `    <tr${i % 2 === 1 ? ' class="alt"' : ''}>${cell.repeat(numCols)}</tr>\n`;
+    }
+    return out;
+  }
+
+  function zoneRows(blocks) {
+    let out = '';
+    let idx = 0;
+    blocks.forEach((block) => {
+      for (let i = 0; i < block.rows; i++) {
+        const cls = idx % 2 === 1 ? ' class="alt"' : '';
+        out += `    <tr${cls}><td>&nbsp;</td><td style="background-color:#E0E0E0;">${block.zone}</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>\n`;
+        idx++;
+      }
+    });
+    return out;
+  }
+
+  return `
+<p>The following blank formats correspond to the mandatory records
+described in Section 9.1. Print as needed and keep completed copies
+for a minimum of 3 years.</p>
+
+<h2 id="sec-13-1">13.1 Recording Formats (HACCP-01 to HACCP-09)</h2>
+
+<h3 id="haccp-01">HACCP-01 – Cooking Temperature Control</h3>
+<p><strong>Instructions for use:</strong> Record the internal
+temperature of each cooked batch. Critical limit: &ge;75°C.</p>
+<table>
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Dish/Batch</th>
+      <th>Start time</th>
+      <th>Internal temp. (°C)</th>
+      <th>&ge;75°C Yes/No</th>
+      <th>End time</th>
+      <th>Corrective action</th>
+      <th>Responsible/Signature</th>
+    </tr>
+  </thead>
+  <tbody>
+${blankRows(20, 8)}  </tbody>
+</table>
+
+<h3 id="haccp-02">HACCP-02 – Rapid Cooling Control</h3>
+<p><strong>Instructions for use:</strong> Record temperatures during
+the cooling process. Critical limit: from &gt;63°C to &lt;5°C within
+a maximum of 6 hours.</p>
+<table>
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Product/Batch</th>
+      <th>Start time</th>
+      <th>Temp. 30 min (°C)</th>
+      <th>Temp. 1 h (°C)</th>
+      <th>Temp. 2 h (°C)</th>
+      <th>Final temp. (°C)</th>
+      <th>&lt;5°C within 6h Yes/No</th>
+      <th>Corrective action</th>
+      <th>Responsible</th>
+    </tr>
+  </thead>
+  <tbody>
+${blankRows(10, 10)}  </tbody>
+</table>
+
+<h3 id="haccp-03">HACCP-03 – Service Temperature Control</h3>
+<p><strong>Instructions for use:</strong> Check the chafing dish every
+2 hours during service. Critical limit: &ge;63°C at all times.</p>
+<table>
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Product</th>
+      <th>Measurement time</th>
+      <th>Temp. (°C)</th>
+      <th>&ge;63°C Yes/No</th>
+      <th>Corrective action</th>
+      <th>Responsible/Signature</th>
+    </tr>
+  </thead>
+  <tbody>
+${blankRows(20, 7)}  </tbody>
+</table>
+
+<h3 id="haccp-04">HACCP-04 – Goods Receiving Control</h3>
+<p><strong>Instructions for use:</strong> Complete on each supplier
+delivery. Reject the product if the temperature is &gt;5°C on
+chilled goods or if the packaging is damaged.</p>
+<table>
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Supplier</th>
+      <th>Product</th>
+      <th>Receiving temp. (°C)</th>
+      <th>Expiry date</th>
+      <th>Packaging OK Yes/No</th>
+      <th>Appearance OK Yes/No</th>
+      <th>Accepted? Yes/No</th>
+      <th>Action if rejected</th>
+      <th>Responsible</th>
+    </tr>
+  </thead>
+  <tbody>
+${blankRows(15, 10)}  </tbody>
+</table>
+
+<h3 id="haccp-05">HACCP-05 – Refrigerator Temperature Control</h3>
+<p><strong>Instructions for use:</strong> Check twice daily (morning
+and evening). Limit: &lt;5°C.</p>
+<table>
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Morning time</th>
+      <th>Morning temp. (°C)</th>
+      <th>&lt;5°C Yes/No</th>
+      <th>Evening time</th>
+      <th>Evening temp. (°C)</th>
+      <th>&lt;5°C Yes/No</th>
+      <th>Corrective action</th>
+      <th>Responsible</th>
+    </tr>
+  </thead>
+  <tbody>
+${blankRows(31, 9)}  </tbody>
+</table>
+
+<h3 id="haccp-06">HACCP-06 – Daily Cleaning and Disinfection Log</h3>
+<p><strong>Instructions for use:</strong> Complete at the close of
+each working day, for each zone/equipment shown in the pre-printed
+(grey) column.</p>
+<table>
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Zone/Equipment</th>
+      <th>Time</th>
+      <th>Product used</th>
+      <th>Rinsed Yes/No</th>
+      <th>Disinfected Yes/No</th>
+      <th>Responsible/Signature</th>
+    </tr>
+  </thead>
+  <tbody>
+${zoneRows([
+    { zone: 'Domestic kitchen surfaces', rows: 4 },
+    { zone: 'Stove and extractor', rows: 4 },
+    { zone: 'Cutting boards', rows: 3 },
+    { zone: 'Chafing dishes', rows: 3 },
+    { zone: 'Point-of-sale table', rows: 3 },
+    { zone: 'Handwashing station', rows: 3 }
+  ])}  </tbody>
+</table>
+
+<h3 id="haccp-07">HACCP-07 – Incident and Corrective Action Log</h3>
+<p><strong>Instructions for use:</strong> Complete for any deviation
+from a critical limit or customer complaint.</p>
+<table>
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Description</th>
+      <th>CCP/Stage</th>
+      <th>Product</th>
+      <th>Corrective action</th>
+      <th>Result</th>
+      <th>Director notified Yes/No</th>
+      <th>HSE notified Yes/No</th>
+      <th>Responsible/Signature</th>
+    </tr>
+  </thead>
+  <tbody>
+${blankRows(10, 9)}  </tbody>
+</table>
+
+<h3 id="haccp-08">HACCP-08 – Thermometer Calibration Log</h3>
+<p><strong>Instructions for use:</strong> Calibrate monthly using ice
+water (0°C) and boiling water (100°C).</p>
+<table>
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Thermometer ID</th>
+      <th>Ice water temp. (°C)</th>
+      <th>&asymp;0°C Yes/No</th>
+      <th>Boiling water temp. (°C)</th>
+      <th>&asymp;100°C Yes/No</th>
+      <th>Calibration correct Yes/No</th>
+      <th>Action if failed</th>
+      <th>Responsible/Signature</th>
+    </tr>
+  </thead>
+  <tbody>
+${blankRows(12, 9)}  </tbody>
+</table>
+
+<h3 id="haccp-09">HACCP-09 – Staff Training Log</h3>
+<p><strong>Instructions for use:</strong> Complete upon onboarding of
+each employee and at annual reviews.</p>
+<table>
+  <thead>
+    <tr>
+      <th>Full name</th>
+      <th>Role</th>
+      <th>Course/Certification</th>
+      <th>Level 1/2/3</th>
+      <th>Training body</th>
+      <th>Date obtained</th>
+      <th>Renewal date</th>
+      <th>Certificate No.</th>
+      <th>Employee signature</th>
+    </tr>
+  </thead>
+  <tbody>
+${blankRows(10, 9)}  </tbody>
+</table>
+`;
+})();
+
 const SECCIONES = {
   'seccion-1': SECCION_1,
   'seccion-2': SECCION_2,
@@ -1194,7 +1422,8 @@ const SECCIONES = {
   'seccion-9': SECCION_9,
   'seccion-10': SECCION_10,
   'seccion-11': SECCION_11,
-  'seccion-12': SECCION_12
+  'seccion-12': SECCION_12,
+  'seccion-13': SECCION_13
 };
 
 // ---------------------------------------------------------------------------
