@@ -15,6 +15,12 @@
 <body>
 
   <!-- =====================================================================
+       NAVEGACIÓN MÓVIL (botón hamburger + overlay del sidebar)
+       ===================================================================== -->
+  <button type="button" id="btn-hamburger" class="btn-hamburger" aria-label="Open navigation">☰</button>
+  <div id="sidebar-overlay" class="sidebar-overlay"></div>
+
+  <!-- =====================================================================
        ENCABEZADO Y PIE DE IMPRESIÓN (solo visibles dentro de @media print,
        ver styles.css .print-header/.print-footer). Su texto sale de las
        custom properties --print-header-text / --print-footer-text
@@ -232,10 +238,55 @@
             link.classList.toggle('activo', esActivo);
           });
         });
-      }, { threshold: 0.3 });
+      }, { threshold: 0.1 });
+      /* threshold bajo (0.1) en vez de 0.3: en viewports móviles las
+         secciones son más altas que el viewport, así que 0.3 de área
+         visible tarda en alcanzarse y la sección activa se queda
+         desactualizada al hacer scroll. Esto se sigue calculando aunque
+         el sidebar esté cerrado, para que al abrirlo ya esté resaltada
+         la sección correcta. */
 
       secciones.forEach(function (seccion) {
         observer.observe(seccion);
+      });
+    })();
+  </script>
+
+  <!-- Sidebar responsive: hamburger, overlay y cierre al navegar (móvil) -->
+  <script>
+    (function () {
+      var hamburger = document.getElementById('btn-hamburger');
+      var sidebar = document.querySelector('.sidebar');
+      var overlay = document.getElementById('sidebar-overlay');
+
+      function openSidebar() {
+        sidebar.classList.add('sidebar-open');
+        overlay.classList.add('visible');
+        hamburger.textContent = '✕';
+        hamburger.setAttribute('aria-label', 'Close navigation');
+      }
+
+      function closeSidebar() {
+        sidebar.classList.remove('sidebar-open');
+        overlay.classList.remove('visible');
+        hamburger.textContent = '☰';
+        hamburger.setAttribute('aria-label', 'Open navigation');
+      }
+
+      hamburger.addEventListener('click', function () {
+        if (sidebar.classList.contains('sidebar-open')) {
+          closeSidebar();
+        } else {
+          openSidebar();
+        }
+      });
+
+      overlay.addEventListener('click', closeSidebar);
+
+      document.querySelectorAll('.sidebar .nav-link, .sidebar .subseccion').forEach(function (link) {
+        link.addEventListener('click', function () {
+          if (window.innerWidth < 768) closeSidebar();
+        });
       });
     })();
   </script>

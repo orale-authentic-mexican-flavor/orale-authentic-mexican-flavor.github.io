@@ -60,6 +60,7 @@ Representative example: 20 servings of 650 ml pozole per day.</p>
 </ul>
 
 <h2 id="sec-1-3">1.3 Applicable Regulatory Framework</h2>
+<div class="tabla-wrapper">
 <table>
   <thead>
     <tr>
@@ -95,6 +96,7 @@ Representative example: 20 servings of 650 ml pozole per day.</p>
     </tr>
   </tbody>
 </table>
+</div>
 
 <h2 id="sec-1-4">1.4 Operation Classification</h2>
 <p>In accordance with FSAI Guidance Note No. 16 Food Stalls
@@ -113,6 +115,7 @@ target="_blank">fsai.ie</a></em></p>
 `;
 
 const SECCION_2 = `
+<div class="tabla-wrapper">
 <table>
   <thead>
     <tr>
@@ -164,6 +167,7 @@ const SECCION_2 = `
     </tr>
   </tbody>
 </table>
+</div>
 <p class="nota"><em>Training requirement: All staff who handle food
 must hold at least Food Safety Level 1. The Operations & Compliance
 Manager holds a Food Safety Level 1 certificate and commits to
@@ -181,6 +185,7 @@ directly to the end consumer. No wholesale distribution or sale of
 unlabelled packaged products takes place.</p>
 
 <h2 id="sec-3-2">3.2 Product and Associated Hazards Table</h2>
+<div class="tabla-wrapper">
 <table>
   <thead>
     <tr>
@@ -263,11 +268,13 @@ unlabelled packaged products takes place.</p>
     </tr>
   </tbody>
 </table>
+</div>
 `;
 
 const SECCION_4 = `
 <h2 id="sec-4-1">4.1 Street Sale with Domestic Kitchen</h2>
 <p>Complete flow from the domestic kitchen to the point of sale:</p>
+<div class="tabla-wrapper">
 <table>
   <thead>
     <tr>
@@ -428,10 +435,12 @@ const SECCION_4 = `
     </tr>
   </tbody>
 </table>
+</div>
 `;
 
 const SECCION_5 = `
 <h2 id="sec-5-1">5.1 Risk Legend</h2>
+<div class="tabla-wrapper">
 <table>
   <thead>
     <tr>
@@ -462,9 +471,11 @@ const SECCION_5 = `
     </tr>
   </tbody>
 </table>
+</div>
 
 <h2 id="sec-5-2">5.2 Hazard Analysis Table</h2>
-<table>
+<div class="tabla-wrapper">
+<table class="tabla-ancha">
   <thead>
     <tr>
       <th>Stage</th>
@@ -599,11 +610,13 @@ const SECCION_5 = `
     </tr>
   </tbody>
 </table>
+</div>
 `;
 
 const SECCION_6 = `
 <h2 id="pcc1">CCP 1 – Cooking</h2>
 <p><em>Domestic kitchen, hob with extractor fan</em></p>
+<div class="tabla-wrapper">
 <table>
   <tbody>
     <tr>
@@ -653,9 +666,11 @@ const SECCION_6 = `
     </tr>
   </tbody>
 </table>
+</div>
 
 <h2 id="pcc2">CCP 2 – Rapid Cooling</h2>
 <p><em>Domestic sink with ice bath</em></p>
+<div class="tabla-wrapper">
 <table>
   <tbody>
     <tr>
@@ -697,9 +712,11 @@ const SECCION_6 = `
     </tr>
   </tbody>
 </table>
+</div>
 
 <h2 id="pcc3">CCP 3 – Hot-Holding During Service</h2>
 <p><em>Chafing dishes at the point of sale</em></p>
+<div class="tabla-wrapper">
 <table>
   <tbody>
     <tr>
@@ -743,10 +760,12 @@ const SECCION_6 = `
     </tr>
   </tbody>
 </table>
+</div>
 `;
 
 const SECCION_7 = `
 <h2 id="sec-7-1">7.1 CCP Monitoring Summary</h2>
+<div class="tabla-wrapper">
 <table>
   <thead>
     <tr>
@@ -789,6 +808,7 @@ const SECCION_7 = `
     </tr>
   </tbody>
 </table>
+</div>
 
 <h2 id="sec-7-2">7.2 Required Measuring Equipment</h2>
 <ul>
@@ -818,6 +838,7 @@ const SECCION_7 = `
 
 const SECCION_8 = `
 <h2 id="sec-8-1">8.1 Verification Activities</h2>
+<div class="tabla-wrapper">
 <table>
   <thead>
     <tr>
@@ -864,6 +885,7 @@ const SECCION_8 = `
     </tr>
   </tbody>
 </table>
+</div>
 
 <h2 id="sec-8-2">8.2 Customer Complaint Management</h2>
 <ul>
@@ -886,6 +908,7 @@ responsible for keeping them available for HSE inspection at
 any time.</p>
 
 <h2 id="sec-9-1">9.1 Mandatory Recording Formats</h2>
+<div class="tabla-wrapper">
 <table>
   <thead>
     <tr>
@@ -952,6 +975,7 @@ any time.</p>
     </tr>
   </tbody>
 </table>
+</div>
 `;
 
 const SECCION_10 = `
@@ -1088,7 +1112,8 @@ const SECCION_11 = `
 <p>In accordance with Regulation (EU) No. 1169/2011, Órale
 actively manages the 14 allergens subject to mandatory
 declaration.</p>
-<table>
+<div class="tabla-wrapper">
+<table class="tabla-ancha">
   <thead>
     <tr>
       <th>Dish</th>
@@ -1139,6 +1164,7 @@ declaration.</p>
     </tr>
   </tbody>
 </table>
+</div>
 
 <h2 id="sec-11-2">11.2 Allergen Communication to Customers</h2>
 <ul>
@@ -1155,6 +1181,7 @@ declaration.</p>
 
 const SECCION_12 = `
 <h2 id="sec-12-1">12.1 Domestic Kitchen and Street Trading</h2>
+<div class="tabla-wrapper">
 <table>
   <thead>
     <tr>
@@ -1323,6 +1350,7 @@ const SECCION_12 = `
     </tr>
   </tbody>
 </table>
+</div>
 `;
 
 const SECCION_13 = (function () {
@@ -1358,6 +1386,7 @@ for a minimum of 3 years.</p>
 <h3 id="haccp-01">HACCP-01 – Cooking Temperature Control</h3>
 <p><strong>Instructions for use:</strong> Record the internal
 temperature of each cooked batch. Critical limit: &ge;75°C.</p>
+<div class="tabla-wrapper">
 <table>
   <thead>
     <tr>
@@ -1374,11 +1403,13 @@ temperature of each cooked batch. Critical limit: &ge;75°C.</p>
   <tbody>
 ${blankRows(20, 8)}  </tbody>
 </table>
+</div>
 
 <h3 id="haccp-02">HACCP-02 – Rapid Cooling Control</h3>
 <p><strong>Instructions for use:</strong> Record temperatures during
 the cooling process. Critical limit: from &gt;63°C to &lt;5°C within
 a maximum of 6 hours.</p>
+<div class="tabla-wrapper">
 <table>
   <thead>
     <tr>
@@ -1397,10 +1428,12 @@ a maximum of 6 hours.</p>
   <tbody>
 ${blankRows(10, 10)}  </tbody>
 </table>
+</div>
 
 <h3 id="haccp-03">HACCP-03 – Service Temperature Control</h3>
 <p><strong>Instructions for use:</strong> Check the chafing dish every
 2 hours during service. Critical limit: &ge;63°C at all times.</p>
+<div class="tabla-wrapper">
 <table>
   <thead>
     <tr>
@@ -1416,6 +1449,7 @@ ${blankRows(10, 10)}  </tbody>
   <tbody>
 ${blankRows(20, 7)}  </tbody>
 </table>
+</div>
 
 <h3 id="haccp-04">HACCP-04 — Goods Receipt & Supplier
 Traceability Control</h3>
@@ -1423,6 +1457,7 @@ Traceability Control</h3>
 every delivery. Retain until food can reasonably be assumed
 to have been consumed. For food of animal origin, retain
 for a minimum of 3 years.</em></p>
+<div class="tabla-wrapper">
 <table>
   <thead>
     <tr>
@@ -1442,10 +1477,12 @@ for a minimum of 3 years.</em></p>
   <tbody>
 ${blankRows(15, 11)}  </tbody>
 </table>
+</div>
 
 <h3 id="haccp-05">HACCP-05 – Refrigerator Temperature Control</h3>
 <p><strong>Instructions for use:</strong> Check twice daily (morning
 and evening). Limit: &lt;5°C.</p>
+<div class="tabla-wrapper">
 <table>
   <thead>
     <tr>
@@ -1463,11 +1500,13 @@ and evening). Limit: &lt;5°C.</p>
   <tbody>
 ${blankRows(31, 9)}  </tbody>
 </table>
+</div>
 
 <h3 id="haccp-06">HACCP-06 – Daily Cleaning and Disinfection Log</h3>
 <p><strong>Instructions for use:</strong> Complete at the close of
 each working day, for each zone/equipment shown in the pre-printed
 (grey) column.</p>
+<div class="tabla-wrapper">
 <table>
   <thead>
     <tr>
@@ -1490,10 +1529,12 @@ ${zoneRows([
     { zone: 'Handwashing station', rows: 3 }
   ])}  </tbody>
 </table>
+</div>
 
 <h3 id="haccp-07">HACCP-07 – Incident and Corrective Action Log</h3>
 <p><strong>Instructions for use:</strong> Complete for any deviation
 from a critical limit or customer complaint.</p>
+<div class="tabla-wrapper">
 <table>
   <thead>
     <tr>
@@ -1511,10 +1552,12 @@ from a critical limit or customer complaint.</p>
   <tbody>
 ${blankRows(10, 9)}  </tbody>
 </table>
+</div>
 
 <h3 id="haccp-08">HACCP-08 – Thermometer Calibration Log</h3>
 <p><strong>Instructions for use:</strong> Calibrate monthly using ice
 water (0°C) and boiling water (100°C).</p>
+<div class="tabla-wrapper">
 <table>
   <thead>
     <tr>
@@ -1532,10 +1575,12 @@ water (0°C) and boiling water (100°C).</p>
   <tbody>
 ${blankRows(12, 9)}  </tbody>
 </table>
+</div>
 
 <h3 id="haccp-09">HACCP-09 – Staff Training Log</h3>
 <p><strong>Instructions for use:</strong> Complete upon onboarding of
 each employee and at annual reviews.</p>
+<div class="tabla-wrapper">
 <table>
   <thead>
     <tr>
@@ -1553,6 +1598,7 @@ each employee and at annual reviews.</p>
   <tbody>
 ${blankRows(10, 9)}  </tbody>
 </table>
+</div>
 `;
 })();
 
@@ -1610,6 +1656,7 @@ to high-risk food stall activities.</em></p>
 `;
 
 const SECCION_14 = `
+<div class="tabla-wrapper">
 <table>
   <tbody>
     <tr>
@@ -1655,6 +1702,7 @@ const SECCION_14 = `
     </tr>
   </tbody>
 </table>
+</div>
 
 <p class="nota">This HACCP Plan has been prepared in good faith and in
 compliance with applicable Irish and European food safety
