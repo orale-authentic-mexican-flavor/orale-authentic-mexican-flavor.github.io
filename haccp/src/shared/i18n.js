@@ -18,6 +18,7 @@ module.exports = {
       s1_1: "1.1 Propósito",
       s1_2: "1.2 Alcance",
       s1_3: "1.3 Marco Regulatorio",
+      s1_4: "1.4 Clasificación de la Operación",
 
       s2: "2. Equipo HACCP",
 
@@ -86,6 +87,7 @@ module.exports = {
       s1_1: "1.1 Purpose",
       s1_2: "1.2 Scope",
       s1_3: "1.3 Regulatory Framework",
+      s1_4: "1.4 Operation Classification",
 
       s2: "2. HACCP Team",
 
