@@ -306,6 +306,15 @@ ul li::marker {
   background-color: var(--color-blanco);
 }
 
+.nota {
+  font-size: 0.85rem;
+  font-style: italic;
+  color: var(--color-gris-oscuro);
+  border-left: 3px solid var(--color-verde);
+  padding-left: 1rem;
+  margin-top: 1.5rem;
+}
+
 /* =========================================================================
    TOGGLE — VISTA PREVIA DE IMPRESIÓN (body.print-preview)
    ========================================================================= */
@@ -349,8 +358,15 @@ body.print-preview .seccion {
    ========================================================================= */
 
 @media print {
+  /* Margen superior/inferior ampliado 1cm respecto al original (2cm) para
+     alojar .print-header/.print-footer sin solapar el contenido. @page
+     margin se repite en TODAS las páginas impresas; el padding de un
+     elemento que se fragmenta entre páginas (.contenido) no — por spec de
+     CSS Fragmentation solo se aplica en el primer/último fragmento — por
+     eso el pie/header fijos (que sí se repiten en cada página) no pueden
+     depender de ese padding para su despeje en páginas intermedias. */
   @page {
-    margin: 2cm 1.5cm;
+    margin: 3cm 1.5cm;
   }
 
   body {
@@ -408,7 +424,7 @@ body.print-preview .seccion {
   }
 
   .print-header {
-    top: 0;
+    top: -1cm;
     border-bottom: 1px solid #CCCCCC;
     padding-bottom: 0.3cm;
   }
@@ -418,7 +434,7 @@ body.print-preview .seccion {
   }
 
   .print-footer {
-    bottom: 0;
+    bottom: -1cm;
     border-top: 1px solid #CCCCCC;
     padding-top: 0.3cm;
   }

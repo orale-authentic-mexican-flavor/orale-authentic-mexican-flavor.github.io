@@ -15,6 +15,8 @@ const LANG = 'en';
 const BASE_HTML_PATH = path.join(__dirname, '..', 'shared', 'base.html');
 const STYLES_SRC_PATH = path.join(__dirname, '..', 'shared', 'styles.css');
 const STYLES_DEST_PATH = path.join(__dirname, '..', '..', 'outputs', 'shared', 'styles.css');
+const PAGINATION_SRC_PATH = path.join(__dirname, '..', 'shared', 'print-pagination.js');
+const PAGINATION_DEST_PATH = path.join(__dirname, '..', '..', 'outputs', 'shared', 'print-pagination.js');
 const OUTPUT_PATH = path.join(__dirname, '..', '..', 'outputs', 'en', 'HACCP_Orale_v1.3_EN.html');
 
 // ---------------------------------------------------------------------------
@@ -1451,6 +1453,62 @@ const ANEXO = `
 <p><strong>Check before each operational working day.</strong></p>
 `;
 
+const SECCION_14 = `
+<table>
+  <tbody>
+    <tr>
+      <td><strong>Document</strong></td>
+      <td>HACCP Plan – Órale Authentic Mexican Flavor</td>
+    </tr>
+    <tr class="alt">
+      <td><strong>Company</strong></td>
+      <td>{{empresa}} (CRO: {{cro}})</td>
+    </tr>
+    <tr>
+      <td><strong>Preparation kitchen</strong></td>
+      <td>Apt 301, Richmond Court, Mount Kennett Place, Dock Road,
+      Limerick V94 PY76</td>
+    </tr>
+    <tr class="alt">
+      <td><strong>Version</strong></td>
+      <td>{{version}}</td>
+    </tr>
+    <tr>
+      <td><strong>Issue date</strong></td>
+      <td>{{fechaEmision}}</td>
+    </tr>
+    <tr class="alt">
+      <td><strong>Prepared by</strong></td>
+      <td>{{responsables.director}} – Founder &amp; Director</td>
+    </tr>
+    <tr>
+      <td><strong>Next review</strong></td>
+      <td>{{proximaRevision}}</td>
+    </tr>
+    <tr class="alt">
+      <td><strong>Approved by</strong></td>
+      <td>{{responsables.director}}</td>
+    </tr>
+    <tr>
+      <td><strong>Signature</strong></td>
+      <td>___________________________</td>
+    </tr>
+    <tr class="alt">
+      <td><strong>Date of signature</strong></td>
+      <td>_____ / _____ / 2026</td>
+    </tr>
+  </tbody>
+</table>
+
+<p class="nota">This HACCP Plan has been prepared in good faith and in
+compliance with applicable Irish and European food safety
+legislation. The domestic kitchen described in this document
+is pending formal inspection and approval by HSE Environmental
+Health. Órale commits to operating only after obtaining that
+approval and to implementing all improvements required by the
+competent authority.</p>
+`;
+
 const SECCIONES = {
   'seccion-1': SECCION_1,
   'seccion-2': SECCION_2,
@@ -1465,6 +1523,7 @@ const SECCIONES = {
   'seccion-11': SECCION_11,
   'seccion-12': SECCION_12,
   'seccion-13': SECCION_13,
+  'seccion-14': SECCION_14,
   'anexo': ANEXO
 };
 
@@ -1529,6 +1588,7 @@ function generar() {
   const data = Object.assign({}, config, {
     lang: LANG,
     fechaEmision: config.fechaEmisionEN,
+    proximaRevision: config.proximaRevisionEN,
     ui: i18n[LANG].ui,
     nav: i18n[LANG].nav
   });
@@ -1542,6 +1602,9 @@ function generar() {
   // link isn't broken once the HTML lives outside of src/.
   fs.mkdirSync(path.dirname(STYLES_DEST_PATH), { recursive: true });
   fs.copyFileSync(STYLES_SRC_PATH, STYLES_DEST_PATH);
+
+  fs.mkdirSync(path.dirname(PAGINATION_DEST_PATH), { recursive: true });
+  fs.copyFileSync(PAGINATION_SRC_PATH, PAGINATION_DEST_PATH);
 
   console.log(`OK: HTML generated at ${OUTPUT_PATH}`);
 }

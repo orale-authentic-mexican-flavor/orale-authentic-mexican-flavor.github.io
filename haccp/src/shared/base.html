@@ -193,8 +193,7 @@
          se repite en cada página impresa (con su propio texto generado por
          CSS vía ::after). Reutilizar ese nombre aquí duplicaría el texto y
          forzaría position:fixed sobre este footer de una sola vez al final
-         del documento. Pendiente: agregar estilos para .pie-documento en
-         styles.css.
+         del documento.
          =================================================================== -->
     <footer class="pie-documento">
       {{empresa}} · CRO {{cro}} · {{contacto.email}} · {{contacto.telefono}}
@@ -246,7 +245,7 @@
     })();
   </script>
 
-  <!-- TODO: <script src="../shared/print-pagination.js"></script> -->
+  <script src="../shared/print-pagination.js"></script>
 
 </body>
 </html>
