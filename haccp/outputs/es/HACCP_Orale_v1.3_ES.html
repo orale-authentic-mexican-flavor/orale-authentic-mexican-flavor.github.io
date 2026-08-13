@@ -1,34 +1,126 @@
-// Órale – Authentic Mexican Flavor Limited
-// Generador del Plan HACCP – Versión en Español
-// Versión: 1.3
-// Autor: David Enrique Ochoa Diaz
-// NOTA: Este archivo consume datos desde config.js
-// No hardcodear datos sensibles en este script
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Plan HACCP v1.3 – Órale – Authentic Mexican Flavor Limited</title>
+  <link rel="stylesheet" href="../shared/styles.css">
+  <style>
+    :root {
+      --print-header-text: "ÓRALE – AUTHENTIC MEXICAN FLAVOR LIMITED | Plan HACCP v1.3 | CRO: 805512";
+      --print-footer-text: "Documento confidencial – Uso interno y regulatorio";
+    }
+  </style>
+</head>
+<body>
 
-const fs = require('fs');
-const path = require('path');
-const config = require('../../config');
-const i18n = require('../shared/i18n');
+  <!-- =====================================================================
+       ENCABEZADO Y PIE DE IMPRESIÓN (solo visibles dentro de @media print,
+       ver styles.css .print-header/.print-footer). Su texto sale de las
+       custom properties --print-header-text / --print-footer-text
+       definidas arriba en el <style> del <head>. Sin este par de divs, las
+       reglas de styles.css no tienen a qué aplicarse y nunca se ven.
+       ===================================================================== -->
+  <div class="print-header"></div>
+  <div class="print-footer"></div>
 
-const LANG = 'es';
+  <!-- =====================================================================
+       HEADER FIJO (solo pantalla, oculto en print via CSS)
+       ===================================================================== -->
+  <header class="header-fijo">
+    <div class="logo">
+      <span class="logo-rojo">ÓRALE</span>
+      <span class="logo-verde">AUTHENTIC MEXICAN FLAVOR</span>
+    </div>
+    <p class="subtexto-empresa">Órale – Authentic Mexican Flavor Limited | CRO: 805512</p>
+    <p class="version-info">Plan HACCP v1.3 | 12 de agosto de 2026</p>
+  </header>
 
-const BASE_HTML_PATH = path.join(__dirname, '..', 'shared', 'base.html');
-const STYLES_SRC_PATH = path.join(__dirname, '..', 'shared', 'styles.css');
-const STYLES_DEST_PATH = path.join(__dirname, '..', '..', 'outputs', 'shared', 'styles.css');
-const OUTPUT_PATH = path.join(__dirname, '..', '..', 'outputs', 'es', 'HACCP_Orale_v1.3_ES.html');
+  <!-- =====================================================================
+       BOTONES FIJOS (top right)
+       ===================================================================== -->
+  <div class="controles-vista">
+    <button type="button" id="btn-toggle-vista" class="btn-vista-impresion">Vista Impresión</button>
+    <button type="button" id="btn-imprimir" class="btn-imprimir">Imprimir</button>
+  </div>
 
-// ---------------------------------------------------------------------------
-// Contenido de las Secciones 1–6 (HTML inyectado en cada div.seccion-contenido)
-// ---------------------------------------------------------------------------
+  <!-- =====================================================================
+       SIDEBAR NAVEGACIÓN
+       ===================================================================== -->
+  <nav class="sidebar">
+    <a class="nav-link" href="#seccion-1">1. Introducción y Alcance</a>
+    <a class="nav-link subseccion" href="#seccion-1">1.1 Propósito</a>
+    <a class="nav-link subseccion" href="#seccion-1">1.2 Alcance</a>
+    <a class="nav-link subseccion" href="#seccion-1">1.3 Marco Regulatorio</a>
 
-const SECCION_1 = `
+    <a class="nav-link" href="#seccion-2">2. Equipo HACCP</a>
+
+    <a class="nav-link" href="#seccion-3">3. Descripción de Productos</a>
+    <a class="nav-link subseccion" href="#seccion-3">3.1 Descripción General</a>
+    <a class="nav-link subseccion" href="#seccion-3">3.2 Tabla de Productos</a>
+
+    <a class="nav-link" href="#seccion-4">4. Diagramas de Flujo</a>
+    <a class="nav-link subseccion" href="#seccion-4">4.1 Venta en Calle</a>
+
+    <a class="nav-link" href="#seccion-5">5. Análisis de Peligros</a>
+    <a class="nav-link subseccion" href="#seccion-5">5.1 Leyenda de Riesgo</a>
+    <a class="nav-link subseccion" href="#seccion-5">5.2 Tabla de Análisis</a>
+
+    <a class="nav-link" href="#seccion-6">6. Puntos Críticos de Control</a>
+    <a class="nav-link subseccion" href="#seccion-6">PCC 1 – Cocción</a>
+    <a class="nav-link subseccion" href="#seccion-6">PCC 2 – Enfriamiento</a>
+    <a class="nav-link subseccion" href="#seccion-6">PCC 3 – Mantenimiento en Caliente</a>
+
+    <a class="nav-link" href="#seccion-7">7. Monitoreo y Acciones Correctivas</a>
+    <a class="nav-link subseccion" href="#seccion-7">7.1 Resumen de Monitoreo</a>
+    <a class="nav-link subseccion" href="#seccion-7">7.2 Equipamiento</a>
+    <a class="nav-link subseccion" href="#seccion-7">7.3 Protocolo de Acción Correctiva</a>
+
+    <a class="nav-link" href="#seccion-8">8. Verificación y Revisión</a>
+    <a class="nav-link subseccion" href="#seccion-8">8.1 Actividades de Verificación</a>
+    <a class="nav-link subseccion" href="#seccion-8">8.2 Gestión de Quejas</a>
+
+    <a class="nav-link" href="#seccion-9">9. Documentación y Registros</a>
+    <a class="nav-link subseccion" href="#seccion-9">9.1 Formatos Obligatorios</a>
+
+    <a class="nav-link" href="#seccion-10">10. Programas Prerrequisito</a>
+    <a class="nav-link subseccion" href="#seccion-10">10.1 Higiene Personal</a>
+    <a class="nav-link subseccion" href="#seccion-10">10.2 Limpieza y Desinfección</a>
+    <a class="nav-link subseccion" href="#seccion-10">10.3 Organización del Refrigerador</a>
+    <a class="nav-link subseccion" href="#seccion-10">10.4 Gestión del Agua</a>
+    <a class="nav-link subseccion" href="#seccion-10">10.5 Manejo de Residuos</a>
+    <a class="nav-link subseccion" href="#seccion-10">10.6 Mantenimiento de Utensilios</a>
+
+    <a class="nav-link" href="#seccion-11">11. Gestión de Alérgenos</a>
+    <a class="nav-link subseccion" href="#seccion-11">11.1 Tabla de Alérgenos</a>
+    <a class="nav-link subseccion" href="#seccion-11">11.2 Comunicación al Cliente</a>
+
+    <a class="nav-link" href="#seccion-12">12. Consideraciones Específicas</a>
+    <a class="nav-link subseccion" href="#seccion-12">12.1 Cocina Doméstica y Venta en Calle</a>
+
+    <a class="nav-link" href="#seccion-13">13. Formatos HACCP</a>
+    <a class="nav-link subseccion" href="#seccion-13">HACCP-01 al HACCP-09</a>
+
+    <a class="nav-link" href="#seccion-14">14. Aprobación y Firma</a>
+
+    <a class="nav-link" href="#anexo">Anexo. Equipamiento Mínimo</a>
+  </nav>
+
+  <!-- =====================================================================
+       CONTENIDO PRINCIPAL
+       ===================================================================== -->
+  <main class="contenido">
+
+    <section id="seccion-1" class="seccion">
+      <h1>1. Introducción y Alcance</h1>
+      <div class="seccion-contenido">
 <h2 id="sec-1-1">1.1 Propósito</h2>
 <p>El presente Plan HACCP ha sido elaborado conforme a los requisitos
 de la Food Safety Authority of Ireland (FSAI), el Reglamento (CE)
 N.º 852/2004 sobre higiene de los productos alimenticios, y las
 directrices HACCP del Codex Alimentarius.</p>
 <p>Este documento establece los procedimientos de seguridad alimentaria
-para {{empresa}}, garantizando que todos los alimentos servidos sean
+para Órale – Authentic Mexican Flavor Limited, garantizando que todos los alimentos servidos sean
 seguros para el consumo, identificando y controlando los peligros
 relevantes en cada etapa del proceso.</p>
 
@@ -38,7 +130,7 @@ relevantes en cada etapa del proceso.</p>
   <li><strong>Cocina de preparación:</strong> Apartamento doméstico en
   Limerick. Cocina estándar con estufa, extractor, horno, refrigerador
   y agua caliente. Sujeta a inspección y aprobación por HSE
-  Environmental Health (Premises Ref: {{hse.premisesRef}}).</li>
+  Environmental Health (Premises Ref: 134791).</li>
   <li><strong>Transporte:</strong> Chafing dishes cubiertos y
   contenedores isotérmicos. Tiempo máximo 1 hora.</li>
   <li><strong>Venta en calle:</strong> Ubicaciones autorizadas por
@@ -74,7 +166,7 @@ Ejemplo representativo: 20 porciones de pozole de 650 ml por jornada.</p>
     <tr class="alt">
       <td>HSE Environmental Health</td>
       <td>Inspección y aprobación de cocina de preparación
-      (Premises Ref: {{hse.premisesRef}}); registros HACCP</td>
+      (Premises Ref: 134791); registros HACCP</td>
     </tr>
     <tr>
       <td>Reg. (CE) 852/2004</td>
@@ -94,9 +186,12 @@ Ejemplo representativo: 20 porciones de pozole de 650 ml por jornada.</p>
     </tr>
   </tbody>
 </table>
-`;
+</div>
+    </section>
 
-const SECCION_2 = `
+    <section id="seccion-2" class="seccion">
+      <h1>2. Equipo HACCP</h1>
+      <div class="seccion-contenido">
 <table>
   <thead>
     <tr>
@@ -108,7 +203,7 @@ const SECCION_2 = `
   <tbody>
     <tr>
       <td>Director / HACCP Manager</td>
-      <td>{{responsables.director}}</td>
+      <td>Vicente Rodriguez Hernandez</td>
       <td>
         <ul>
           <li>Responsable principal del plan</li>
@@ -121,7 +216,7 @@ const SECCION_2 = `
     </tr>
     <tr class="alt">
       <td>Operations & Compliance Manager</td>
-      <td>{{responsables.operaciones}}</td>
+      <td>David Enrique Ochoa Diaz</td>
       <td>
         <ul>
           <li>Supervisión diaria del punto de venta</li>
@@ -135,7 +230,7 @@ const SECCION_2 = `
     </tr>
     <tr>
       <td>Chef / Responsable de Cocina</td>
-      <td>{{responsables.chef}}</td>
+      <td>Aracely Sansores Gongora</td>
       <td>
         <ul>
           <li>Preparación de alimentos en cocina doméstica</li>
@@ -152,9 +247,12 @@ const SECCION_2 = `
 manipule alimentos deberá contar con Food Safety Level 1 como mínimo.
 El Operations & Compliance Manager deberá acreditar Food Safety
 Level 2 y HACCP antes de su incorporación.</em></p>
-`;
+</div>
+    </section>
 
-const SECCION_3 = `
+    <section id="seccion-3" class="seccion">
+      <h1>3. Descripción de Productos</h1>
+      <div class="seccion-contenido">
 <h2 id="sec-3-1">3.1 Descripción General</h2>
 <p>Órale elabora y sirve comida mexicana tradicional cocinada de forma
 artesanal en cocina doméstica en Limerick. Los alimentos se preparan
@@ -246,9 +344,12 @@ mayorista ni venta de productos envasados no etiquetados.</p>
     </tr>
   </tbody>
 </table>
-`;
+</div>
+    </section>
 
-const SECCION_4 = `
+    <section id="seccion-4" class="seccion">
+      <h1>4. Diagramas de Flujo</h1>
+      <div class="seccion-contenido">
 <h2 id="sec-4-1">4.1 Venta en Calle con Cocina Doméstica</h2>
 <p>Flujo completo desde la cocina doméstica hasta el punto de venta:</p>
 <table>
@@ -407,9 +508,12 @@ const SECCION_4 = `
     </tr>
   </tbody>
 </table>
-`;
+</div>
+    </section>
 
-const SECCION_5 = `
+    <section id="seccion-5" class="seccion">
+      <h1>5. Análisis de Peligros</h1>
+      <div class="seccion-contenido">
 <h2 id="sec-5-1">5.1 Leyenda de Riesgo</h2>
 <table>
   <thead>
@@ -578,9 +682,12 @@ const SECCION_5 = `
     </tr>
   </tbody>
 </table>
-`;
+</div>
+    </section>
 
-const SECCION_6 = `
+    <section id="seccion-6" class="seccion">
+      <h1>6. Puntos Críticos de Control</h1>
+      <div class="seccion-contenido">
 <h2 id="pcc1">PCC 1 – Cocción</h2>
 <p><em>Cocina doméstica, estufa con extractor</em></p>
 <table>
@@ -603,7 +710,7 @@ const SECCION_6 = `
         <p><strong>¿Cómo?</strong> Termómetro sonda calibrado en el
         punto más frío</p>
         <p><strong>¿Cuándo?</strong> Al finalizar cada cocción</p>
-        <p><strong>¿Quién?</strong> {{responsables.chef}}</p>
+        <p><strong>¿Quién?</strong> Aracely Sansores Gongora</p>
       </td>
     </tr>
     <tr>
@@ -647,7 +754,7 @@ const SECCION_6 = `
         <p><strong>¿Cómo?</strong> Termómetro sonda en punto central</p>
         <p><strong>¿Cuándo?</strong> A los 30 min, 1 h y 2 h de
         iniciado el enfriamiento</p>
-        <p><strong>¿Quién?</strong> {{responsables.chef}}</p>
+        <p><strong>¿Quién?</strong> Aracely Sansores Gongora</p>
       </td>
     </tr>
     <tr>
@@ -692,7 +799,7 @@ const SECCION_6 = `
         <p><strong>¿Cómo?</strong> Termómetro sonda calibrado</p>
         <p><strong>¿Cuándo?</strong> Al llegar al punto de venta
         y cada 2 horas durante el servicio</p>
-        <p><strong>¿Quién?</strong> {{responsables.operaciones}}</p>
+        <p><strong>¿Quién?</strong> David Enrique Ochoa Diaz</p>
       </td>
     </tr>
     <tr>
@@ -714,9 +821,12 @@ const SECCION_6 = `
     </tr>
   </tbody>
 </table>
-`;
+</div>
+    </section>
 
-const SECCION_7 = `
+    <section id="seccion-7" class="seccion">
+      <h1>7. Monitoreo y Acciones Correctivas</h1>
+      <div class="seccion-contenido">
 <h2 id="sec-7-1">7.1 Resumen de Monitoreo de PCCs</h2>
 <table>
   <thead>
@@ -738,7 +848,7 @@ const SECCION_7 = `
       <td>Temperatura interna</td>
       <td>Termómetro sonda</td>
       <td>Cada lote cocido</td>
-      <td>{{responsables.chef}}</td>
+      <td>Aracely Sansores Gongora</td>
     </tr>
     <tr>
       <td>PCC2</td>
@@ -747,7 +857,7 @@ const SECCION_7 = `
       <td>Temperatura central</td>
       <td>Termómetro sonda</td>
       <td>Cada 30–60 min</td>
-      <td>{{responsables.chef}}</td>
+      <td>Aracely Sansores Gongora</td>
     </tr>
     <tr class="celda-riesgo-alto">
       <td>PCC3</td>
@@ -756,7 +866,7 @@ const SECCION_7 = `
       <td>Temperatura chafing dish</td>
       <td>Termómetro sonda</td>
       <td>Cada 2 horas</td>
-      <td>{{responsables.operaciones}}</td>
+      <td>David Enrique Ochoa Diaz</td>
     </tr>
   </tbody>
 </table>
@@ -785,9 +895,12 @@ const SECCION_7 = `
   <li>Informar al Director / HACCP Manager en el mismo turno.</li>
   <li>Revisar la causa raíz para implementar medidas preventivas.</li>
 </ol>
-`;
+</div>
+    </section>
 
-const SECCION_8 = `
+    <section id="seccion-8" class="seccion">
+      <h1>8. Verificación y Revisión</h1>
+      <div class="seccion-contenido">
 <h2 id="sec-8-1">8.1 Actividades de Verificación</h2>
 <table>
   <thead>
@@ -804,34 +917,34 @@ const SECCION_8 = `
       <td>Verificar que todas las hojas de control estén completas
       y sin valores fuera de límite sin corrección documentada.</td>
       <td>Semanal</td>
-      <td>{{responsables.director}} / {{responsables.chef}}</td>
+      <td>Vicente Rodriguez Hernandez / Aracely Sansores Gongora</td>
     </tr>
     <tr class="alt">
       <td>Calibración de termómetros</td>
       <td>Contraste con agua helada (0°C) y agua hirviendo (100°C).</td>
       <td>Mensual</td>
-      <td>{{responsables.chef}}</td>
+      <td>Aracely Sansores Gongora</td>
     </tr>
     <tr>
       <td>Auditoría interna HACCP</td>
       <td>Verificación de toda la cadena: cocina doméstica,
       transporte y punto de venta.</td>
       <td>Trimestral</td>
-      <td>{{responsables.director}}</td>
+      <td>Vicente Rodriguez Hernandez</td>
     </tr>
     <tr class="alt">
       <td>Revisión del plan HACCP</td>
       <td>Actualizar ante: cambios de menú, cambio de cocina,
       nuevo personal, quejas o inspección HSE.</td>
       <td>Semestral o ante cambio</td>
-      <td>{{responsables.director}}</td>
+      <td>Vicente Rodriguez Hernandez</td>
     </tr>
     <tr>
       <td>Inspección HSE</td>
       <td>Cooperar plenamente. Presentar todos los registros.
       Implementar correcciones en plazos indicados.</td>
       <td>Según requerimiento</td>
-      <td>{{responsables.director}} / {{responsables.chef}}</td>
+      <td>Vicente Rodriguez Hernandez / Aracely Sansores Gongora</td>
     </tr>
   </tbody>
 </table>
@@ -847,9 +960,12 @@ const SECCION_8 = `
   2 personas relacionadas con Órale, se notificará al HSE
   Environmental Health en el plazo legal (24–48 horas).</li>
 </ul>
-`;
+</div>
+    </section>
 
-const SECCION_9 = `
+    <section id="seccion-9" class="seccion">
+      <h1>9. Documentación y Registros</h1>
+      <div class="seccion-contenido">
 <p>Todos los registros HACCP se conservarán por un mínimo de
 3 años en formato físico (carpeta HACCP) y/o en las herramientas
 digitales de gestión del negocio. El Operations & Compliance
@@ -923,9 +1039,12 @@ por parte del HSE en cualquier momento.</p>
     </tr>
   </tbody>
 </table>
-`;
+</div>
+    </section>
 
-const SECCION_10 = `
+    <section id="seccion-10" class="seccion">
+      <h1>10. Programas Prerrequisito</h1>
+      <div class="seccion-contenido">
 <h2 id="sec-10-1">10.1 Higiene Personal</h2>
 <ul>
   <li>Lavado de manos: agua caliente + jabón + mínimo 20 segundos.
@@ -1011,9 +1130,12 @@ const SECCION_10 = `
   <li>Cuchillos: afilados y en buen estado. Almacenados en
   protectores individuales.</li>
 </ul>
-`;
+</div>
+    </section>
 
-const SECCION_11 = `
+    <section id="seccion-11" class="seccion">
+      <h1>11. Gestión de Alérgenos</h1>
+      <div class="seccion-contenido">
 <h2 id="sec-11-1">11.1 Alérgenos Presentes en el Menú</h2>
 <p>De conformidad con el Reglamento (UE) N.º 1169/2011, Órale
 gestiona activamente los 14 alérgenos de declaración obligatoria.</p>
@@ -1080,9 +1202,12 @@ gestiona activamente los 14 alérgenos de declaración obligatoria.</p>
   <li>Ante clientes con alergias graves: comunicar que la cocina
   no está 100% libre de trazas cruzadas.</li>
 </ul>
-`;
+</div>
+    </section>
 
-const SECCION_12 = `
+    <section id="seccion-12" class="seccion">
+      <h1>12. Consideraciones Específicas</h1>
+      <div class="seccion-contenido">
 <h2 id="sec-12-1">12.1 Cocina Doméstica y Venta en Calle</h2>
 <table>
   <thead>
@@ -1100,7 +1225,7 @@ const SECCION_12 = `
           <li>Cocina estándar: estufa, extractor, horno,
           refrigerador, agua caliente</li>
           <li>Sujeta a inspección y aprobación HSE
-          (Premises Ref: {{hse.premisesRef}})</li>
+          (Premises Ref: 134791)</li>
         </ul>
       </td>
     </tr>
@@ -1179,32 +1304,12 @@ const SECCION_12 = `
     </tr>
   </tbody>
 </table>
-`;
+</div>
+    </section>
 
-const SECCION_13 = (function () {
-  function filasVacias(numFilas, numCols) {
-    const celda = '<td>&nbsp;</td>';
-    let out = '';
-    for (let i = 0; i < numFilas; i++) {
-      out += `    <tr${i % 2 === 1 ? ' class="alt"' : ''}>${celda.repeat(numCols)}</tr>\n`;
-    }
-    return out;
-  }
-
-  function filasZonas(bloques) {
-    let out = '';
-    let idx = 0;
-    bloques.forEach((bloque) => {
-      for (let i = 0; i < bloque.filas; i++) {
-        const cls = idx % 2 === 1 ? ' class="alt"' : '';
-        out += `    <tr${cls}><td>&nbsp;</td><td style="background-color:#E0E0E0;">${bloque.zona}</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>\n`;
-        idx++;
-      }
-    });
-    return out;
-  }
-
-  return `
+    <section id="seccion-13" class="seccion">
+      <h1>13. Formatos HACCP</h1>
+      <div class="seccion-contenido">
 <p>Los siguientes formatos en blanco corresponden a los registros
 obligatorios descritos en la Sección 9.1. Imprimir según necesidad
 y conservar completados por un mínimo de 3 años.</p>
@@ -1228,7 +1333,27 @@ de cada lote cocido. Límite crítico: &ge;75°C.</p>
     </tr>
   </thead>
   <tbody>
-${filasVacias(20, 8)}  </tbody>
+    <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr class="alt"><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr class="alt"><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr class="alt"><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr class="alt"><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr class="alt"><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr class="alt"><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr class="alt"><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr class="alt"><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr class="alt"><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr class="alt"><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+  </tbody>
 </table>
 
 <h3 id="haccp-02">HACCP-02 – Control de Enfriamiento Rápido</h3>
@@ -1251,7 +1376,17 @@ durante el proceso de enfriamiento. Límite crítico: de &gt;63°C a
     </tr>
   </thead>
   <tbody>
-${filasVacias(10, 10)}  </tbody>
+    <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr class="alt"><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr class="alt"><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr class="alt"><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr class="alt"><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr class="alt"><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+  </tbody>
 </table>
 
 <h3 id="haccp-03">HACCP-03 – Control de Temperatura en Servicio</h3>
@@ -1270,7 +1405,27 @@ ${filasVacias(10, 10)}  </tbody>
     </tr>
   </thead>
   <tbody>
-${filasVacias(20, 7)}  </tbody>
+    <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr class="alt"><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr class="alt"><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr class="alt"><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr class="alt"><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr class="alt"><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr class="alt"><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr class="alt"><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr class="alt"><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr class="alt"><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr class="alt"><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+  </tbody>
 </table>
 
 <h3 id="haccp-04">HACCP-04 – Control de Recepción de Mercancía</h3>
@@ -1293,7 +1448,22 @@ refrigerados o si el envase está dañado.</p>
     </tr>
   </thead>
   <tbody>
-${filasVacias(15, 10)}  </tbody>
+    <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr class="alt"><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr class="alt"><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr class="alt"><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr class="alt"><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr class="alt"><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr class="alt"><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr class="alt"><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+  </tbody>
 </table>
 
 <h3 id="haccp-05">HACCP-05 – Control de Temperatura del Refrigerador</h3>
@@ -1314,7 +1484,38 @@ ${filasVacias(15, 10)}  </tbody>
     </tr>
   </thead>
   <tbody>
-${filasVacias(31, 9)}  </tbody>
+    <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr class="alt"><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr class="alt"><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr class="alt"><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr class="alt"><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr class="alt"><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr class="alt"><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr class="alt"><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr class="alt"><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr class="alt"><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr class="alt"><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr class="alt"><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr class="alt"><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr class="alt"><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr class="alt"><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr class="alt"><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+  </tbody>
 </table>
 
 <h3 id="haccp-06">HACCP-06 – Registro de Limpieza y Desinfección Diaria</h3>
@@ -1334,14 +1535,27 @@ jornada, para cada zona/equipo indicado en la columna preimpresa
     </tr>
   </thead>
   <tbody>
-${filasZonas([
-    { zona: 'Superficies cocina doméstica', filas: 4 },
-    { zona: 'Estufa y extractor', filas: 4 },
-    { zona: 'Tablas de corte', filas: 3 },
-    { zona: 'Chafing dishes', filas: 3 },
-    { zona: 'Mesa punto de venta', filas: 3 },
-    { zona: 'Estación lavado de manos', filas: 3 }
-  ])}  </tbody>
+    <tr><td>&nbsp;</td><td style="background-color:#E0E0E0;">Superficies cocina doméstica</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr class="alt"><td>&nbsp;</td><td style="background-color:#E0E0E0;">Superficies cocina doméstica</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr><td>&nbsp;</td><td style="background-color:#E0E0E0;">Superficies cocina doméstica</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr class="alt"><td>&nbsp;</td><td style="background-color:#E0E0E0;">Superficies cocina doméstica</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr><td>&nbsp;</td><td style="background-color:#E0E0E0;">Estufa y extractor</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr class="alt"><td>&nbsp;</td><td style="background-color:#E0E0E0;">Estufa y extractor</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr><td>&nbsp;</td><td style="background-color:#E0E0E0;">Estufa y extractor</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr class="alt"><td>&nbsp;</td><td style="background-color:#E0E0E0;">Estufa y extractor</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr><td>&nbsp;</td><td style="background-color:#E0E0E0;">Tablas de corte</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr class="alt"><td>&nbsp;</td><td style="background-color:#E0E0E0;">Tablas de corte</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr><td>&nbsp;</td><td style="background-color:#E0E0E0;">Tablas de corte</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr class="alt"><td>&nbsp;</td><td style="background-color:#E0E0E0;">Chafing dishes</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr><td>&nbsp;</td><td style="background-color:#E0E0E0;">Chafing dishes</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr class="alt"><td>&nbsp;</td><td style="background-color:#E0E0E0;">Chafing dishes</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr><td>&nbsp;</td><td style="background-color:#E0E0E0;">Mesa punto de venta</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr class="alt"><td>&nbsp;</td><td style="background-color:#E0E0E0;">Mesa punto de venta</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr><td>&nbsp;</td><td style="background-color:#E0E0E0;">Mesa punto de venta</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr class="alt"><td>&nbsp;</td><td style="background-color:#E0E0E0;">Estación lavado de manos</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr><td>&nbsp;</td><td style="background-color:#E0E0E0;">Estación lavado de manos</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr class="alt"><td>&nbsp;</td><td style="background-color:#E0E0E0;">Estación lavado de manos</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+  </tbody>
 </table>
 
 <h3 id="haccp-07">HACCP-07 – Registro de Incidentes y Acciones Correctivas</h3>
@@ -1362,7 +1576,17 @@ desviación de un límite crítico o queja de cliente.</p>
     </tr>
   </thead>
   <tbody>
-${filasVacias(10, 9)}  </tbody>
+    <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr class="alt"><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr class="alt"><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr class="alt"><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr class="alt"><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr class="alt"><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+  </tbody>
 </table>
 
 <h3 id="haccp-08">HACCP-08 – Registro de Calibración de Termómetros</h3>
@@ -1383,7 +1607,19 @@ helada (0°C) y agua hirviendo (100°C).</p>
     </tr>
   </thead>
   <tbody>
-${filasVacias(12, 9)}  </tbody>
+    <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr class="alt"><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr class="alt"><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr class="alt"><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr class="alt"><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr class="alt"><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr class="alt"><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+  </tbody>
 </table>
 
 <h3 id="haccp-09">HACCP-09 – Registro de Formación del Personal</h3>
@@ -1404,12 +1640,29 @@ cada empleado y en cada revisión anual.</p>
     </tr>
   </thead>
   <tbody>
-${filasVacias(10, 9)}  </tbody>
+    <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr class="alt"><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr class="alt"><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr class="alt"><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr class="alt"><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+    <tr class="alt"><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+  </tbody>
 </table>
-`;
-})();
+</div>
+    </section>
 
-const ANEXO = `
+    <section id="seccion-14" class="seccion">
+      <h1>14. Aprobación y Firma</h1>
+      <div class="seccion-contenido"></div>
+    </section>
+
+    <section id="anexo" class="seccion">
+      <h1>Anexo. Equipamiento Mínimo</h1>
+      <div class="seccion-contenido">
 <h2>Cocina Doméstica — verificar antes de cada preparación</h2>
 <ul class="checklist">
   <li>Termómetro de sonda digital (x2 operativos)</li>
@@ -1448,100 +1701,70 @@ const ANEXO = `
 </ul>
 
 <p><strong>Verificar antes de cada jornada operativa.</strong></p>
-`;
+</div>
+    </section>
 
-const SECCIONES = {
-  'seccion-1': SECCION_1,
-  'seccion-2': SECCION_2,
-  'seccion-3': SECCION_3,
-  'seccion-4': SECCION_4,
-  'seccion-5': SECCION_5,
-  'seccion-6': SECCION_6,
-  'seccion-7': SECCION_7,
-  'seccion-8': SECCION_8,
-  'seccion-9': SECCION_9,
-  'seccion-10': SECCION_10,
-  'seccion-11': SECCION_11,
-  'seccion-12': SECCION_12,
-  'seccion-13': SECCION_13,
-  'anexo': ANEXO
-};
+    <!-- ===================================================================
+         FOOTER DEL DOCUMENTO
+         NOTA: se usa la clase "pie-documento" (no "print-footer") porque
+         "print-footer" ya está definida en styles.css como el pie FIJO que
+         se repite en cada página impresa (con su propio texto generado por
+         CSS vía ::after). Reutilizar ese nombre aquí duplicaría el texto y
+         forzaría position:fixed sobre este footer de una sola vez al final
+         del documento. Pendiente: agregar estilos para .pie-documento en
+         styles.css.
+         =================================================================== -->
+    <footer class="pie-documento">
+      Órale – Authentic Mexican Flavor Limited · CRO 805512 · orale.mexican.flavor@gmail.com · +353 89 9610 776
+    </footer>
 
-// ---------------------------------------------------------------------------
-// Helpers
-// ---------------------------------------------------------------------------
+  </main>
 
-/**
- * Inyecta contentHtml dentro del único <div class="seccion-contenido"></div>
- * que sigue a <section id="sectionId" class="seccion">.
- */
-function injectSection(html, sectionId, contentHtml) {
-  const sectionMarker = `<section id="${sectionId}" class="seccion">`;
-  const sectionIdx = html.indexOf(sectionMarker);
-  if (sectionIdx === -1) {
-    throw new Error(`No se encontró la sección "${sectionId}" en base.html`);
-  }
+  <!-- =====================================================================
+       SCRIPTS
+       ===================================================================== -->
 
-  const divMarker = '<div class="seccion-contenido"></div>';
-  const divIdx = html.indexOf(divMarker, sectionIdx);
-  if (divIdx === -1) {
-    throw new Error(`No se encontró el div.seccion-contenido para "${sectionId}"`);
-  }
+  <!-- Toggle vista impresión / normal + botón imprimir -->
+  <script>
+    (function () {
+      var btnToggle = document.getElementById('btn-toggle-vista');
+      var btnImprimir = document.getElementById('btn-imprimir');
 
-  const before = html.slice(0, divIdx);
-  const after = html.slice(divIdx + divMarker.length);
-  const replacement = `<div class="seccion-contenido">\n${contentHtml.trim()}\n</div>`;
+      btnToggle.addEventListener('click', function () {
+        var enVistaImpresion = document.body.classList.toggle('print-preview');
+        btnToggle.textContent = enVistaImpresion ? 'Vista Normal' : 'Vista Impresión';
+      });
 
-  return before + replacement + after;
-}
+      btnImprimir.addEventListener('click', function () {
+        window.print();
+      });
+    })();
+  </script>
 
-/** Resuelve "a.b.c" contra un objeto anidado. */
-function resolvePath(obj, keyPath) {
-  return keyPath.split('.').reduce((acc, key) => (acc != null ? acc[key] : undefined), obj);
-}
+  <!-- Sección activa en sidebar mediante IntersectionObserver -->
+  <script>
+    (function () {
+      var navLinks = document.querySelectorAll('.sidebar .nav-link');
+      var secciones = document.querySelectorAll('.contenido .seccion');
 
-/** Reemplaza todos los {{placeholder}} (incluyendo rutas con punto) contra data. */
-function fillPlaceholders(html, data) {
-  return html.replace(/\{\{\s*([\w.]+)\s*\}\}/g, (match, key) => {
-    const value = resolvePath(data, key);
-    if (value === undefined || value === null) {
-      console.warn(`Advertencia: placeholder "{{${key}}}" no se pudo resolver, se deja sin sustituir.`);
-      return match;
-    }
-    return String(value);
-  });
-}
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          var id = entry.target.id;
+          navLinks.forEach(function (link) {
+            var esActivo = link.getAttribute('href') === '#' + id;
+            link.classList.toggle('activo', esActivo);
+          });
+        });
+      }, { threshold: 0.3 });
 
-// ---------------------------------------------------------------------------
-// Generación
-// ---------------------------------------------------------------------------
+      secciones.forEach(function (seccion) {
+        observer.observe(seccion);
+      });
+    })();
+  </script>
 
-function generar() {
-  console.log(`Generando HACCP Plan ES v${config.version}...`);
+  <!-- TODO: <script src="../shared/print-pagination.js"></script> -->
 
-  let html = fs.readFileSync(BASE_HTML_PATH, 'utf8');
-
-  Object.keys(SECCIONES).forEach((sectionId) => {
-    html = injectSection(html, sectionId, SECCIONES[sectionId]);
-  });
-
-  const data = Object.assign({}, config, {
-    lang: LANG,
-    ui: i18n[LANG].ui,
-    nav: i18n[LANG].nav
-  });
-  html = fillPlaceholders(html, data);
-
-  fs.mkdirSync(path.dirname(OUTPUT_PATH), { recursive: true });
-  fs.writeFileSync(OUTPUT_PATH, html, 'utf8');
-
-  // El HTML generado referencia "../shared/styles.css" desde outputs/es/,
-  // lo que resuelve a outputs/shared/styles.css — se copia aquí para que
-  // el link no quede roto una vez que el HTML vive fuera de src/.
-  fs.mkdirSync(path.dirname(STYLES_DEST_PATH), { recursive: true });
-  fs.copyFileSync(STYLES_SRC_PATH, STYLES_DEST_PATH);
-
-  console.log(`OK: HTML generado en ${OUTPUT_PATH}`);
-}
-
-generar();
+</body>
+</html>
