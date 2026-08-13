@@ -8,8 +8,6 @@ module.exports = {
   es: {
     ui: {
       planLabel: "Plan HACCP",
-      btnVistaImpresion: "Vista Impresión",
-      btnVistaNormal: "Vista Normal",
       btnImprimir: "Imprimir",
       printFooterText: "Documento confidencial – Uso interno y regulatorio"
     },
@@ -77,8 +75,6 @@ module.exports = {
   en: {
     ui: {
       planLabel: "HACCP Plan",
-      btnVistaImpresion: "Print View",
-      btnVistaNormal: "Normal View",
       btnImprimir: "Print",
       printFooterText: "Confidential document – Internal and regulatory use"
     },

@@ -41,7 +41,6 @@
        ===================================================================== -->
   <div class="controles-vista">
     <a href="/haccp/es/HACCP_Orale_v1.3_ES.html" id="btn-idioma" class="btn-idioma">🌐 Español</a>
-    <button type="button" id="btn-toggle-vista" class="btn-vista-impresion">Print View</button>
     <button type="button" id="btn-imprimir" class="btn-imprimir">Print</button>
   </div>
 
@@ -1936,16 +1935,10 @@ to high-risk food stall activities.</em></p>
        SCRIPTS
        ===================================================================== -->
 
-  <!-- Toggle vista impresión / normal + botón imprimir -->
+  <!-- Botón imprimir -->
   <script>
     (function () {
-      var btnToggle = document.getElementById('btn-toggle-vista');
       var btnImprimir = document.getElementById('btn-imprimir');
-
-      btnToggle.addEventListener('click', function () {
-        var enVistaImpresion = document.body.classList.toggle('print-preview');
-        btnToggle.textContent = enVistaImpresion ? 'Normal View' : 'Print View';
-      });
 
       btnImprimir.addEventListener('click', function () {
         window.print();
