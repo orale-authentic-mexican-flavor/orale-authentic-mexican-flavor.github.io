@@ -135,7 +135,7 @@ module.exports = {
       s13: "13. HACCP Recording Formats",
       s13_1: "HACCP-01 to HACCP-09",
 
-      s14: "14. Approval and Signature",
+      s14: "14. Approval & Signature",
 
       anexo: "Annex. Minimum Required Equipment"
     }
