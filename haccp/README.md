@@ -35,10 +35,10 @@ npm run generate:en     # Solo inglés
 ```
 
 **Outputs:**
-- `/outputs/private/es/HACCP_Orale_v1.3_ES.html`
-- `/outputs/private/en/HACCP_Orale_v1.3_EN.html`
-- `/outputs/private/es/HACCP_Formatos_v1.3_ES.html`
-- `/outputs/private/en/HACCP_Formatos_v1.3_EN.html`
+- `/outputs/es/HACCP_Orale_v1.3_ES.html`
+- `/outputs/en/HACCP_Orale_v1.3_EN.html`
+- `/outputs/es/HACCP_Formatos_v1.3_ES.html`
+- `/outputs/en/HACCP_Formatos_v1.3_EN.html`
 
 **Control de versiones HACCP:**
 
@@ -84,10 +84,10 @@ npm run generate:en     # English only
 ```
 
 **Outputs:**
-- `/outputs/private/es/HACCP_Orale_v1.3_ES.html`
-- `/outputs/private/en/HACCP_Orale_v1.3_EN.html`
-- `/outputs/private/es/HACCP_Formatos_v1.3_ES.html`
-- `/outputs/private/en/HACCP_Formatos_v1.3_EN.html`
+- `/outputs/es/HACCP_Orale_v1.3_ES.html`
+- `/outputs/en/HACCP_Orale_v1.3_EN.html`
+- `/outputs/es/HACCP_Formatos_v1.3_ES.html`
+- `/outputs/en/HACCP_Formatos_v1.3_EN.html`
 
 **HACCP version control:**
 

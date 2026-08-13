@@ -1,0 +1,433 @@
+/* =========================================================================
+   ÓRALE – AUTHENTIC MEXICAN FLAVOR LIMITED
+   Plan HACCP v1.3 — Hoja de estilos compartida (ES / EN)
+   Contextos: pantalla normal · vista previa de impresión (.print-preview) · @media print
+   ========================================================================= */
+
+:root {
+  --color-rojo: #B22222;
+  --color-verde: #006847;
+  --color-verde-oscuro: #004030;
+  --color-amarillo: #FFD700;
+  --color-azul: #0047AB;
+  --color-crema: #FBF6EC;
+  --color-gris-oscuro: #2E4053;
+  --color-gris-claro: #F5F5F5;
+  --color-blanco: #FFFFFF;
+
+  --sidebar-width: 260px;
+}
+
+/* =========================================================================
+   RESET BÁSICO
+   ========================================================================= */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+/* =========================================================================
+   TIPOGRAFÍA
+   ========================================================================= */
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.9rem;
+  color: #333333;
+  line-height: 1.6;
+  background-color: var(--color-crema);
+}
+
+h1 {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  font-size: 1.6rem;
+  color: var(--color-verde-oscuro);
+  padding-bottom: 0.5rem;
+  border-bottom: 6px solid var(--color-verde);
+}
+
+h2 {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: var(--color-rojo);
+}
+
+h3 {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  font-size: 1rem;
+  color: var(--color-gris-oscuro);
+}
+
+table,
+th,
+td {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.8rem;
+}
+
+/* =========================================================================
+   LAYOUT — PANTALLA
+   ========================================================================= */
+
+.sidebar {
+  position: fixed;
+  top: 60px;        /* debajo del header fijo */
+  left: 0;
+  width: var(--sidebar-width);
+  height: calc(100vh - 60px);
+  overflow-y: auto;
+  background-color: var(--color-verde);
+  color: var(--color-blanco);
+}
+
+.sidebar a,
+.sidebar .nav-link {
+  display: block;
+  color: var(--color-blanco);
+  text-decoration: none;
+  padding: 0.6rem 1rem;
+  transition: background-color 0.2s ease;
+}
+
+.sidebar a:hover,
+.sidebar .nav-link:hover {
+  background-color: var(--color-rojo);
+}
+
+.sidebar .subseccion {
+  padding-left: 16px;
+  font-size: 0.8rem;
+  opacity: 0.85;
+}
+
+.sidebar .nav-link.activo,
+.sidebar .nav-link.active {
+  background-color: var(--color-rojo);
+  font-weight: bold;
+}
+
+.contenido {
+  margin-left: var(--sidebar-width);
+  margin-top: 60px; /* debajo del header fijo */
+  padding: 2rem;
+  max-width: 900px;
+}
+
+.header-fijo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background-color: var(--color-crema);
+  border-bottom: 3px solid var(--color-verde);
+  display: flex;
+  align-items: center;
+  padding: 0 1rem;
+  z-index: 900;
+  gap: 1rem;
+}
+
+.logo {
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+}
+
+.logo-rojo {
+  color: var(--color-rojo);
+}
+
+.logo-verde {
+  color: var(--color-verde);
+}
+
+.subtexto-empresa {
+  font-size: 0.75rem;
+  color: var(--color-gris-oscuro);
+  line-height: 1.3;
+}
+
+.version-info {
+  font-size: 0.7rem;
+  color: var(--color-gris-oscuro);
+  opacity: 0.8;
+  margin-left: auto;
+  text-align: right;
+}
+
+.pie-documento {
+  margin-top: 3rem;
+  padding: 1.5rem;
+  border-top: 2px solid var(--color-verde);
+  font-size: 0.8rem;
+  color: var(--color-gris-oscuro);
+  text-align: center;
+}
+
+/* =========================================================================
+   BOTONES FIJOS (esquina superior derecha)
+   ========================================================================= */
+
+.controles-vista {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 1000;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.controles-vista button {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.85rem;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  color: var(--color-blanco);
+  cursor: pointer;
+}
+
+.btn-vista-impresion {
+  background-color: var(--color-azul);
+}
+
+.btn-imprimir {
+  background-color: var(--color-rojo);
+}
+
+/* =========================================================================
+   TABLAS
+   ========================================================================= */
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th {
+  background-color: var(--color-gris-oscuro);
+  color: var(--color-blanco);
+  padding: 10px;
+}
+
+td {
+  padding: 10px;
+}
+
+th,
+td {
+  border: 1px solid #CCCCCC;
+}
+
+tr:nth-child(odd) {
+  background-color: var(--color-blanco);
+}
+
+tr:nth-child(even) {
+  background-color: var(--color-gris-claro);
+}
+
+/* Selectores "tr.clase" para ganar en especificidad a tr:nth-child(odd/even)
+   de arriba (0,1,1 vs 0,1,0 de ".clase" sola) — sin esto, el color de riesgo
+   de una fila completa (Sección 5) queda tapado por el rayado alterno. */
+.celda-riesgo-alto,
+tr.celda-riesgo-alto {
+  background-color: #FFEBEE;
+}
+
+.celda-riesgo-medio,
+tr.celda-riesgo-medio {
+  background-color: #FFFDE7;
+}
+
+.celda-ok,
+tr.celda-ok {
+  background-color: #E8F5E9;
+}
+
+.celda-header-verde {
+  background-color: var(--color-verde);
+  color: var(--color-blanco);
+}
+
+/* =========================================================================
+   SECCIONES Y LISTAS
+   ========================================================================= */
+
+.seccion {
+  padding-bottom: 2rem;
+  border-bottom: 2px solid var(--color-verde);
+  margin-bottom: 2rem;
+  scroll-margin-top: 80px; /* 60px header + 20px holgura */
+}
+
+.seccion-contenido {
+  margin-top: 1rem;
+}
+
+ul {
+  line-height: 1.8;
+}
+
+ul li::marker {
+  color: var(--color-rojo);
+}
+
+.checklist {
+  list-style: none;
+  padding-left: 0;
+}
+
+.checklist li {
+  position: relative;
+  padding-left: 1.8rem;
+  line-height: 1.8;
+}
+
+.checklist li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.2rem;
+  width: 1rem;
+  height: 1rem;
+  border: 2px solid var(--color-verde);
+  background-color: var(--color-blanco);
+}
+
+/* =========================================================================
+   TOGGLE — VISTA PREVIA DE IMPRESIÓN (body.print-preview)
+   ========================================================================= */
+
+body.print-preview {
+  background-color: var(--color-blanco);
+}
+
+body.print-preview .header-fijo {
+  position: static;
+  border-bottom: none;
+}
+
+body.print-preview .sidebar {
+  display: none;
+}
+
+body.print-preview .contenido {
+  margin-left: 0;
+  margin-top: 0;
+  max-width: 100%;
+}
+
+body.print-preview .controles-vista .btn-vista-impresion {
+  display: none;
+}
+
+body.print-preview * {
+  box-shadow: none !important;
+}
+
+body.print-preview h1,
+body.print-preview h2,
+body.print-preview h3,
+body.print-preview .seccion {
+  border: none;
+}
+
+/* =========================================================================
+   IMPRESIÓN REAL (@media print)
+   ========================================================================= */
+
+@media print {
+  @page {
+    margin: 2cm 1.5cm;
+  }
+
+  body {
+    background-color: var(--color-blanco);
+    font-size: 0.75rem;
+  }
+
+  .header-fijo,
+  .sidebar,
+  .controles-vista {
+    display: none;
+  }
+
+  .contenido {
+    margin: 0;
+    padding: 1cm;
+    max-width: 100%;
+  }
+
+  .seccion {
+    scroll-margin-top: 0;
+  }
+
+  .seccion + .seccion h1,
+  .seccion ~ .seccion h1 {
+    page-break-before: always;
+  }
+
+  .pie-documento {
+    border-top: 1px solid #CCCCCC;
+  }
+
+  table {
+    page-break-inside: avoid;
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  /* Encabezado y pie fijos en cada página impresa.
+     position: fixed dentro de @media print se repite en cada hoja en los
+     motores basados en Chromium/WebKit (el destino esperado de estos HTML). */
+  .print-header,
+  .print-footer {
+    display: block;
+    position: fixed;
+    left: 0;
+    right: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.65rem;
+    color: var(--color-gris-oscuro);
+    text-align: center;
+  }
+
+  .print-header {
+    top: 0;
+    border-bottom: 1px solid #CCCCCC;
+    padding-bottom: 0.3cm;
+  }
+
+  .print-header::after {
+    content: var(--print-header-text);
+  }
+
+  .print-footer {
+    bottom: 0;
+    border-top: 1px solid #CCCCCC;
+    padding-top: 0.3cm;
+  }
+
+  .print-footer::after {
+    /* Sin numeración de página: counter(page)/counter(pages) (CSS GCPM) no
+       está implementado por ningún navegador mainstream. La numeración real
+       requiere un script beforeprint/afterprint en el HTML que consuma este
+       CSS (pendiente hasta que exista ese HTML — ver memoria del proyecto). */
+    content: var(--print-footer-text);
+  }
+}
