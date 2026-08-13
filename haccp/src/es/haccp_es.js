@@ -1409,6 +1409,47 @@ ${filasVacias(10, 9)}  </tbody>
 `;
 })();
 
+const ANEXO = `
+<h2>Cocina Doméstica — verificar antes de cada preparación</h2>
+<ul class="checklist">
+  <li>Termómetro de sonda digital (x2 operativos)</li>
+  <li>Termómetro de nevera (lectura &lt;5°C)</li>
+  <li>Alcohol en spray para desinfectar sonda</li>
+  <li>Tablas de corte por código de color (roja, verde, amarilla)</li>
+  <li>Cuchillos separados con afilador y protectores individuales</li>
+  <li>Recipientes herméticos etiquetables</li>
+  <li>Jabón líquido y papel desechable en fregadero</li>
+  <li>Delantales limpios (mínimo 2)</li>
+  <li>Gorras o mallas para el cabello</li>
+  <li>Guantes desechables</li>
+  <li>Desinfectante aprobado para uso alimentario</li>
+  <li>Paños desechables (no reutilizables)</li>
+  <li>Carpeta HACCP con formatos HACCP-01 a HACCP-09 impresos</li>
+  <li>Etiquetas para fechado de productos</li>
+  <li>Bolígrafos para registros</li>
+</ul>
+
+<h2>Punto de Venta — verificar antes de cada salida</h2>
+<ul class="checklist">
+  <li>Bidón portátil con grifo (agua potable)</li>
+  <li>Recipiente para agua residual</li>
+  <li>Jabón líquido y papel desechable</li>
+  <li>Dispensador de gel desinfectante</li>
+  <li>Chafing dishes con tapa (mínimo 2, precalentados)</li>
+  <li>Bolsas o maletines isotérmicos</li>
+  <li>Mesa de trabajo con superficie lavable</li>
+  <li>Contenedor de residuos con tapa</li>
+  <li>Señalización de alérgenos visible</li>
+  <li>Termómetro de sonda (unidad punto de venta)</li>
+  <li>Copia impresa de autorización LCCC vigente</li>
+  <li>Copia impresa del Plan HACCP vigente</li>
+  <li>Formatos HACCP-03 y HACCP-06 impresos para la jornada</li>
+  <li>Bolígrafos para registros</li>
+</ul>
+
+<p><strong>Verificar antes de cada jornada operativa.</strong></p>
+`;
+
 const SECCIONES = {
   'seccion-1': SECCION_1,
   'seccion-2': SECCION_2,
@@ -1422,7 +1463,8 @@ const SECCIONES = {
   'seccion-10': SECCION_10,
   'seccion-11': SECCION_11,
   'seccion-12': SECCION_12,
-  'seccion-13': SECCION_13
+  'seccion-13': SECCION_13,
+  'anexo': ANEXO
 };
 
 // ---------------------------------------------------------------------------
