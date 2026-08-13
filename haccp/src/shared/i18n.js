@@ -132,12 +132,12 @@ module.exports = {
       s12: "12. Specific Considerations",
       s12_1: "12.1 Domestic Kitchen and Street Sale",
 
-      s13: "13. HACCP Formats",
+      s13: "13. HACCP Recording Formats",
       s13_1: "HACCP-01 to HACCP-09",
 
       s14: "14. Approval and Signature",
 
-      anexo: "Annex. Minimum Equipment"
+      anexo: "Annex. Minimum Required Equipment"
     }
   }
 };

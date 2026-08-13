@@ -1410,6 +1410,47 @@ ${blankRows(10, 9)}  </tbody>
 `;
 })();
 
+const ANEXO = `
+<h2>Domestic Kitchen — before each preparation</h2>
+<ul class="checklist">
+  <li>Digital probe thermometer (x2 operational)</li>
+  <li>Refrigerator thermometer (reading &lt;5°C)</li>
+  <li>Spray alcohol to disinfect the probe</li>
+  <li>Colour-coded cutting boards (red, green, yellow)</li>
+  <li>Separate knives with sharpener and individual guards</li>
+  <li>Labelable airtight containers</li>
+  <li>Liquid soap and disposable paper at the sink</li>
+  <li>Clean aprons (minimum 2)</li>
+  <li>Caps or hairnets</li>
+  <li>Disposable gloves</li>
+  <li>Food-grade approved disinfectant</li>
+  <li>Disposable cloths (not reusable)</li>
+  <li>HACCP folder with printed HACCP-01 to HACCP-09 formats</li>
+  <li>Product date-labelling stickers</li>
+  <li>Pens for recording</li>
+</ul>
+
+<h2>Point of Sale — before each outing</h2>
+<ul class="checklist">
+  <li>Portable water container with tap (potable water)</li>
+  <li>Container for waste water</li>
+  <li>Liquid soap and disposable paper</li>
+  <li>Hand sanitiser gel dispenser</li>
+  <li>Covered chafing dishes (minimum 2, pre-heated)</li>
+  <li>Insulated bags or carriers</li>
+  <li>Work table with washable surface</li>
+  <li>Covered waste container</li>
+  <li>Visible allergen signage</li>
+  <li>Probe thermometer (point-of-sale unit)</li>
+  <li>Printed copy of current Casual Trading Licence</li>
+  <li>Printed copy of current HACCP Plan</li>
+  <li>HACCP-03 and HACCP-06 formats printed for the shift</li>
+  <li>Pens for recording</li>
+</ul>
+
+<p><strong>Check before each operational working day.</strong></p>
+`;
+
 const SECCIONES = {
   'seccion-1': SECCION_1,
   'seccion-2': SECCION_2,
@@ -1423,7 +1464,8 @@ const SECCIONES = {
   'seccion-10': SECCION_10,
   'seccion-11': SECCION_11,
   'seccion-12': SECCION_12,
-  'seccion-13': SECCION_13
+  'seccion-13': SECCION_13,
+  'anexo': ANEXO
 };
 
 // ---------------------------------------------------------------------------
