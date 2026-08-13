@@ -41,7 +41,6 @@
        ===================================================================== -->
   <div class="controles-vista">
     <!-- BTN_IDIOMA -->
-    <button type="button" id="btn-toggle-vista" class="btn-vista-impresion">{{ui.btnVistaImpresion}}</button>
     <button type="button" id="btn-imprimir" class="btn-imprimir">{{ui.btnImprimir}}</button>
   </div>
 
@@ -207,16 +206,10 @@
        SCRIPTS
        ===================================================================== -->
 
-  <!-- Toggle vista impresión / normal + botón imprimir -->
+  <!-- Botón imprimir -->
   <script>
     (function () {
-      var btnToggle = document.getElementById('btn-toggle-vista');
       var btnImprimir = document.getElementById('btn-imprimir');
-
-      btnToggle.addEventListener('click', function () {
-        var enVistaImpresion = document.body.classList.toggle('print-preview');
-        btnToggle.textContent = enVistaImpresion ? '{{ui.btnVistaNormal}}' : '{{ui.btnVistaImpresion}}';
-      });
 
       btnImprimir.addEventListener('click', function () {
         window.print();

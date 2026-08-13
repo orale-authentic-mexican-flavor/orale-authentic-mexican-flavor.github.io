@@ -1,7 +1,7 @@
 /* =========================================================================
    ÓRALE – AUTHENTIC MEXICAN FLAVOR LIMITED
    Plan HACCP v1.3 — Hoja de estilos compartida (ES / EN)
-   Contextos: pantalla normal · vista previa de impresión (.print-preview) · @media print
+   Contextos: pantalla normal · @media print
    ========================================================================= */
 
 :root {
@@ -198,10 +198,6 @@ td {
   cursor: pointer;
 }
 
-.btn-vista-impresion {
-  background-color: var(--color-azul);
-}
-
 .btn-imprimir {
   background-color: var(--color-rojo);
 }
@@ -331,44 +327,6 @@ ul li::marker {
   border-left: 3px solid var(--color-verde);
   padding-left: 1rem;
   margin-top: 1.5rem;
-}
-
-/* =========================================================================
-   TOGGLE — VISTA PREVIA DE IMPRESIÓN (body.print-preview)
-   ========================================================================= */
-
-body.print-preview {
-  background-color: var(--color-blanco);
-}
-
-body.print-preview .header-fijo {
-  position: static;
-  border-bottom: none;
-}
-
-body.print-preview .sidebar {
-  display: none;
-}
-
-body.print-preview .contenido {
-  margin-left: 0;
-  margin-top: 0;
-  max-width: 100%;
-}
-
-body.print-preview .btn-idioma {
-  display: none;
-}
-
-body.print-preview * {
-  box-shadow: none !important;
-}
-
-body.print-preview h1,
-body.print-preview h2,
-body.print-preview h3,
-body.print-preview .seccion {
-  border: none;
 }
 
 /* =========================================================================
