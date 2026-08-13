@@ -61,6 +61,7 @@ Ejemplo representativo: 20 porciones de pozole de 650 ml por jornada.</p>
 </ul>
 
 <h2 id="sec-1-3">1.3 Marco Regulatorio Aplicable</h2>
+<div class="tabla-wrapper">
 <table>
   <thead>
     <tr>
@@ -96,6 +97,7 @@ Ejemplo representativo: 20 porciones de pozole de 650 ml por jornada.</p>
     </tr>
   </tbody>
 </table>
+</div>
 
 <h2 id="sec-1-4">1.4 Clasificación de la Operación</h2>
 <p>De conformidad con el FSAI Guidance Note No. 16 Food Stalls
@@ -115,6 +117,7 @@ target="_blank">fsai.ie</a></em></p>
 `;
 
 const SECCION_2 = `
+<div class="tabla-wrapper">
 <table>
   <thead>
     <tr>
@@ -166,6 +169,7 @@ const SECCION_2 = `
     </tr>
   </tbody>
 </table>
+</div>
 <p class="nota"><em>Requisito de formación: Todo el personal que
 manipule alimentos deberá contar con Food Safety Level 1 como mínimo.
 El Operations & Compliance Manager cuenta con certificado de
@@ -184,6 +188,7 @@ Se sirven directamente al consumidor final. No se realiza distribución
 mayorista ni venta de productos envasados no etiquetados.</p>
 
 <h2 id="sec-3-2">3.2 Tabla de Productos y Peligros Asociados</h2>
+<div class="tabla-wrapper">
 <table>
   <thead>
     <tr>
@@ -266,11 +271,13 @@ mayorista ni venta de productos envasados no etiquetados.</p>
     </tr>
   </tbody>
 </table>
+</div>
 `;
 
 const SECCION_4 = `
 <h2 id="sec-4-1">4.1 Venta en Calle con Cocina Doméstica</h2>
 <p>Flujo completo desde la cocina doméstica hasta el punto de venta:</p>
+<div class="tabla-wrapper">
 <table>
   <thead>
     <tr>
@@ -337,7 +344,7 @@ const SECCION_4 = `
       <td>
         <ul>
           <li>De &gt;63°C a &lt;5°C en máx. 4 horas</li>
-          <li>Baño de hielo en fregadero doméstico</li>
+          <li>Baño de hielo en la tarja doméstica</li>
           <li>Porciones pequeñas para acelerar enfriamiento</li>
           <li>Registro en HACCP-02</li>
         </ul>
@@ -432,10 +439,12 @@ const SECCION_4 = `
     </tr>
   </tbody>
 </table>
+</div>
 `;
 
 const SECCION_5 = `
 <h2 id="sec-5-1">5.1 Leyenda de Riesgo</h2>
+<div class="tabla-wrapper">
 <table>
   <thead>
     <tr>
@@ -466,9 +475,11 @@ const SECCION_5 = `
     </tr>
   </tbody>
 </table>
+</div>
 
 <h2 id="sec-5-2">5.2 Tabla de Análisis de Peligros</h2>
-<table>
+<div class="tabla-wrapper">
+<table class="tabla-ancha">
   <thead>
     <tr>
       <th>Etapa</th>
@@ -551,7 +562,7 @@ const SECCION_5 = `
       <td>
         <ul>
           <li>De &gt;63°C a &lt;5°C en máx. 4 h</li>
-          <li>Baño de hielo en fregadero</li>
+          <li>Baño de hielo en la tarja</li>
         </ul>
       </td>
       <td>SÍ (PCC2)</td>
@@ -603,11 +614,13 @@ const SECCION_5 = `
     </tr>
   </tbody>
 </table>
+</div>
 `;
 
 const SECCION_6 = `
 <h2 id="pcc1">PCC 1 – Cocción</h2>
 <p><em>Cocina doméstica, estufa con extractor</em></p>
+<div class="tabla-wrapper">
 <table>
   <tbody>
     <tr>
@@ -657,9 +670,11 @@ const SECCION_6 = `
     </tr>
   </tbody>
 </table>
+</div>
 
 <h2 id="pcc2">PCC 2 – Enfriamiento Rápido</h2>
-<p><em>Fregadero doméstico con baño de hielo</em></p>
+<p><em>Tarja doméstica con baño de hielo</em></p>
+<div class="tabla-wrapper">
 <table>
   <tbody>
     <tr>
@@ -701,9 +716,11 @@ const SECCION_6 = `
     </tr>
   </tbody>
 </table>
+</div>
 
 <h2 id="pcc3">PCC 3 – Mantenimiento en Caliente durante Servicio</h2>
 <p><em>Chafing dishes en punto de venta</em></p>
+<div class="tabla-wrapper">
 <table>
   <tbody>
     <tr>
@@ -747,10 +764,12 @@ const SECCION_6 = `
     </tr>
   </tbody>
 </table>
+</div>
 `;
 
 const SECCION_7 = `
 <h2 id="sec-7-1">7.1 Resumen de Monitoreo de PCCs</h2>
+<div class="tabla-wrapper">
 <table>
   <thead>
     <tr>
@@ -793,6 +812,7 @@ const SECCION_7 = `
     </tr>
   </tbody>
 </table>
+</div>
 
 <h2 id="sec-7-2">7.2 Equipamiento de Medición Requerido</h2>
 <ul>
@@ -822,6 +842,7 @@ const SECCION_7 = `
 
 const SECCION_8 = `
 <h2 id="sec-8-1">8.1 Actividades de Verificación</h2>
+<div class="tabla-wrapper">
 <table>
   <thead>
     <tr>
@@ -868,6 +889,7 @@ const SECCION_8 = `
     </tr>
   </tbody>
 </table>
+</div>
 
 <h2 id="sec-8-2">8.2 Gestión de Quejas de Clientes</h2>
 <ul>
@@ -890,6 +912,7 @@ Manager es responsable de mantenerlos disponibles para inspección
 por parte del HSE en cualquier momento.</p>
 
 <h2 id="sec-9-1">9.1 Formatos de Registro Obligatorios</h2>
+<div class="tabla-wrapper">
 <table>
   <thead>
     <tr>
@@ -956,6 +979,7 @@ por parte del HSE en cualquier momento.</p>
     </tr>
   </tbody>
 </table>
+</div>
 `;
 
 const SECCION_10 = `
@@ -984,7 +1008,7 @@ siguientes momentos:</p>
   <li>Frotar todas las superficies de las manos durante
   mínimo 10–15 segundos, incluyendo yemas de los dedos
   y pulgares</li>
-  <li>Aclarar con agua corriente</li>
+  <li>Enjuagar con agua corriente</li>
   <li>Secar con papel desechable</li>
 </ol>
 <p class="nota"><em>GN16 §4.3.5: El gel/alcohol desinfectante
@@ -1030,15 +1054,15 @@ activas. Notificación obligatoria al responsable.</p>
   <li>Procedimiento:
     <ol>
       <li>Limpiar (eliminar residuos físicos)</li>
-      <li>Aclarar</li>
+      <li>Enjuagar</li>
       <li>Desinfectar</li>
-      <li>Aclarar final</li>
+      <li>Enjuague final</li>
       <li>Secar al aire</li>
     </ol>
   </li>
   <li>Tablas de corte: lavar con agua caliente y jabón tras cada
   uso. Desinfectar al finalizar la sesión.</li>
-  <li>Utensilios: lavar en lavavajillas o a mano con agua caliente
+  <li>Utensilios: lavar en lavatrastes o a mano con agua caliente
   y jabón. Secar con papel desechable, no con trapos reutilizables.</li>
   <li>Registro de limpieza en HACCP-06 al finalizar cada jornada.</li>
 </ul>
@@ -1063,7 +1087,7 @@ activas. Notificación obligatoria al responsable.</p>
   <li>Agua de red potable del apartamento para toda la preparación
   de alimentos.</li>
   <li>Estación portátil de lavado de manos en punto de venta:
-  agua embotellada potable en bidón con grifo, jabón líquido
+  agua embotellada potable en garrafón con llave del agua, jabón líquido
   y papel. Agua sucia en recipiente separado.</li>
 </ul>
 
@@ -1095,7 +1119,8 @@ const SECCION_11 = `
 <h2 id="sec-11-1">11.1 Alérgenos Presentes en el Menú</h2>
 <p>De conformidad con el Reglamento (UE) N.º 1169/2011, Órale
 gestiona activamente los 14 alérgenos de declaración obligatoria.</p>
-<table>
+<div class="tabla-wrapper">
+<table class="tabla-ancha">
   <thead>
     <tr>
       <th>Platillo</th>
@@ -1146,6 +1171,7 @@ gestiona activamente los 14 alérgenos de declaración obligatoria.</p>
     </tr>
   </tbody>
 </table>
+</div>
 
 <h2 id="sec-11-2">11.2 Comunicación de Alérgenos al Cliente</h2>
 <ul>
@@ -1162,6 +1188,7 @@ gestiona activamente los 14 alérgenos de declaración obligatoria.</p>
 
 const SECCION_12 = `
 <h2 id="sec-12-1">12.1 Cocina Doméstica y Venta en Calle</h2>
+<div class="tabla-wrapper">
 <table>
   <thead>
     <tr>
@@ -1220,7 +1247,7 @@ const SECCION_12 = `
       <td>
         <ul>
           <li>Estación portátil obligatoria en cada operación</li>
-          <li>Bidón con grifo, agua potable, jabón y papel</li>
+          <li>Garrafón con llave del agua, agua potable, jabón y papel</li>
           <li>Recipiente separado para agua residual</li>
         </ul>
       </td>
@@ -1293,7 +1320,7 @@ const SECCION_12 = `
       <td>Estación de lavado de manos — especificaciones GN16</td>
       <td>
         <ul>
-          <li>Bidón portátil con grifo: capacidad
+          <li>Garrafón portátil con llave del agua: capacidad
           <strong>mínima 20 litros</strong> (GN16 §4.3.5)</li>
           <li>Etiquetado: <em>"Potable Water Only"</em></li>
           <li>Recipiente de agua residual separado y etiquetado:
@@ -1307,7 +1334,7 @@ const SECCION_12 = `
       <td>Gestión de residuos en punto de venta</td>
       <td>
         <ul>
-          <li>Cubo de basura con <strong>tapa hermética</strong>
+          <li>Cubeta de basura con <strong>tapa hermética</strong>
           (tight-fitting lid) obligatorio — GN16 §4.3.8</li>
           <li>Vaciar durante la jornada si es necesario</li>
           <li>Segregar residuos de almacenamiento de alimentos</li>
@@ -1330,6 +1357,7 @@ const SECCION_12 = `
     </tr>
   </tbody>
 </table>
+</div>
 `;
 
 const SECCION_13 = (function () {
@@ -1365,6 +1393,7 @@ y conservar completados por un mínimo de 3 años.</p>
 <h3 id="haccp-01">HACCP-01 – Control de Temperaturas de Cocción</h3>
 <p><strong>Instrucción de uso:</strong> Registrar la temperatura interna
 de cada lote cocido. Límite crítico: &ge;75°C.</p>
+<div class="tabla-wrapper">
 <table>
   <thead>
     <tr>
@@ -1381,11 +1410,13 @@ de cada lote cocido. Límite crítico: &ge;75°C.</p>
   <tbody>
 ${filasVacias(20, 8)}  </tbody>
 </table>
+</div>
 
 <h3 id="haccp-02">HACCP-02 – Control de Enfriamiento Rápido</h3>
 <p><strong>Instrucción de uso:</strong> Registrar las temperaturas
 durante el proceso de enfriamiento. Límite crítico: de &gt;63°C a
 &lt;5°C en un máximo de 6 horas.</p>
+<div class="tabla-wrapper">
 <table>
   <thead>
     <tr>
@@ -1404,10 +1435,12 @@ durante el proceso de enfriamiento. Límite crítico: de &gt;63°C a
   <tbody>
 ${filasVacias(10, 10)}  </tbody>
 </table>
+</div>
 
 <h3 id="haccp-03">HACCP-03 – Control de Temperatura en Servicio</h3>
 <p><strong>Instrucción de uso:</strong> Verificar el chafing dish cada
 2 horas durante el servicio. Límite crítico: &ge;63°C en todo momento.</p>
+<div class="tabla-wrapper">
 <table>
   <thead>
     <tr>
@@ -1423,6 +1456,7 @@ ${filasVacias(10, 10)}  </tbody>
   <tbody>
 ${filasVacias(20, 7)}  </tbody>
 </table>
+</div>
 
 <h3 id="haccp-04">HACCP-04 — Control de Recepción de Mercancía
 y Trazabilidad de Proveedor</h3>
@@ -1430,6 +1464,7 @@ y Trazabilidad de Proveedor</h3>
 entrega. Conservar hasta que pueda asumirse que el alimento
 ha sido consumido. Para alimentos de origen animal, conservar
 indefinidamente mínimo 3 años.</em></p>
+<div class="tabla-wrapper">
 <table>
   <thead>
     <tr>
@@ -1449,10 +1484,12 @@ indefinidamente mínimo 3 años.</em></p>
   <tbody>
 ${filasVacias(15, 11)}  </tbody>
 </table>
+</div>
 
 <h3 id="haccp-05">HACCP-05 – Control de Temperatura del Refrigerador</h3>
 <p><strong>Instrucción de uso:</strong> Verificar dos veces al día
 (mañana y noche). Límite crítico: &lt;5°C.</p>
+<div class="tabla-wrapper">
 <table>
   <thead>
     <tr>
@@ -1470,11 +1507,13 @@ ${filasVacias(15, 11)}  </tbody>
   <tbody>
 ${filasVacias(31, 9)}  </tbody>
 </table>
+</div>
 
 <h3 id="haccp-06">HACCP-06 – Registro de Limpieza y Desinfección Diaria</h3>
 <p><strong>Instrucción de uso:</strong> Completar al cierre de cada
 jornada, para cada zona/equipo indicado en la columna preimpresa
 (en gris).</p>
+<div class="tabla-wrapper">
 <table>
   <thead>
     <tr>
@@ -1482,7 +1521,7 @@ jornada, para cada zona/equipo indicado en la columna preimpresa
       <th>Zona/Equipo</th>
       <th>Hora</th>
       <th>Producto usado</th>
-      <th>Aclarado Sí/No</th>
+      <th>Enjuagado Sí/No</th>
       <th>Desinfectado Sí/No</th>
       <th>Responsable/Firma</th>
     </tr>
@@ -1497,10 +1536,12 @@ ${filasZonas([
     { zona: 'Estación lavado de manos', filas: 3 }
   ])}  </tbody>
 </table>
+</div>
 
 <h3 id="haccp-07">HACCP-07 – Registro de Incidentes y Acciones Correctivas</h3>
 <p><strong>Instrucción de uso:</strong> Completar ante cualquier
 desviación de un límite crítico o queja de cliente.</p>
+<div class="tabla-wrapper">
 <table>
   <thead>
     <tr>
@@ -1518,10 +1559,12 @@ desviación de un límite crítico o queja de cliente.</p>
   <tbody>
 ${filasVacias(10, 9)}  </tbody>
 </table>
+</div>
 
 <h3 id="haccp-08">HACCP-08 – Registro de Calibración de Termómetros</h3>
 <p><strong>Instrucción de uso:</strong> Calibrar mensualmente con agua
 helada (0°C) y agua hirviendo (100°C).</p>
+<div class="tabla-wrapper">
 <table>
   <thead>
     <tr>
@@ -1539,10 +1582,12 @@ helada (0°C) y agua hirviendo (100°C).</p>
   <tbody>
 ${filasVacias(12, 9)}  </tbody>
 </table>
+</div>
 
 <h3 id="haccp-09">HACCP-09 – Registro de Formación del Personal</h3>
 <p><strong>Instrucción de uso:</strong> Completar al dar de alta a
 cada empleado y en cada revisión anual.</p>
+<div class="tabla-wrapper">
 <table>
   <thead>
     <tr>
@@ -1560,6 +1605,7 @@ cada empleado y en cada revisión anual.</p>
   <tbody>
 ${filasVacias(10, 9)}  </tbody>
 </table>
+</div>
 `;
 })();
 
@@ -1574,14 +1620,14 @@ const ANEXO = `
   <li>Cuchillos separados por uso — afilados, con protectores
   individuales</li>
   <li>Recipientes herméticos etiquetados con producto y fecha</li>
-  <li>Jabón líquido NO perfumado y papel desechable en fregadero</li>
+  <li>Jabón líquido NO perfumado y papel desechable en tarja</li>
   <li>Delantales limpios (mínimo 2 para rotación)</li>
   <li>Gorras o mallas para el cabello</li>
   <li>Guantes desechables LIBRES DE LÁTEX, aptos para uso
   alimentario</li>
   <li>Vendajes impermeables de COLOR AZUL para heridas/cortes</li>
   <li>Desinfectante aprobado para uso alimentario</li>
-  <li>Paños desechables (no trapos reutilizables)</li>
+  <li>Toallas desechables (no trapos reutilizables)</li>
   <li>Carpeta HACCP con formatos HACCP-01 a HACCP-09 impresos</li>
   <li>Etiquetas para fechado de productos</li>
   <li>Bolígrafos para registros</li>
@@ -1590,8 +1636,8 @@ const ANEXO = `
 
 <h2>Punto de Venta — verificar antes de cada salida</h2>
 <ul class="checklist">
-  <li>Bidón portátil con grifo — capacidad MÍNIMA 20 LITROS</li>
-  <li>Bidón etiquetado: "POTABLE WATER ONLY"</li>
+  <li>Garrafón portátil con llave del agua — capacidad MÍNIMA 20 LITROS</li>
+  <li>Garrafón etiquetado: "POTABLE WATER ONLY"</li>
   <li>Recipiente para agua residual — etiquetado: "WASTE WATER"</li>
   <li>Jabón líquido NO perfumado y papel desechable</li>
   <li>Gel desinfectante (complementario — NO sustituto del
@@ -1601,7 +1647,7 @@ const ANEXO = `
   <li>Bolsas o maletines isotérmicos certificados</li>
   <li>Mesa de trabajo con superficie lavable (mínimo 450mm
   sobre el suelo)</li>
-  <li>Cubo de basura con TAPA HERMÉTICA (tight-fitting lid)</li>
+  <li>Cubeta de basura con TAPA HERMÉTICA (tight-fitting lid)</li>
   <li>Señalización de alérgenos visible para el cliente</li>
   <li>Termómetro de sonda (unidad punto de venta)</li>
   <li>Copia impresa de autorización LCCC vigente</li>
@@ -1618,6 +1664,7 @@ a operaciones de alto riesgo (high-risk activities).</em></p>
 `;
 
 const SECCION_14 = `
+<div class="tabla-wrapper">
 <table>
   <tbody>
     <tr>
@@ -1663,6 +1710,7 @@ const SECCION_14 = `
     </tr>
   </tbody>
 </table>
+</div>
 
 <p class="nota">Este plan HACCP ha sido elaborado de buena fe y en
 cumplimiento de la legislación irlandesa y europea aplicable.
