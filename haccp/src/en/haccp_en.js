@@ -1732,6 +1732,8 @@ function fillPlaceholders(html, data) {
 // Generation
 // ---------------------------------------------------------------------------
 
+const BTN_IDIOMA = '<a href="{{urlES}}" id="btn-idioma" class="btn-idioma">🌐 Español</a>';
+
 function generar() {
   console.log(`Generating HACCP Plan EN v${config.version}...`);
 
@@ -1741,10 +1743,13 @@ function generar() {
     html = injectSection(html, sectionId, SECCIONES[sectionId]);
   });
 
+  html = html.replace('<!-- BTN_IDIOMA -->', BTN_IDIOMA);
+
   const data = Object.assign({}, config, {
     lang: LANG,
     fechaEmision: config.fechaEmisionEN,
     proximaRevision: config.proximaRevisionEN,
+    urlES: config.urls.es,
     ui: i18n[LANG].ui,
     nav: i18n[LANG].nav
   });
