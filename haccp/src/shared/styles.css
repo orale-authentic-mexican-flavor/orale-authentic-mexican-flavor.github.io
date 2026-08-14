@@ -451,7 +451,8 @@ ul li::marker {
   .contenido {
     margin-left: 0;
     padding: 1rem;
-    margin-top: 60px;
+    padding-top: 1.5rem;
+    margin-top: 70px;
   }
 
   /* --- Tipografía --- */
@@ -479,17 +480,19 @@ ul li::marker {
 
   /* --- Botones fijos --- */
   .controles-vista {
-    flex-direction: column;
-    gap: 0.3rem;
-    top: 0.3rem;
-    right: 0.3rem;
+    flex-direction: row;
+    gap: 0.25rem;
+    top: 0.4rem;
+    right: 0.4rem;
+    flex-wrap: nowrap;
   }
 
   .btn-idioma,
   .btn-imprimir,
   .controles-vista button {
-    padding: 6px 10px;
-    font-size: 0.75rem;
+    padding: 5px 8px;
+    font-size: 0.7rem;
+    white-space: nowrap;
   }
 
   /* --- Header fijo comprimido --- */
@@ -501,7 +504,7 @@ ul li::marker {
   }
 
   .logo {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     letter-spacing: 1px;
   }
 
