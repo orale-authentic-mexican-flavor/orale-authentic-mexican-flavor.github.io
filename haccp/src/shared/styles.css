@@ -91,6 +91,7 @@ td {
   width: var(--sidebar-width);
   height: calc(100vh - 60px);
   overflow-y: auto;
+  scroll-behavior: smooth;
   background-color: var(--color-verde);
   color: var(--color-blanco);
 }
@@ -192,6 +193,7 @@ td {
   right: 1rem;
   z-index: 1000;
   display: flex;
+  align-items: center;
   gap: 0.5rem;
 }
 
@@ -254,6 +256,16 @@ td {
 .btn-idioma:hover {
   background-color: var(--color-amarillo);
   color: var(--color-gris-oscuro);
+}
+
+.btn-idioma,
+.btn-imprimir,
+.btn-vista-impresion {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 36px;
+  box-sizing: border-box;
 }
 
 /* =========================================================================
@@ -340,20 +352,43 @@ ul li::marker {
 }
 
 .checklist li {
-  position: relative;
-  padding-left: 1.8rem;
   line-height: 1.8;
 }
 
-.checklist li::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0.2rem;
-  width: 1rem;
-  height: 1rem;
+.checklist-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  cursor: pointer;
+  line-height: 1.5;
+}
+
+.checklist-check {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
   border: 2px solid var(--color-verde);
-  background-color: var(--color-blanco);
+  border-radius: 3px;
+  background: white;
+  cursor: pointer;
+  margin-top: 2px;
+  flex-shrink: 0;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.checklist-check:checked {
+  background: var(--color-verde);
+  border-color: var(--color-verde);
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M13.485 1.431a1.473 1.473 0 0 0-2.084 0l-5.991 5.991-2.83-2.83a1.473 1.473 0 0 0-2.084 2.084l3.88 3.88a1.473 1.473 0 0 0 2.084 0l7.025-7.025a1.473 1.473 0 0 0 0-2.1z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 12px;
+}
+
+.checklist-check:hover {
+  border-color: var(--color-rojo);
 }
 
 .nota {
@@ -504,8 +539,16 @@ ul li::marker {
   }
 
   .logo {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     letter-spacing: 1px;
+    white-space: nowrap;
+  }
+
+  /* "AUTHENTIC MEXICAN FLAVOR" no cabe en el espacio disponible del
+     header móvil (entre el hamburger y los botones fijos) — se oculta
+     y se deja visible solo "ÓRALE" (.logo-rojo). */
+  .logo-verde {
+    display: none;
   }
 
   .subtexto-empresa,
@@ -549,22 +592,18 @@ ul li::marker {
   }
 
   .checklist li {
-    min-height: 44px;
-    display: flex;
-    align-items: flex-start;
-    padding: 8px 0;
-    padding-left: 0;
-    gap: 12px;
+    padding: 0;
   }
 
-  .checklist li::before {
-    position: static;
-    min-width: 24px;
-    min-height: 24px;
+  .checklist-check {
     width: 24px;
     height: 24px;
-    flex-shrink: 0;
-    margin-top: 2px;
+    min-width: 24px;
+  }
+
+  .checklist-item {
+    min-height: 44px;
+    align-items: center;
   }
 
   .btn-hamburger,
@@ -661,6 +700,13 @@ ul li::marker {
   a {
     text-decoration: none;
     color: inherit;
+  }
+
+  /* Al imprimir, los checkboxes se ven como cuadrados vacíos —
+     comportamiento correcto para formularios físicos. */
+  .checklist-check {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
   }
 
   /* Encabezado y pie fijos en cada página impresa.

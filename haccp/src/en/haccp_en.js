@@ -49,13 +49,13 @@ and controlling the relevant hazards at each stage of the process.</p>
 Representative example: 20 servings of 650 ml pozole per day.</p>
 <p><strong>Applicable menu:</strong></p>
 <ul>
-  <li>Pozole rojo estilo Jalisco (V)</li>
+  <li>Pozole rojo estilo Jalisco</li>
   <li>Tacos al pastor (3 pcs)</li>
   <li>Tacos de carnitas (3 pcs)</li>
   <li>Tacos de cochinita pibil (3 pcs)</li>
-  <li>Nachos with guacamole (V)</li>
-  <li>Chilaquiles (V)</li>
-  <li>Taco de nopales (V)</li>
+  <li>Nachos with guacamole</li>
+  <li>Chilaquiles</li>
+  <li>Taco de nopales</li>
   <li>Rotating dishes: tamales, barbacoa, esquites, quesadillas</li>
 </ul>
 
@@ -197,8 +197,8 @@ unlabelled packaged products takes place.</p>
   </thead>
   <tbody>
     <tr>
-      <td>Pozole Rojo (V)</td>
-      <td>Meat-free (corn, chilli)</td>
+      <td>Pozole Rojo</td>
+      <td>Pork, corn, chilli</td>
       <td>Hot &gt;63°C</td>
       <td>Check sauces for gluten</td>
     </tr>
@@ -237,7 +237,7 @@ unlabelled packaged products takes place.</p>
       </td>
     </tr>
     <tr>
-      <td>Nachos con Guacamole (V)</td>
+      <td>Nachos con Guacamole</td>
       <td>Meat-free</td>
       <td>Room temperature</td>
       <td>
@@ -249,7 +249,7 @@ unlabelled packaged products takes place.</p>
       </td>
     </tr>
     <tr class="alt">
-      <td>Chilaquiles (V)</td>
+      <td>Chilaquiles</td>
       <td>Meat-free (egg optional)</td>
       <td>Hot &gt;63°C</td>
       <td>
@@ -261,7 +261,7 @@ unlabelled packaged products takes place.</p>
       </td>
     </tr>
     <tr>
-      <td>Taco de Nopales (V)</td>
+      <td>Taco de Nopales</td>
       <td>Vegetable</td>
       <td>Hot &gt;63°C</td>
       <td>Gluten (tortilla). Low allergen risk.</td>
@@ -482,11 +482,11 @@ const SECCION_5 = `
       <th>Biological hazard</th>
       <th>Chemical hazard</th>
       <th>Physical hazard</th>
-      <th>Prob.</th>
-      <th>Sev.</th>
+      <th>Probability</th>
+      <th>Severity</th>
       <th>Risk</th>
       <th>Control measure</th>
-      <th>CCP?</th>
+      <th>Is CCP?</th>
     </tr>
   </thead>
   <tbody>
@@ -1128,7 +1128,7 @@ declaration.</p>
   </thead>
   <tbody>
     <tr>
-      <td>Pozole Rojo (V)</td>
+      <td>Pozole Rojo</td>
       <td>Check</td><td>No</td><td>No</td>
       <td>No</td><td>No</td><td>Possible</td><td>No</td>
     </tr>
@@ -1148,17 +1148,17 @@ declaration.</p>
       <td>No</td><td>No</td><td>Possible</td><td>No</td>
     </tr>
     <tr>
-      <td>Nachos + Guacamole (V)</td>
+      <td>Nachos + Guacamole</td>
       <td>Yes (nachos)</td><td>Yes (cheese)</td><td>No</td>
       <td>No</td><td>No</td><td>Possible</td><td>No</td>
     </tr>
     <tr class="alt">
-      <td>Chilaquiles (V)</td>
+      <td>Chilaquiles</td>
       <td>Yes (tortilla)</td><td>Yes (cream/cheese)</td>
       <td>Possible</td><td>No</td><td>No</td><td>Possible</td><td>No</td>
     </tr>
     <tr>
-      <td>Taco de Nopales (V)</td>
+      <td>Taco de Nopales</td>
       <td>Yes (tortilla)</td><td>No</td><td>No</td>
       <td>No</td><td>No</td><td>No</td><td>No</td>
     </tr>
@@ -1393,7 +1393,7 @@ temperature of each cooked batch. Critical limit: &ge;75°C.</p>
       <th>Date</th>
       <th>Dish/Batch</th>
       <th>Start time</th>
-      <th>Internal temp. (°C)</th>
+      <th>Internal temperature (°C)</th>
       <th>&ge;75°C Yes/No</th>
       <th>End time</th>
       <th>Corrective action</th>
@@ -1416,10 +1416,10 @@ a maximum of 6 hours.</p>
       <th>Date</th>
       <th>Product/Batch</th>
       <th>Start time</th>
-      <th>Temp. 30 min (°C)</th>
-      <th>Temp. 1 h (°C)</th>
-      <th>Temp. 2 h (°C)</th>
-      <th>Final temp. (°C)</th>
+      <th>Temperature 30 min (°C)</th>
+      <th>Temperature 1 h (°C)</th>
+      <th>Temperature 2 h (°C)</th>
+      <th>Final temperature (°C)</th>
       <th>&lt;5°C within 6h Yes/No</th>
       <th>Corrective action</th>
       <th>Responsible</th>
@@ -1440,7 +1440,7 @@ ${blankRows(10, 10)}  </tbody>
       <th>Date</th>
       <th>Product</th>
       <th>Measurement time</th>
-      <th>Temp. (°C)</th>
+      <th>Temperature (°C)</th>
       <th>&ge;63°C Yes/No</th>
       <th>Corrective action</th>
       <th>Responsible/Signature</th>
@@ -1465,7 +1465,7 @@ for a minimum of 3 years.</em></p>
       <th>Supplier (name & address)</th>
       <th>Product</th>
       <th>Animal origin Y/N</th>
-      <th>Reception temp. (°C)</th>
+      <th>Reception temperature (°C)</th>
       <th>Best before / Use by</th>
       <th>Packaging OK Y/N</th>
       <th>Appearance OK Y/N</th>
@@ -1488,10 +1488,10 @@ and evening). Limit: &lt;5°C.</p>
     <tr>
       <th>Date</th>
       <th>Morning time</th>
-      <th>Morning temp. (°C)</th>
+      <th>Morning temperature (°C)</th>
       <th>&lt;5°C Yes/No</th>
       <th>Evening time</th>
-      <th>Evening temp. (°C)</th>
+      <th>Evening temperature (°C)</th>
       <th>&lt;5°C Yes/No</th>
       <th>Corrective action</th>
       <th>Responsible</th>
@@ -1563,9 +1563,9 @@ water (0°C) and boiling water (100°C).</p>
     <tr>
       <th>Date</th>
       <th>Thermometer ID</th>
-      <th>Ice water temp. (°C)</th>
+      <th>Ice water temperature (°C)</th>
       <th>&asymp;0°C Yes/No</th>
-      <th>Boiling water temp. (°C)</th>
+      <th>Boiling water temperature (°C)</th>
       <th>&asymp;100°C Yes/No</th>
       <th>Calibration correct Yes/No</th>
       <th>Action if failed</th>
@@ -1591,7 +1591,7 @@ each employee and at annual reviews.</p>
       <th>Training body</th>
       <th>Date obtained</th>
       <th>Renewal date</th>
-      <th>Certificate No.</th>
+      <th>Certificate Number</th>
       <th>Employee signature</th>
     </tr>
   </thead>
@@ -1605,48 +1605,218 @@ ${blankRows(10, 9)}  </tbody>
 const ANEXO = `
 <h2>Domestic Kitchen — before each preparation</h2>
 <ul class="checklist">
-  <li>Digital probe thermometer (x2 operational and calibrated)</li>
-  <li>Visible refrigerator thermometer (current reading &lt;5°C)</li>
-  <li>Spray alcohol to disinfect the probe between measurements</li>
-  <li>Colour-coded cutting boards
-  (red: raw meat, green: vegetables, yellow: poultry)</li>
-  <li>Knives separated by use — sharpened, with individual
-  guards</li>
-  <li>Airtight containers labelled with product and date</li>
-  <li>NON-perfumed liquid soap and disposable paper at the sink</li>
-  <li>Clean aprons (minimum 2 for rotation)</li>
-  <li>Caps or hairnets</li>
-  <li>LATEX-FREE disposable gloves, food-safe</li>
-  <li>BLUE coloured waterproof dressings for cuts/wounds</li>
-  <li>Food-grade approved disinfectant</li>
-  <li>Disposable cloths (not reusable rags)</li>
-  <li>HACCP folder with printed HACCP-01 to HACCP-09 formats</li>
-  <li>Product date-labelling stickers</li>
-  <li>Pens for recording</li>
-  <li>Food stored a minimum of 450mm off the ground</li>
+  <li>
+    <label class="checklist-item">
+      <input type="checkbox" class="checklist-check">
+      <span>Digital probe thermometer (x2 operational and calibrated)</span>
+    </label>
+  </li>
+  <li>
+    <label class="checklist-item">
+      <input type="checkbox" class="checklist-check">
+      <span>Visible refrigerator thermometer (current reading &lt;5°C)</span>
+    </label>
+  </li>
+  <li>
+    <label class="checklist-item">
+      <input type="checkbox" class="checklist-check">
+      <span>Spray alcohol to disinfect the probe between measurements</span>
+    </label>
+  </li>
+  <li>
+    <label class="checklist-item">
+      <input type="checkbox" class="checklist-check">
+      <span>Colour-coded cutting boards
+  (red: raw meat, green: vegetables, yellow: poultry)</span>
+    </label>
+  </li>
+  <li>
+    <label class="checklist-item">
+      <input type="checkbox" class="checklist-check">
+      <span>Knives separated by use — sharpened, with individual
+  guards</span>
+    </label>
+  </li>
+  <li>
+    <label class="checklist-item">
+      <input type="checkbox" class="checklist-check">
+      <span>Airtight containers labelled with product and date</span>
+    </label>
+  </li>
+  <li>
+    <label class="checklist-item">
+      <input type="checkbox" class="checklist-check">
+      <span>NON-perfumed liquid soap and disposable paper at the sink</span>
+    </label>
+  </li>
+  <li>
+    <label class="checklist-item">
+      <input type="checkbox" class="checklist-check">
+      <span>Clean aprons (minimum 2 for rotation)</span>
+    </label>
+  </li>
+  <li>
+    <label class="checklist-item">
+      <input type="checkbox" class="checklist-check">
+      <span>Caps or hairnets</span>
+    </label>
+  </li>
+  <li>
+    <label class="checklist-item">
+      <input type="checkbox" class="checklist-check">
+      <span>LATEX-FREE disposable gloves, food-safe</span>
+    </label>
+  </li>
+  <li>
+    <label class="checklist-item">
+      <input type="checkbox" class="checklist-check">
+      <span>BLUE coloured waterproof dressings for cuts/wounds</span>
+    </label>
+  </li>
+  <li>
+    <label class="checklist-item">
+      <input type="checkbox" class="checklist-check">
+      <span>Food-grade approved disinfectant</span>
+    </label>
+  </li>
+  <li>
+    <label class="checklist-item">
+      <input type="checkbox" class="checklist-check">
+      <span>Disposable cloths (not reusable rags)</span>
+    </label>
+  </li>
+  <li>
+    <label class="checklist-item">
+      <input type="checkbox" class="checklist-check">
+      <span>HACCP folder with printed HACCP-01 to HACCP-09 formats</span>
+    </label>
+  </li>
+  <li>
+    <label class="checklist-item">
+      <input type="checkbox" class="checklist-check">
+      <span>Product date-labelling stickers</span>
+    </label>
+  </li>
+  <li>
+    <label class="checklist-item">
+      <input type="checkbox" class="checklist-check">
+      <span>Pens for recording</span>
+    </label>
+  </li>
+  <li>
+    <label class="checklist-item">
+      <input type="checkbox" class="checklist-check">
+      <span>Food stored a minimum of 450mm off the ground</span>
+    </label>
+  </li>
 </ul>
 
 <h2>Point of Sale — before each outing</h2>
 <ul class="checklist">
-  <li>Portable container with tap — MINIMUM 20 LITRE capacity</li>
-  <li>Container labelled: "POTABLE WATER ONLY"</li>
-  <li>Container for waste water — labelled: "WASTE WATER"</li>
-  <li>NON-perfumed liquid soap and disposable paper</li>
-  <li>Hand sanitiser gel (complementary — NOT a substitute
-  for handwashing)</li>
-  <li>Chafing dishes with tight-fitting lid (minimum 2, pre-heated)</li>
-  <li>Sneeze screen or covers to protect exposed food</li>
-  <li>Certified insulated bags or carriers</li>
-  <li>Work table with washable surface (minimum 450mm
-  off the ground)</li>
-  <li>Waste bin with TIGHT-FITTING LID</li>
-  <li>Allergen signage visible to the customer</li>
-  <li>Probe thermometer (point-of-sale unit)</li>
-  <li>Printed copy of current Casual Trading Licence</li>
-  <li>Printed copy of current HACCP Plan (current version)</li>
-  <li>HACCP-03 and HACCP-06 formats printed for the shift</li>
-  <li>Pens for recording</li>
-  <li>Food and equipment never in contact with the ground</li>
+  <li>
+    <label class="checklist-item">
+      <input type="checkbox" class="checklist-check">
+      <span>Portable container with tap — MINIMUM 20 LITRE capacity</span>
+    </label>
+  </li>
+  <li>
+    <label class="checklist-item">
+      <input type="checkbox" class="checklist-check">
+      <span>Container labelled: "POTABLE WATER ONLY"</span>
+    </label>
+  </li>
+  <li>
+    <label class="checklist-item">
+      <input type="checkbox" class="checklist-check">
+      <span>Container for waste water — labelled: "WASTE WATER"</span>
+    </label>
+  </li>
+  <li>
+    <label class="checklist-item">
+      <input type="checkbox" class="checklist-check">
+      <span>NON-perfumed liquid soap and disposable paper</span>
+    </label>
+  </li>
+  <li>
+    <label class="checklist-item">
+      <input type="checkbox" class="checklist-check">
+      <span>Hand sanitiser gel (complementary — NOT a substitute
+  for handwashing)</span>
+    </label>
+  </li>
+  <li>
+    <label class="checklist-item">
+      <input type="checkbox" class="checklist-check">
+      <span>Chafing dishes with tight-fitting lid (minimum 2, pre-heated)</span>
+    </label>
+  </li>
+  <li>
+    <label class="checklist-item">
+      <input type="checkbox" class="checklist-check">
+      <span>Sneeze screen or covers to protect exposed food</span>
+    </label>
+  </li>
+  <li>
+    <label class="checklist-item">
+      <input type="checkbox" class="checklist-check">
+      <span>Certified insulated bags or carriers</span>
+    </label>
+  </li>
+  <li>
+    <label class="checklist-item">
+      <input type="checkbox" class="checklist-check">
+      <span>Work table with washable surface (minimum 450mm
+  off the ground)</span>
+    </label>
+  </li>
+  <li>
+    <label class="checklist-item">
+      <input type="checkbox" class="checklist-check">
+      <span>Waste bin with TIGHT-FITTING LID</span>
+    </label>
+  </li>
+  <li>
+    <label class="checklist-item">
+      <input type="checkbox" class="checklist-check">
+      <span>Allergen signage visible to the customer</span>
+    </label>
+  </li>
+  <li>
+    <label class="checklist-item">
+      <input type="checkbox" class="checklist-check">
+      <span>Probe thermometer (point-of-sale unit)</span>
+    </label>
+  </li>
+  <li>
+    <label class="checklist-item">
+      <input type="checkbox" class="checklist-check">
+      <span>Printed copy of current Casual Trading Licence</span>
+    </label>
+  </li>
+  <li>
+    <label class="checklist-item">
+      <input type="checkbox" class="checklist-check">
+      <span>Printed copy of current HACCP Plan (current version)</span>
+    </label>
+  </li>
+  <li>
+    <label class="checklist-item">
+      <input type="checkbox" class="checklist-check">
+      <span>HACCP-03 and HACCP-06 formats printed for the shift</span>
+    </label>
+  </li>
+  <li>
+    <label class="checklist-item">
+      <input type="checkbox" class="checklist-check">
+      <span>Pens for recording</span>
+    </label>
+  </li>
+  <li>
+    <label class="checklist-item">
+      <input type="checkbox" class="checklist-check">
+      <span>Food and equipment never in contact with the ground</span>
+    </label>
+  </li>
 </ul>
 
 <p><strong>Check before each operational working day.</strong></p>
