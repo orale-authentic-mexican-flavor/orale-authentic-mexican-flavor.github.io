@@ -228,17 +228,37 @@
     (function () {
       var navLinks = document.querySelectorAll('.sidebar .nav-link');
       var secciones = document.querySelectorAll('.contenido .seccion');
+      var sidebar = document.querySelector('.sidebar');
 
       var observer = new IntersectionObserver(function (entries) {
         entries.forEach(function (entry) {
           if (!entry.isIntersecting) return;
           var id = entry.target.id;
+          var activeLink = null;
           navLinks.forEach(function (link) {
             var esActivo = link.getAttribute('href') === '#' + id;
             link.classList.toggle('activo', esActivo);
+            if (esActivo) activeLink = link;
           });
+
+          /* Auto-scroll del sidebar para mantener visible el link activo
+             dentro del panel de navegación cuando cambia de sección. */
+          if (activeLink && sidebar) {
+            var linkTop = activeLink.offsetTop;
+            var linkHeight = activeLink.offsetHeight;
+            var sidebarScrollTop = sidebar.scrollTop;
+            var sidebarHeight = sidebar.clientHeight;
+
+            if (linkTop < sidebarScrollTop ||
+                linkTop + linkHeight > sidebarScrollTop + sidebarHeight) {
+              sidebar.scrollTo({
+                top: linkTop - sidebarHeight / 2 + linkHeight / 2,
+                behavior: 'smooth'
+              });
+            }
+          }
         });
-      }, { threshold: 0.1 });
+      }, { threshold: 0.1, rootMargin: '-10% 0px -80% 0px' });
       /* threshold bajo (0.1) en vez de 0.3: en viewports móviles las
          secciones son más altas que el viewport, así que 0.3 de área
          visible tarda en alcanzarse y la sección activa se queda
