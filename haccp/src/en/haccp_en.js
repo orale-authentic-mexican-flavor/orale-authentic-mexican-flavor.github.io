@@ -45,8 +45,11 @@ and controlling the relevant hazards at each stage of the process.</p>
   <li><strong>Street trading:</strong> Locations authorised by
   Limerick City & County Council.</li>
 </ul>
-<p><strong>Production scale (Phase 1):</strong> Domestic-scale volume.
-Representative example: 20 servings of 650 ml pozole per day.</p>
+<p><strong>Production scale (Phase 1):</strong> Domestic-scale volume.</p>
+<p><strong>Representative example:</strong> 20 portions
+of red pozole of 650 ml per day. Pozole requires between
+4 and 5.5 hours in total, including pre-processes,
+so preparation must begin well in advance of service.</p>
 <p><strong>Applicable menu:</strong></p>
 <ul>
   <li>Pozole rojo estilo Jalisco</li>
@@ -56,7 +59,7 @@ Representative example: 20 servings of 650 ml pozole per day.</p>
   <li>Nachos with guacamole</li>
   <li>Chilaquiles</li>
   <li>Taco de nopales</li>
-  <li>Rotating dishes: tamales, barbacoa, esquites, quesadillas</li>
+  <li>Rotating dishes: tamales, quesadillas</li>
 </ul>
 
 <h2 id="sec-1-3">1.3 Applicable Regulatory Framework</h2>
@@ -183,6 +186,96 @@ it is sold, in domestic-scale batches, and transported to the point
 of sale in chafing dishes and insulated containers. It is served
 directly to the end consumer. No wholesale distribution or sale of
 unlabelled packaged products takes place.</p>
+
+<h3 id="sec-3-0">Pre-process Note — Red Pozole</h3>
+<p>Red pozole is the most operationally complex dish
+on the Órale menu. Its production process includes
+the following stages:</p>
+<div class="tabla-wrapper">
+<table class="tabla-ancha">
+  <thead>
+    <tr>
+      <th>Stage</th>
+      <th>Description</th>
+      <th>Approximate time</th>
+      <th>Control point</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td colspan="4" style="background:#006847;color:white;
+      font-weight:bold;padding:8px 10px;">
+        PRE-PROCESSES — Total time: ~1–1.5 hours
+      </td>
+    </tr>
+    <tr>
+      <td>Pre-process 1 — Corn</td>
+      <td>Wash and prepare the cacahuazintle corn or
+      hydrate pre-cooked corn as available</td>
+      <td>15–30 min</td>
+      <td>Visual: clean grain, free of impurities</td>
+    </tr>
+    <tr class="alt">
+      <td>Pre-process 2 — Pork</td>
+      <td>Clean and cut pork into uniform portions
+      for even cooking</td>
+      <td>15–20 min</td>
+      <td>Visual: no bone fragments or residue</td>
+    </tr>
+    <tr>
+      <td>Pre-process 3 — Chile base</td>
+      <td>Toast, hydrate and blend dried chiles
+      (guajillo, ancho). Strain to obtain a smooth
+      sauce free of seeds and skins</td>
+      <td>20–30 min</td>
+      <td>Toasting temperature controlled to prevent
+      burning which makes the sauce bitter</td>
+    </tr>
+    <tr>
+      <td colspan="4" style="background:#006847;color:white;
+      font-weight:bold;padding:8px 10px;">
+        COOKING — Total time: 3–4 hours
+      </td>
+    </tr>
+    <tr class="alt">
+      <td>Cooking 1 — Pork</td>
+      <td>Cook pork with onion and garlic in
+      sufficient water</td>
+      <td>1.5–2 hours</td>
+      <td class="celda-riesgo-alto">
+        Internal temperature of pork ≥75°C verified
+        with probe thermometer (CCP1)
+      </td>
+    </tr>
+    <tr>
+      <td>Cooking 2 — Corn integration</td>
+      <td>Add corn to the broth and continue cooking
+      until the grain is fully cooked and begins
+      to open</td>
+      <td>1–1.5 hours</td>
+      <td>Visual: open grain, soft to the touch</td>
+    </tr>
+    <tr class="alt">
+      <td>Cooking 3 — Chile integration</td>
+      <td>Add strained chile base to broth with pork
+      and corn. Season and adjust consistency.
+      Continue cooking over medium heat</td>
+      <td>30–45 min</td>
+      <td class="celda-riesgo-alto">
+        Broth temperature ≥85°C maintained during
+        this stage and throughout service (CCP1 and CCP3)
+      </td>
+    </tr>
+    <tr style="background:#FFF9C4;">
+      <td><strong>TOTAL TIME</strong></td>
+      <td>Pre-processes + Cooking</td>
+      <td><strong>4–5.5 hours</strong></td>
+      <td><strong>Begin preparation minimum
+      5.5 hours before service</strong></td>
+    </tr>
+  </tbody>
+</table>
+</div>
 
 <h2 id="sec-3-2">3.2 Product and Associated Hazards Table</h2>
 <div class="tabla-wrapper">
@@ -766,7 +859,7 @@ const SECCION_6 = `
 const SECCION_7 = `
 <h2 id="sec-7-1">7.1 CCP Monitoring Summary</h2>
 <div class="tabla-wrapper">
-<table>
+<table class="tabla-ancha">
   <thead>
     <tr>
       <th>CCP</th>
@@ -1348,6 +1441,25 @@ const SECCION_12 = `
         </ul>
       </td>
     </tr>
+    <tr class="alt">
+      <td>Service containers</td>
+      <td>
+        <ul>
+          <li>650 ml food-safe disposable containers
+          with lid</li>
+          <li>Single use only — never reused</li>
+          <li>Customer receives food in the container</li>
+          <li>Used containers: disposed of by the customer
+          — not recovered or reused</li>
+          <li>Unsold containers at end of service: disposed
+          of together with the food</li>
+          <li>Complies with GN16 §4.3.12: single use
+          containers used only once</li>
+          <li>Keep original container packaging as evidence
+          of food-safe suitability</li>
+        </ul>
+      </td>
+    </tr>
   </tbody>
 </table>
 </div>
@@ -1387,7 +1499,7 @@ for a minimum of 3 years.</p>
 <p><strong>Instructions for use:</strong> Record the internal
 temperature of each cooked batch. Critical limit: &ge;75°C.</p>
 <div class="tabla-wrapper">
-<table>
+<table class="tabla-ancha">
   <thead>
     <tr>
       <th>Date</th>
@@ -1410,7 +1522,7 @@ ${blankRows(20, 8)}  </tbody>
 the cooling process. Critical limit: from &gt;63°C to &lt;5°C within
 a maximum of 6 hours.</p>
 <div class="tabla-wrapper">
-<table>
+<table class="tabla-ancha">
   <thead>
     <tr>
       <th>Date</th>
@@ -1434,7 +1546,7 @@ ${blankRows(10, 10)}  </tbody>
 <p><strong>Instructions for use:</strong> Check the chafing dish every
 2 hours during service. Critical limit: &ge;63°C at all times.</p>
 <div class="tabla-wrapper">
-<table>
+<table class="tabla-ancha">
   <thead>
     <tr>
       <th>Date</th>
@@ -1458,7 +1570,7 @@ every delivery. Retain until food can reasonably be assumed
 to have been consumed. For food of animal origin, retain
 for a minimum of 3 years.</em></p>
 <div class="tabla-wrapper">
-<table>
+<table class="tabla-ancha">
   <thead>
     <tr>
       <th>Date</th>
@@ -1483,7 +1595,7 @@ ${blankRows(15, 11)}  </tbody>
 <p><strong>Instructions for use:</strong> Check twice daily (morning
 and evening). Limit: &lt;5°C.</p>
 <div class="tabla-wrapper">
-<table>
+<table class="tabla-ancha">
   <thead>
     <tr>
       <th>Date</th>
@@ -1507,7 +1619,7 @@ ${blankRows(31, 9)}  </tbody>
 each working day, for each zone/equipment shown in the pre-printed
 (grey) column.</p>
 <div class="tabla-wrapper">
-<table>
+<table class="tabla-ancha">
   <thead>
     <tr>
       <th>Date</th>
@@ -1535,7 +1647,7 @@ ${zoneRows([
 <p><strong>Instructions for use:</strong> Complete for any deviation
 from a critical limit or customer complaint.</p>
 <div class="tabla-wrapper">
-<table>
+<table class="tabla-ancha">
   <thead>
     <tr>
       <th>Date</th>
@@ -1558,7 +1670,7 @@ ${blankRows(10, 9)}  </tbody>
 <p><strong>Instructions for use:</strong> Calibrate monthly using ice
 water (0°C) and boiling water (100°C).</p>
 <div class="tabla-wrapper">
-<table>
+<table class="tabla-ancha">
   <thead>
     <tr>
       <th>Date</th>
@@ -1581,7 +1693,7 @@ ${blankRows(12, 9)}  </tbody>
 <p><strong>Instructions for use:</strong> Complete upon onboarding of
 each employee and at annual reviews.</p>
 <div class="tabla-wrapper">
-<table>
+<table class="tabla-ancha">
   <thead>
     <tr>
       <th>Full name</th>
