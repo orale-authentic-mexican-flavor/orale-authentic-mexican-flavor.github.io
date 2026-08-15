@@ -34,7 +34,19 @@ html {
 
 body {
   margin: 0;
+}
+
+body, p, li, dd, dt {
   word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+table, th, td {
+  word-break: normal;
+  overflow-wrap: normal;
+}
+
+table td {
   overflow-wrap: break-word;
 }
 
@@ -405,19 +417,64 @@ ul li::marker {
    ========================================================================= */
 
 .tabla-wrapper {
+  display: block;
   width: 100%;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid #CCCCCC;
+  border-radius: 4px;
 }
 
-.tabla-wrapper table td:first-child,
-.tabla-wrapper table th:first-child {
-  position: sticky;
-  left: 0;
-  background: inherit;
-  z-index: 1;
-  min-width: 100px;
+.tabla-wrapper table {
+  min-width: 600px;
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: auto;
+}
+
+.tabla-wrapper table.tabla-ancha {
+  min-width: 900px;
+}
+
+.tabla-wrapper table th {
+  white-space: nowrap;
+  min-width: 80px;
+  vertical-align: middle;
+  text-align: center;
+  padding: 10px 12px;
+}
+
+.tabla-wrapper table td {
+  min-width: 80px;
+  vertical-align: top;
+  padding: 8px 10px;
+  word-break: normal;
+  overflow-wrap: break-word;
+}
+
+.tabla-wrapper table th:first-child,
+.tabla-wrapper table td:first-child {
+  min-width: 120px;
+  font-weight: bold;
+}
+
+@media (max-width: 767px) {
+  .tabla-wrapper::before {
+    content: "← Desliza la tabla →";
+    display: block;
+    text-align: center;
+    font-size: 0.7rem;
+    color: var(--color-verde);
+    padding: 4px;
+    background: #f0f7f0;
+    border-bottom: 1px solid #CCCCCC;
+  }
+}
+
+table th {
+  word-break: keep-all;
+  hyphens: none;
 }
 
 /* =========================================================================
@@ -554,27 +611,6 @@ ul li::marker {
   .subtexto-empresa,
   .version-info {
     display: none;
-  }
-
-  /* --- Indicador de scroll en tablas anchas --- */
-  .tabla-wrapper::after {
-    content: "← Desliza para ver más →";
-    display: block;
-    text-align: center;
-    font-size: 0.7rem;
-    color: var(--color-gris-oscuro);
-    opacity: 0.6;
-    padding: 4px 0;
-  }
-
-  /* Tablas anchas (Sección 5 análisis de peligros, Sección 11 alérgenos):
-     con layout auto el navegador comprime las columnas hasta caber sin
-     desbordar, así que el scroll horizontal de .tabla-wrapper nunca se
-     activaba en pantallas angostas. Un min-width por celda fuerza el
-     desbordamiento real y activa el scroll + el indicador de arriba. */
-  .tabla-wrapper table.tabla-ancha td,
-  .tabla-wrapper table.tabla-ancha th {
-    min-width: 140px;
   }
 
   /* --- Touch targets ≥ 44px --- */
