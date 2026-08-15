@@ -26,6 +26,8 @@ module.exports = {
 
       s4: "4. Diagramas de Flujo",
       s4_1: "4.1 Venta en Calle",
+      s4_2: "4.2 Producción y Congelación",
+      s4_3: "4.3 Entrega por WhatsApp",
 
       s5: "5. Análisis de Peligros",
       s5_1: "5.1 Leyenda de Riesgo",
@@ -35,6 +37,9 @@ module.exports = {
       pcc1: "PCC 1 – Cocción",
       pcc2: "PCC 2 – Enfriamiento",
       pcc3: "PCC 3 – Mantenimiento en Caliente",
+      pcc4: "PCC 4 – Congelación",
+      pcc5: "PCC 5 – Descongelación",
+      pcc6: "PCC 6 – Regeneración para Entrega",
 
       s7: "7. Monitoreo y Acciones Correctivas",
       s7_1: "7.1 Resumen de Monitoreo",
@@ -52,6 +57,7 @@ module.exports = {
       s10_1: "10.1 Higiene Personal",
       s10_2: "10.2 Limpieza y Desinfección",
       s10_3: "10.3 Organización del Refrigerador",
+      s10_3b: "10.3b Congelador",
       s10_4: "10.4 Gestión del Agua",
       s10_5: "10.5 Manejo de Residuos",
       s10_6: "10.6 Mantenimiento de Utensilios",
@@ -65,8 +71,12 @@ module.exports = {
 
       s13: "13. Formatos HACCP",
       s13_1: "HACCP-01 al HACCP-09",
+      haccp10: "HACCP-10",
+      haccp11: "HACCP-11",
 
       s14: "14. Aprobación y Firma",
+
+      formatosResumen: "Resumen de Formatos",
 
       anexo: "Anexo. Equipamiento Mínimo"
     }
@@ -93,6 +103,8 @@ module.exports = {
 
       s4: "4. Flow Diagrams",
       s4_1: "4.1 Street Sale",
+      s4_2: "4.2 Production & Freezing",
+      s4_3: "4.3 WhatsApp Delivery",
 
       s5: "5. Hazard Analysis",
       s5_1: "5.1 Risk Legend",
@@ -102,6 +114,9 @@ module.exports = {
       pcc1: "CCP 1 – Cooking",
       pcc2: "CCP 2 – Cooling",
       pcc3: "CCP 3 – Hot-Holding",
+      pcc4: "CCP 4 – Freezing",
+      pcc5: "CCP 5 – Defrosting",
+      pcc6: "CCP 6 – Reheating for Delivery",
 
       s7: "7. Monitoring and Corrective Actions",
       s7_1: "7.1 Monitoring Summary",
@@ -119,6 +134,7 @@ module.exports = {
       s10_1: "10.1 Personal Hygiene",
       s10_2: "10.2 Cleaning and Disinfection",
       s10_3: "10.3 Refrigerator Organisation",
+      s10_3b: "10.3b Freezer",
       s10_4: "10.4 Water Management",
       s10_5: "10.5 Waste Management",
       s10_6: "10.6 Utensil Maintenance",
@@ -132,8 +148,12 @@ module.exports = {
 
       s13: "13. HACCP Recording Formats",
       s13_1: "HACCP-01 to HACCP-09",
+      haccp10: "HACCP-10",
+      haccp11: "HACCP-11",
 
       s14: "14. Approval & Signature",
+
+      formatosResumen: "Format Summary",
 
       anexo: "Annex. Minimum Required Equipment"
     }

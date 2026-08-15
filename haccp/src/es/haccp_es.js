@@ -45,13 +45,20 @@ relevantes en cada etapa del proceso.</p>
   contenedores isotérmicos. Tiempo máximo 1 hora.</li>
   <li><strong>Venta en calle:</strong> Ubicaciones autorizadas por
   Limerick City & County Council.</li>
+  <li><strong>Entrega a domicilio (WhatsApp):</strong>
+  Pedidos recibidos via WhatsApp y entregados desde
+  Apt 301, Richmond Court, Dock Road, Limerick V94 PY76.
+  El cliente puede solicitar el alimento caliente
+  (regenerado a ≥70°C antes de la entrega) o congelado.
+  Disponible entre semana conforme a la producción
+  almacenada.</li>
 </ul>
-<p><strong>Escala de producción (Fase 1):</strong> Volumen doméstico.</p>
-<p><strong>Ejemplo representativo:</strong> 20 porciones
-de pozole rojo de 650 ml por jornada. El pozole requiere
-entre 4 y 5.5 horas en total, incluyendo preprocesos,
-por lo que la preparación debe iniciarse con suficiente
-anticipación antes del servicio.</p>
+<p><strong>Días de producción:</strong> Viernes y sábados.
+Cada jornada se dedica a un platillo del menú rotativo
+(por ejemplo: pozole un día, tamales otro), generando
+hasta 40 porciones por jornada (3 cajones de congelador
+× 10 porciones por cajón). Una pequeña cantidad se
+mantiene refrigerada para pedidos inmediatos.</p>
 <p><strong>Menú aplicable:</strong></p>
 <ul>
   <li>Pozole rojo estilo Jalisco</li>
@@ -206,10 +213,10 @@ incluye las siguientes etapas:</p>
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td colspan="4" style="background:#006847;color:white;
+    <tr style="background:#006847;">
+      <td colspan="4" style="color:white;
       font-weight:bold;padding:8px 10px;">
-        PREPROCESOS — Tiempo total: ~1–1.5 horas
+        PREPROCESOS — Tiempo total: ~2 horas
       </td>
     </tr>
     <tr>
@@ -221,8 +228,8 @@ incluye las siguientes etapas:</p>
     </tr>
     <tr class="alt">
       <td>Preproceso 2 — Carne de cerdo</td>
-      <td>Limpiar y trocear la carne de cerdo en porciones
-      uniformes para cocción pareja</td>
+      <td>Limpiar y trocear la carne de cerdo en
+      porciones uniformes para cocción pareja</td>
       <td>15–20 min</td>
       <td>Visual: sin restos de hueso o fragmentos</td>
     </tr>
@@ -235,8 +242,8 @@ incluye las siguientes etapas:</p>
       <td>Temperatura de tostado controlada para evitar
       quemado que amarga la salsa</td>
     </tr>
-    <tr>
-      <td colspan="4" style="background:#006847;color:white;
+    <tr style="background:#006847;">
+      <td colspan="4" style="color:white;
       font-weight:bold;padding:8px 10px;">
         COCCIÓN — Tiempo total: 3–4 horas
       </td>
@@ -247,8 +254,8 @@ incluye las siguientes etapas:</p>
       en agua suficiente</td>
       <td>1.5–2 horas</td>
       <td class="celda-riesgo-alto">
-        Temperatura interna de la carne ≥75°C
-        verificada con termómetro sonda (PCC1)
+        Temperatura interna ≥75°C verificada con
+        termómetro sonda (PCC1)
       </td>
     </tr>
     <tr>
@@ -273,9 +280,9 @@ incluye las siguientes etapas:</p>
     <tr style="background:#FFF9C4;">
       <td><strong>TIEMPO TOTAL</strong></td>
       <td>Preprocesos + Cocción</td>
-      <td><strong>4–5.5 horas</strong></td>
+      <td><strong>5–6 horas</strong></td>
       <td><strong>Iniciar preparación con mínimo
-      5.5 horas de anticipación al servicio</strong></td>
+      6 horas de anticipación al servicio</strong></td>
     </tr>
   </tbody>
 </table>
@@ -528,6 +535,185 @@ const SECCION_4 = `
           <li>Limpieza de superficies, estufa y utensilios</li>
           <li>Desinfección con productos aprobados para uso alimentario</li>
           <li>Registro en HACCP-06</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h2 id="sec-4-2">4.2 Producción y Congelación (Viernes y Sábados)</h2>
+<p>Flujo de producción para almacenamiento congelado
+y ventas entre semana:</p>
+<div class="tabla-wrapper">
+<table>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Etapa</th>
+      <th>Descripción</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>Planificación del platillo del día</td>
+      <td>
+        <ul>
+          <li>Cada jornada se dedica a un platillo
+          del menú rotativo</li>
+          <li>Producción máxima: 40 porciones
+          (3 cajones × 10 porciones)</li>
+          <li>Una cantidad pequeña se reserva
+          refrigerada para pedidos inmediatos</li>
+        </ul>
+      </td>
+    </tr>
+    <tr class="alt">
+      <td>2</td>
+      <td>Preprocesos y cocción</td>
+      <td>
+        <ul>
+          <li>Según flujo 4.1 etapas 1–4</li>
+          <li>Temperatura interna ≥75°C (PCC1)</li>
+          <li>Inicio mínimo 6 horas antes del
+          horario de entrega</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Enfriamiento rápido</td>
+      <td>
+        <ul>
+          <li>De >63°C a &lt;5°C en máximo 4 horas</li>
+          <li>Baño de hielo en tarja</li>
+          <li>Registro en HACCP-02 (PCC2)</li>
+        </ul>
+      </td>
+    </tr>
+    <tr class="alt">
+      <td>4</td>
+      <td>Porcionado y etiquetado</td>
+      <td>
+        <ul>
+          <li>Porcionar en contenedores desechables
+          de 650 ml con tapa</li>
+          <li>Etiquetar cada porción con:
+            <ul>
+              <li>Nombre del platillo</li>
+              <li>Fecha de producción</li>
+              <li>Fecha de congelación</li>
+              <li>Fecha máxima de consumo
+              (producción + 3 meses)</li>
+            </ul>
+          </li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>Congelación inmediata</td>
+      <td>
+        <ul>
+          <li>Colocar en cajones 1, 2 o 3 del
+          congelador (exclusivos Órale)</li>
+          <li>Temperatura objetivo: ≤-18°C</li>
+          <li>Sistema FIFO: lo más antiguo al frente</li>
+          <li>Registro en HACCP-10 (PCC4)</li>
+        </ul>
+      </td>
+    </tr>
+    <tr class="alt">
+      <td>6</td>
+      <td>Almacenamiento congelado</td>
+      <td>
+        <ul>
+          <li>Cajones 1, 2 y 3 etiquetados "ÓRALE"</li>
+          <li>Cajón 4 etiquetado "PARTICULAR" —
+          nunca mezclar</li>
+          <li>Monitoreo 2 veces al día (HACCP-10)</li>
+          <li>Tiempo máximo: 3 meses desde producción</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h2 id="sec-4-3">4.3 Entrega a Domicilio por WhatsApp</h2>
+<p>Flujo de atención de pedidos y entrega desde
+Apt 301, Richmond Court:</p>
+<div class="tabla-wrapper">
+<table>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Etapa</th>
+      <th>Descripción</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>Recepción del pedido</td>
+      <td>
+        <ul>
+          <li>Pedido recibido por WhatsApp</li>
+          <li>Confirmar platillo, cantidad y
+          preferencia: caliente o congelado</li>
+          <li>Confirmar hora de entrega</li>
+        </ul>
+      </td>
+    </tr>
+    <tr class="alt">
+      <td>2</td>
+      <td>Descongelación</td>
+      <td>
+        <ul>
+          <li>Descongelar SIEMPRE en refrigerador
+          a &lt;5°C — nunca a temperatura ambiente</li>
+          <li>Tiempo mínimo: 12–24 horas</li>
+          <li>Una vez descongelado: no recongelar</li>
+          <li>Registro en HACCP-11 (PCC5)</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Regeneración (entrega caliente)</td>
+      <td>
+        <ul>
+          <li>Calentar a temperatura interna ≥70°C</li>
+          <li>Verificar con termómetro sonda</li>
+          <li>Registro en HACCP-11 (PCC6)</li>
+          <li>Empacar inmediatamente tras
+          alcanzar temperatura</li>
+        </ul>
+      </td>
+    </tr>
+    <tr class="alt">
+      <td>4</td>
+      <td>Entrega congelado (si cliente lo solicita)</td>
+      <td>
+        <ul>
+          <li>Retirar del congelador al momento
+          de la entrega</li>
+          <li>Transportar en bolsa isotérmica</li>
+          <li>Informar al cliente: conservar a -18°C
+          y consumir antes de la fecha de la etiqueta</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>Entrega</td>
+      <td>
+        <ul>
+          <li>Entrega desde Apt 301, Richmond Court</li>
+          <li>Verificar contenedor íntegro y
+          etiqueta legible</li>
+          <li>Registrar en HACCP-11</li>
         </ul>
       </td>
     </tr>
@@ -859,6 +1045,190 @@ const SECCION_6 = `
   </tbody>
 </table>
 </div>
+
+<h2 id="pcc4">PCC 4 – Congelación</h2>
+<p><em>Congelador doméstico — cajones 1, 2 y 3
+exclusivos Órale</em></p>
+<div class="tabla-wrapper">
+<table>
+  <tbody>
+    <tr>
+      <td class="celda-header-verde">Peligro identificado</td>
+      <td class="celda-riesgo-alto">Crecimiento bacteriano
+      si el alimento no alcanza ≤-18°C rápidamente o si
+      la cadena de frío se interrumpe durante el
+      almacenamiento.</td>
+    </tr>
+    <tr>
+      <td class="celda-header-verde">Límite crítico</td>
+      <td>
+        <ul>
+          <li>Temperatura: ≤-18°C</li>
+          <li>Congelar inmediatamente tras el
+          enfriamiento rápido</li>
+          <li>Nunca congelar alimento que ha estado
+          en zona de peligro más de 4 horas</li>
+          <li>Tiempo máximo de almacenamiento:
+          3 meses desde producción</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td class="celda-header-verde">Monitoreo</td>
+      <td>
+        <p><strong>¿Qué?</strong> Temperatura del
+        congelador</p>
+        <p><strong>¿Cómo?</strong> Termómetro de nevera
+        colocado en el congelador</p>
+        <p><strong>¿Cuándo?</strong> Dos veces al día:
+        mañana y noche</p>
+        <p><strong>¿Quién?</strong>
+        {{responsables.chef}} o
+        {{responsables.operaciones}}</p>
+      </td>
+    </tr>
+    <tr>
+      <td class="celda-header-verde">Acción correctiva</td>
+      <td class="celda-riesgo-alto">
+        <ul>
+          <li>Si temperatura >-18°C: verificar que
+          la puerta cierra correctamente y ajustar
+          el control de temperatura</li>
+          <li>Si temperatura >-12°C durante más de
+          2 horas: evaluar estado del alimento —
+          si hay signos de descongelación parcial,
+          cocinar y consumir inmediatamente o desechar</li>
+          <li>Nunca recongelar alimento descongelado</li>
+          <li>Registrar en HACCP-07</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td class="celda-header-verde">Registro</td>
+      <td>HACCP-10 — Control de temperatura del
+      congelador. Frecuencia: 2 veces al día.</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h2 id="pcc5">PCC 5 – Descongelación</h2>
+<p><em>Refrigerador doméstico — niveles 1 y 2 Órale</em></p>
+<div class="tabla-wrapper">
+<table>
+  <tbody>
+    <tr>
+      <td class="celda-header-verde">Peligro identificado</td>
+      <td class="celda-riesgo-alto">Proliferación bacteriana
+      si el alimento se descongela a temperatura ambiente
+      o de forma descontrolada en la zona de peligro
+      (5°C–63°C).</td>
+    </tr>
+    <tr>
+      <td class="celda-header-verde">Límite crítico</td>
+      <td>
+        <ul>
+          <li>Descongelar SIEMPRE en refrigerador
+          a &lt;5°C</li>
+          <li>Nunca descongelar a temperatura ambiente</li>
+          <li>Tiempo: 12–24 horas en refrigerador</li>
+          <li>Una vez descongelado: consumir o regenerar
+          en 24 horas — nunca recongelar</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td class="celda-header-verde">Monitoreo</td>
+      <td>
+        <p><strong>¿Qué?</strong> Temperatura del
+        refrigerador y estado del alimento</p>
+        <p><strong>¿Cómo?</strong> Termómetro de nevera
+        y verificación visual</p>
+        <p><strong>¿Cuándo?</strong> Al inicio de la
+        descongelación y al retirar del refrigerador</p>
+        <p><strong>¿Quién?</strong>
+        {{responsables.chef}} o
+        {{responsables.operaciones}}</p>
+      </td>
+    </tr>
+    <tr>
+      <td class="celda-header-verde">Acción correctiva</td>
+      <td class="celda-riesgo-alto">
+        <ul>
+          <li>Si se detecta alimento descongelado
+          a temperatura ambiente: desechar</li>
+          <li>Si el alimento muestra signos de
+          deterioro: desechar y registrar en HACCP-07</li>
+          <li>Nunca recongelar</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td class="celda-header-verde">Registro</td>
+      <td>HACCP-11 — Registro de descongelación
+      y entregas.</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h2 id="pcc6">PCC 6 – Regeneración para Entrega</h2>
+<p><em>Cocina doméstica — para entregas calientes
+por WhatsApp</em></p>
+<div class="tabla-wrapper">
+<table>
+  <tbody>
+    <tr>
+      <td class="celda-header-verde">Peligro identificado</td>
+      <td class="celda-riesgo-alto">Supervivencia de
+      patógenos si el alimento descongelado no alcanza
+      temperatura suficiente antes de la entrega.</td>
+    </tr>
+    <tr>
+      <td class="celda-header-verde">Límite crítico</td>
+      <td>
+        <ul>
+          <li>Temperatura interna mínima
+          <strong>70°C</strong> antes de empacar</li>
+          <li>Verificar en el punto más frío del alimento</li>
+          <li>Empacar y entregar inmediatamente tras
+          alcanzar la temperatura</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td class="celda-header-verde">Monitoreo</td>
+      <td>
+        <p><strong>¿Qué?</strong> Temperatura interna
+        del alimento regenerado</p>
+        <p><strong>¿Cómo?</strong> Termómetro sonda
+        digital calibrado</p>
+        <p><strong>¿Cuándo?</strong> Antes de empacar
+        cada pedido caliente</p>
+        <p><strong>¿Quién?</strong>
+        {{responsables.chef}} o
+        {{responsables.operaciones}}</p>
+      </td>
+    </tr>
+    <tr>
+      <td class="celda-header-verde">Acción correctiva</td>
+      <td class="celda-riesgo-alto">
+        <ul>
+          <li>Si &lt;70°C: continuar calentando</li>
+          <li>No entregar sin verificar temperatura</li>
+          <li>Registrar en HACCP-11</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td class="celda-header-verde">Registro</td>
+      <td>HACCP-11 — Campo de temperatura de
+      regeneración obligatorio para cada
+      entrega caliente.</td>
+    </tr>
+  </tbody>
+</table>
+</div>
 `;
 
 const SECCION_7 = `
@@ -1174,6 +1544,32 @@ activas. Notificación obligatoria al responsable.</p>
   Registro en HACCP-05.</li>
   <li>No sobrecargar el refrigerador — la circulación de aire es
   necesaria para mantener temperatura uniforme.</li>
+</ul>
+<p><strong>Separación empresa / uso particular:</strong></p>
+<ul>
+  <li><strong>Nivel 1 y 2:</strong> exclusivos Órale
+  — etiquetados "ÓRALE"</li>
+  <li><strong>Nivel 3:</strong> uso particular
+  — etiquetado "PARTICULAR"</li>
+  <li>Nunca mezclar alimentos de empresa y
+  uso particular en el mismo nivel</li>
+</ul>
+
+<h2 id="sec-10-3b">10.3b Organización del Congelador</h2>
+<ul>
+  <li><strong>Cajones 1, 2 y 3:</strong> exclusivos
+  Órale — etiquetados "ÓRALE"</li>
+  <li><strong>Cajón 4:</strong> uso particular
+  — etiquetado "PARTICULAR"</li>
+  <li>Temperatura objetivo: ≤-18°C</li>
+  <li>Sistema FIFO: producción más antigua al frente</li>
+  <li>Cada porción etiquetada con: nombre del platillo,
+  fecha de producción, fecha de congelación,
+  fecha máxima de consumo</li>
+  <li>Capacidad máxima Órale: 30 porciones
+  (3 cajones × 10 porciones)</li>
+  <li>Verificación de temperatura 2 veces al día
+  — registro en HACCP-10</li>
 </ul>
 
 <h2 id="sec-10-4">10.4 Gestión del Agua</h2>
@@ -1719,6 +2115,59 @@ cada empleado y en cada revisión anual.</p>
 ${filasVacias(10, 9)}  </tbody>
 </table>
 </div>
+
+<h2 id="haccp-10">HACCP-10 — Control de Temperatura
+del Congelador</h2>
+<p class="nota"><em>Límite crítico: ≤-18°C en todo
+momento. Verificar dos veces al día.
+Una vez descongelado, no recongelar.</em></p>
+<div class="tabla-wrapper">
+<table class="tabla-ancha">
+  <thead>
+    <tr>
+      <th>Fecha</th>
+      <th>Hora mañana</th>
+      <th>Temp. mañana (°C)</th>
+      <th>¿≤-18°C? Sí/No</th>
+      <th>Hora noche</th>
+      <th>Temp. noche (°C)</th>
+      <th>¿≤-18°C? Sí/No</th>
+      <th>Contenido (platillo/lote)</th>
+      <th>Acción correctiva</th>
+      <th>Responsable</th>
+    </tr>
+  </thead>
+  <tbody>
+${filasVacias(31, 10)}  </tbody>
+</table>
+</div>
+
+<h2 id="haccp-11">HACCP-11 — Registro de Descongelación
+y Entregas</h2>
+<p class="nota"><em>Completar para cada pedido.
+Descongelar siempre en refrigerador.
+Nunca a temperatura ambiente. Nunca recongelar.</em></p>
+<div class="tabla-wrapper">
+<table class="tabla-ancha">
+  <thead>
+    <tr>
+      <th>Fecha pedido</th>
+      <th>Platillo</th>
+      <th>Fecha producción / congelación</th>
+      <th>Cantidad (porciones)</th>
+      <th>Inicio descongelación</th>
+      <th>Temp. refrigerador (°C)</th>
+      <th>¿Caliente o congelado?</th>
+      <th>Temp. regeneración (°C)</th>
+      <th>¿≥70°C? Sí/No</th>
+      <th>Hora de entrega</th>
+      <th>Responsable</th>
+    </tr>
+  </thead>
+  <tbody>
+${filasVacias(20, 11)}  </tbody>
+</table>
+</div>
 `;
 })();
 
@@ -2004,6 +2453,104 @@ dicha aprobación y a implementar todas las mejoras requeridas
 por la autoridad competente.</p>
 `;
 
+const FORMATOS_RESUMEN = `
+<p>Todos los formatos de registro deben imprimirse
+y mantenerse en la carpeta física HACCP disponible
+durante la operación diaria.</p>
+<div class="tabla-wrapper">
+<table class="tabla-ancha">
+  <thead>
+    <tr>
+      <th>Formato</th>
+      <th>Descripción</th>
+      <th>Frecuencia</th>
+      <th>PCC relacionado</th>
+      <th>Aplica a</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>HACCP-01</td>
+      <td>Control de temperaturas de cocción</td>
+      <td>Cada lote cocido</td>
+      <td>PCC1</td>
+      <td>Cocina doméstica</td>
+    </tr>
+    <tr class="alt">
+      <td>HACCP-02</td>
+      <td>Control de enfriamiento rápido</td>
+      <td>Cada enfriamiento</td>
+      <td>PCC2</td>
+      <td>Cocina doméstica</td>
+    </tr>
+    <tr>
+      <td>HACCP-03</td>
+      <td>Control de temperatura en servicio</td>
+      <td>Cada 2 horas en servicio</td>
+      <td>PCC3</td>
+      <td>Punto de venta</td>
+    </tr>
+    <tr class="alt">
+      <td>HACCP-04</td>
+      <td>Control de recepción y trazabilidad</td>
+      <td>Cada entrega de proveedor</td>
+      <td>—</td>
+      <td>Cocina doméstica</td>
+    </tr>
+    <tr>
+      <td>HACCP-05</td>
+      <td>Control temperatura del refrigerador</td>
+      <td>2 veces al día</td>
+      <td>—</td>
+      <td>Cocina doméstica</td>
+    </tr>
+    <tr class="alt">
+      <td>HACCP-06</td>
+      <td>Registro de limpieza y desinfección</td>
+      <td>Al cierre de cada jornada</td>
+      <td>—</td>
+      <td>Cocina y punto de venta</td>
+    </tr>
+    <tr>
+      <td>HACCP-07</td>
+      <td>Registro de incidentes y acciones correctivas</td>
+      <td>Ante cada incidente</td>
+      <td>Todos</td>
+      <td>Todas las modalidades</td>
+    </tr>
+    <tr class="alt">
+      <td>HACCP-08</td>
+      <td>Registro de calibración de termómetros</td>
+      <td>Mensual</td>
+      <td>—</td>
+      <td>Todas las modalidades</td>
+    </tr>
+    <tr>
+      <td>HACCP-09</td>
+      <td>Registro de formación del personal</td>
+      <td>Alta de empleado + anual</td>
+      <td>—</td>
+      <td>Todas las modalidades</td>
+    </tr>
+    <tr class="alt">
+      <td>HACCP-10</td>
+      <td>Control temperatura del congelador</td>
+      <td>2 veces al día</td>
+      <td>PCC4</td>
+      <td>Cocina doméstica</td>
+    </tr>
+    <tr>
+      <td>HACCP-11</td>
+      <td>Registro de descongelación y entregas</td>
+      <td>Cada pedido WhatsApp</td>
+      <td>PCC5 / PCC6</td>
+      <td>Entrega a domicilio</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+`;
+
 const SECCIONES = {
   'seccion-1': SECCION_1,
   'seccion-2': SECCION_2,
@@ -2019,6 +2566,7 @@ const SECCIONES = {
   'seccion-12': SECCION_12,
   'seccion-13': SECCION_13,
   'seccion-14': SECCION_14,
+  'formatos-resumen': FORMATOS_RESUMEN,
   'anexo': ANEXO
 };
 
