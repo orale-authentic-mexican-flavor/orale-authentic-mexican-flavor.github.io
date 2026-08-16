@@ -1867,6 +1867,64 @@ const SECCION_12 = `
   </tbody>
 </table>
 </div>
+
+<h2 id="sec-12-2">12.2 Entrega a Domicilio (WhatsApp)</h2>
+<div class="tabla-wrapper">
+<table>
+  <thead>
+    <tr>
+      <th>Aspecto</th>
+      <th>Requerimiento específico</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Origen y canal</td>
+      <td>
+        <ul>
+          <li>Origen: Apt 301, Richmond Court, Mount Kennett Place,
+          Dock Road, Limerick V94 PY76</li>
+          <li>Canal: pedidos recibidos por WhatsApp</li>
+        </ul>
+      </td>
+    </tr>
+    <tr class="alt">
+      <td>Modalidades de entrega</td>
+      <td>
+        <ul>
+          <li>Entrega caliente: regenerada a ≥70°C antes de
+          empacar para la entrega (PCC6)</li>
+          <li>Entrega congelada: a solicitud del cliente,
+          retirada del congelador al momento de la entrega</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>Etiquetado obligatorio en cada entrega</td>
+      <td>
+        <ul>
+          <li>Nombre del platillo</li>
+          <li>Fecha de producción</li>
+          <li>Fecha de congelación</li>
+          <li>Instrucciones de conservación</li>
+          <li>Instrucciones de recalentamiento: calentar hasta
+          ≥70°C antes de consumir</li>
+        </ul>
+      </td>
+    </tr>
+    <tr class="alt">
+      <td>Transporte</td>
+      <td>
+        <ul>
+          <li>Transporte en bolsa isotérmica</li>
+          <li>Entrega caliente: mantener ≥63°C durante
+          todo el trayecto</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</div>
 `;
 
 const SECCION_13 = (function () {
@@ -2405,90 +2463,102 @@ durante la operación diaria.</p>
 <table class="tabla-ancha">
   <thead>
     <tr>
-      <th>Formato</th>
-      <th>Descripción</th>
+      <th>Código</th>
+      <th>Nombre del formato</th>
+      <th>PCC asociado</th>
       <th>Frecuencia</th>
-      <th>PCC relacionado</th>
       <th>Aplica a</th>
+      <th>Descargar</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td>HACCP-01</td>
       <td>Control de temperaturas de cocción</td>
-      <td>Cada lote cocido</td>
       <td>PCC1</td>
+      <td>Cada lote cocido</td>
       <td>Cocina doméstica</td>
+      <td><a href="{{formatosUrl.es}}/HACCP-01_ES.docx">Descargar DOCX</a></td>
     </tr>
     <tr class="alt">
       <td>HACCP-02</td>
       <td>Control de enfriamiento rápido</td>
-      <td>Cada enfriamiento</td>
       <td>PCC2</td>
+      <td>Cada enfriamiento</td>
       <td>Cocina doméstica</td>
+      <td><a href="{{formatosUrl.es}}/HACCP-02_ES.docx">Descargar DOCX</a></td>
     </tr>
     <tr>
       <td>HACCP-03</td>
       <td>Control de temperatura en servicio</td>
-      <td>Cada 2 horas en servicio</td>
       <td>PCC3</td>
+      <td>Cada 2 horas en servicio</td>
       <td>Punto de venta</td>
+      <td><a href="{{formatosUrl.es}}/HACCP-03_ES.docx">Descargar DOCX</a></td>
     </tr>
     <tr class="alt">
       <td>HACCP-04</td>
       <td>Control de recepción y trazabilidad</td>
-      <td>Cada entrega de proveedor</td>
       <td>—</td>
+      <td>Cada entrega de proveedor</td>
       <td>Cocina doméstica</td>
+      <td><a href="{{formatosUrl.es}}/HACCP-04_ES.docx">Descargar DOCX</a></td>
     </tr>
     <tr>
       <td>HACCP-05</td>
       <td>Control temperatura del refrigerador</td>
-      <td>2 veces al día</td>
       <td>—</td>
+      <td>2 veces al día</td>
       <td>Cocina doméstica</td>
+      <td><a href="{{formatosUrl.es}}/HACCP-05_ES.docx">Descargar DOCX</a></td>
     </tr>
     <tr class="alt">
       <td>HACCP-06</td>
       <td>Registro de limpieza y desinfección</td>
-      <td>Al cierre de cada jornada</td>
       <td>—</td>
+      <td>Al cierre de cada jornada</td>
       <td>Cocina y punto de venta</td>
+      <td><a href="{{formatosUrl.es}}/HACCP-06_ES.docx">Descargar DOCX</a></td>
     </tr>
     <tr>
       <td>HACCP-07</td>
       <td>Registro de incidentes y acciones correctivas</td>
-      <td>Ante cada incidente</td>
       <td>Todos</td>
+      <td>Ante cada incidente</td>
       <td>Todas las modalidades</td>
+      <td><a href="{{formatosUrl.es}}/HACCP-07_ES.docx">Descargar DOCX</a></td>
     </tr>
     <tr class="alt">
       <td>HACCP-08</td>
       <td>Registro de calibración de termómetros</td>
-      <td>Mensual</td>
       <td>—</td>
+      <td>Mensual</td>
       <td>Todas las modalidades</td>
+      <td><a href="{{formatosUrl.es}}/HACCP-08_ES.docx">Descargar DOCX</a></td>
     </tr>
     <tr>
       <td>HACCP-09</td>
       <td>Registro de formación del personal</td>
-      <td>Alta de empleado + anual</td>
       <td>—</td>
+      <td>Alta de empleado + anual</td>
       <td>Todas las modalidades</td>
+      <td><a href="{{formatosUrl.es}}/HACCP-09_ES.docx">Descargar DOCX</a></td>
     </tr>
-    <tr class="alt">
+    <tr class="alt" data-pendiente="true">
       <td>HACCP-10</td>
       <td>Control temperatura del congelador</td>
-      <td>2 veces al día</td>
       <td>PCC4</td>
+      <td>2 veces al día</td>
       <td>Cocina doméstica</td>
+      <td><a href="{{formatosUrl.es}}/HACCP-10_ES.docx">Descargar DOCX</a></td>
     </tr>
-    <tr>
+    <tr data-pendiente="true">
       <td>HACCP-11</td>
       <td>Registro de descongelación y entregas</td>
-      <td>Cada pedido WhatsApp</td>
       <td>PCC5 / PCC6</td>
+      <td>Cada pedido WhatsApp</td>
       <td>Entrega a domicilio</td>
+      <td><a href="{{formatosUrl.es}}/HACCP-11_ES.docx">Descargar DOCX</a></td>
     </tr>
   </tbody>
 </table>
