@@ -68,6 +68,7 @@ module.exports = {
 
       s12: "12. Consideraciones Específicas",
       s12_1: "12.1 Cocina Doméstica y Venta en Calle",
+      s12_2: "12.2 Entrega a Domicilio (WhatsApp)",
 
       s13: "13. Formatos HACCP",
       s13_1: "HACCP-01 al HACCP-09",
@@ -145,6 +146,7 @@ module.exports = {
 
       s12: "12. Specific Considerations",
       s12_1: "12.1 Domestic Kitchen and Street Sale",
+      s12_2: "12.2 Home Delivery (WhatsApp)",
 
       s13: "13. HACCP Recording Formats",
       s13_1: "HACCP-01 to HACCP-09",
