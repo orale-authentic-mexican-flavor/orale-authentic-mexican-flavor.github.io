@@ -1879,18 +1879,6 @@ const SECCION_13 = (function () {
     return out;
   }
 
-  function filasZonas(zonas, filasPorZona) {
-    const n = filasPorZona || 7;
-    let out = '';
-    zonas.forEach((zona) => {
-      for (let i = 0; i < n; i++) {
-        const bg = i % 2 === 0 ? '#F5F5F5' : '#FFFFFF';
-        out += `    <tr style="background:${bg};"><td></td><td style="font-style:italic;color:#555;">${zona}</td><td></td><td></td><td></td><td></td><td></td></tr>\n`;
-      }
-    });
-    return out;
-  }
-
   return `
 <p>Los siguientes formatos en blanco corresponden a los registros
 obligatorios descritos en la Sección 9.1. Imprimir según necesidad
@@ -2019,30 +2007,55 @@ ${filasVacias(31, 9)}  </tbody>
 
 <h3 id="haccp-06">HACCP-06 – Registro de Limpieza y Desinfección Diaria</h3>
 <p><strong>Instrucción de uso:</strong> Completar al cierre de cada
-jornada, para cada zona/equipo indicado en la columna preimpresa
-(en gris).</p>
-<div class="tabla-wrapper">
-<table class="tabla-ancha">
+jornada. Un formulario por día. Archivar en carpeta HACCP.</p>
+<div style="display:flex;gap:2rem;margin-bottom:1rem;font-size:0.9rem;">
+  <span><strong>Fecha:</strong> _____ / _____ / _______</span>
+  <span><strong>Jornada:</strong> &#9744; Cocina &nbsp;&nbsp; &#9744; Punto de venta</span>
+</div>
+<div class="tabla-wrapper tabla-ancha">
+<table>
   <thead>
     <tr>
-      <th>Fecha</th>
-      <th>Zona/Equipo</th>
+      <th>Zona / Equipo</th>
       <th>Hora</th>
       <th>Producto usado</th>
-      <th>Enjuagado Sí/No</th>
-      <th>Desinfectado Sí/No</th>
-      <th>Responsable/Firma</th>
+      <th>¿Enjuagado? Sí/No</th>
+      <th>¿Desinfectado? Sí/No</th>
+      <th>Responsable / Firma</th>
     </tr>
   </thead>
   <tbody>
-${filasZonas([
-    'Superficies cocina doméstica',
-    'Estufa y extractor',
-    'Tablas de corte',
-    'Chafing dishes',
-    'Mesa punto de venta',
-    'Estación lavado de manos'
-  ])}  </tbody>
+    <tr style="background:#F5F5F5;">
+      <td style="font-style:italic;color:#555;">
+        Superficies cocina doméstica</td>
+      <td></td><td></td><td></td><td></td><td></td>
+    </tr>
+    <tr style="background:#FFFFFF;">
+      <td style="font-style:italic;color:#555;">
+        Estufa y extractor</td>
+      <td></td><td></td><td></td><td></td><td></td>
+    </tr>
+    <tr style="background:#F5F5F5;">
+      <td style="font-style:italic;color:#555;">
+        Tablas de corte</td>
+      <td></td><td></td><td></td><td></td><td></td>
+    </tr>
+    <tr style="background:#FFFFFF;">
+      <td style="font-style:italic;color:#555;">
+        Chafing dishes</td>
+      <td></td><td></td><td></td><td></td><td></td>
+    </tr>
+    <tr style="background:#F5F5F5;">
+      <td style="font-style:italic;color:#555;">
+        Mesa punto de venta</td>
+      <td></td><td></td><td></td><td></td><td></td>
+    </tr>
+    <tr style="background:#FFFFFF;">
+      <td style="font-style:italic;color:#555;">
+        Estación lavado de manos</td>
+      <td></td><td></td><td></td><td></td><td></td>
+    </tr>
+  </tbody>
 </table>
 </div>
 

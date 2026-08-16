@@ -1865,18 +1865,6 @@ const SECCION_13 = (function () {
     return out;
   }
 
-  function zoneRows(zones, rowsPerZone) {
-    const n = rowsPerZone || 7;
-    let out = '';
-    zones.forEach((zone) => {
-      for (let i = 0; i < n; i++) {
-        const bg = i % 2 === 0 ? '#F5F5F5' : '#FFFFFF';
-        out += `    <tr style="background:${bg};"><td></td><td style="font-style:italic;color:#555;">${zone}</td><td></td><td></td><td></td><td></td><td></td></tr>\n`;
-      }
-    });
-    return out;
-  }
-
   return `
 <p>The following blank formats correspond to the mandatory records
 described in Section 9.1. Print as needed and keep completed copies
@@ -2004,31 +1992,56 @@ ${blankRows(31, 9)}  </tbody>
 </div>
 
 <h3 id="haccp-06">HACCP-06 – Daily Cleaning and Disinfection Log</h3>
-<p><strong>Instructions for use:</strong> Complete at the close of
-each working day, for each zone/equipment shown in the pre-printed
-(grey) column.</p>
-<div class="tabla-wrapper">
-<table class="tabla-ancha">
+<p><strong>Instructions for use:</strong> Complete at the end of each
+session. One form per day. File in the HACCP folder.</p>
+<div style="display:flex;gap:2rem;margin-bottom:1rem;font-size:0.9rem;">
+  <span><strong>Date:</strong> _____ / _____ / _______</span>
+  <span><strong>Session:</strong> &#9744; Kitchen &nbsp;&nbsp; &#9744; Point of sale</span>
+</div>
+<div class="tabla-wrapper tabla-ancha">
+<table>
   <thead>
     <tr>
-      <th>Date</th>
-      <th>Zone/Equipment</th>
+      <th>Area / Equipment</th>
       <th>Time</th>
       <th>Product used</th>
-      <th>Rinsed Yes/No</th>
-      <th>Disinfected Yes/No</th>
-      <th>Responsible/Signature</th>
+      <th>Rinsed? Yes/No</th>
+      <th>Disinfected? Yes/No</th>
+      <th>Responsible / Signature</th>
     </tr>
   </thead>
   <tbody>
-${zoneRows([
-    'Domestic kitchen surfaces',
-    'Hob and extractor',
-    'Chopping boards',
-    'Chafing dishes',
-    'Point of sale table',
-    'Handwashing station'
-  ])}  </tbody>
+    <tr style="background:#F5F5F5;">
+      <td style="font-style:italic;color:#555;">
+        Domestic kitchen surfaces</td>
+      <td></td><td></td><td></td><td></td><td></td>
+    </tr>
+    <tr style="background:#FFFFFF;">
+      <td style="font-style:italic;color:#555;">
+        Hob and extractor</td>
+      <td></td><td></td><td></td><td></td><td></td>
+    </tr>
+    <tr style="background:#F5F5F5;">
+      <td style="font-style:italic;color:#555;">
+        Chopping boards</td>
+      <td></td><td></td><td></td><td></td><td></td>
+    </tr>
+    <tr style="background:#FFFFFF;">
+      <td style="font-style:italic;color:#555;">
+        Chafing dishes</td>
+      <td></td><td></td><td></td><td></td><td></td>
+    </tr>
+    <tr style="background:#F5F5F5;">
+      <td style="font-style:italic;color:#555;">
+        Point of sale table</td>
+      <td></td><td></td><td></td><td></td><td></td>
+    </tr>
+    <tr style="background:#FFFFFF;">
+      <td style="font-style:italic;color:#555;">
+        Handwashing station</td>
+      <td></td><td></td><td></td><td></td><td></td>
+    </tr>
+  </tbody>
 </table>
 </div>
 
