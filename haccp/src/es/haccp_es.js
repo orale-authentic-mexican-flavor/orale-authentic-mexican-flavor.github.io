@@ -56,7 +56,7 @@ relevantes en cada etapa del proceso.</p>
 <p><strong>Días de producción:</strong> Viernes y sábados.
 Cada jornada se dedica a un platillo del menú rotativo
 (por ejemplo: pozole un día, tamales otro), generando
-hasta 40 porciones por jornada (3 cajones de congelador
+hasta 30 porciones por jornada (3 cajones de congelador
 × 10 porciones por cajón). Una pequeña cantidad se
 mantiene refrigerada para pedidos inmediatos.</p>
 <p><strong>Menú aplicable:</strong></p>
@@ -113,7 +113,8 @@ mantiene refrigerada para pedidos inmediatos.</p>
 <h2 id="sec-1-4">1.4 Clasificación de la Operación</h2>
 <p>De conformidad con el FSAI Guidance Note No. 16 Food Stalls
 (Revision 2), la operación de Órale se clasifica como
-<strong>ACTIVIDAD DE ALTO RIESGO (HIGH-RISK)</strong>, dado que
+<strong>ACTIVIDAD DE ALTO RIESGO</strong>
+<span class="badge-riesgo">HIGH-RISK</span>, dado que
 implica la preparación, cocción y venta directa de alimentos
 calientes que incluyen carnes de origen animal (cerdo).</p>
 <p>Esta clasificación determina que Órale debe cumplir con todos
@@ -562,7 +563,7 @@ y ventas entre semana:</p>
         <ul>
           <li>Cada jornada se dedica a un platillo
           del menú rotativo</li>
-          <li>Producción máxima: 40 porciones
+          <li>Producción máxima: 30 porciones
           (3 cajones × 10 porciones)</li>
           <li>Una cantidad pequeña se reserva
           refrigerada para pedidos inmediatos</li>
@@ -1468,12 +1469,13 @@ siguientes momentos:</p>
 <p><strong>Procedimiento correcto de lavado de manos:</strong></p>
 <ol>
   <li>Mojar las manos con agua caliente corriente</li>
-  <li>Aplicar jabón suficiente para hacer espuma</li>
+  <li>Aplicar jabón líquido no perfumado, suficiente
+  para hacer espuma</li>
   <li>Frotar todas las superficies de las manos durante
-  mínimo 10–15 segundos, incluyendo yemas de los dedos
-  y pulgares</li>
-  <li>Enjuagar con agua corriente</li>
-  <li>Secar con papel desechable</li>
+  mínimo 20 segundos, incluyendo dorso, entre los dedos,
+  uñas y muñecas</li>
+  <li>Enjuagar con agua limpia</li>
+  <li>Secar con papel desechable de un solo uso</li>
 </ol>
 <p class="nota"><em>GN16 §4.3.5: El gel/alcohol desinfectante
 NO es sustituto legal del lavado de manos en actividades de
@@ -1509,7 +1511,10 @@ en sustitución del lavado con agua y jabón.</em></p>
 <p><strong>Personal enfermo:</strong> prohibido manipular
 alimentos con síntomas gastrointestinales, vómitos, diarrea,
 infecciones cutáneas en manos o infecciones respiratorias
-activas. Notificación obligatoria al responsable.</p>
+activas. Notificación obligatoria al responsable. Exclusión
+obligatoria de la manipulación de alimentos durante el
+episodio de diarrea o vómito y hasta 48 horas después
+del cese de los síntomas.</p>
 
 <h2 id="sec-10-2">10.2 Limpieza y Desinfección de la Cocina Doméstica</h2>
 <ul>
@@ -1812,9 +1817,9 @@ const SECCION_12 = `
         <ul>
           <li>Garrafón portátil con llave del agua: capacidad
           <strong>mínima 20 litros</strong> (GN16 §4.3.5)</li>
-          <li>Etiquetado: <em>"Potable Water Only"</em></li>
+          <li>Etiquetado: <em>"POTABLE WATER ONLY"</em></li>
           <li>Recipiente de agua residual separado y etiquetado:
-          <em>"Waste Water"</em></li>
+          <em>"WASTE WATER"</em></li>
           <li>El agua residual no puede descargarse al suelo</li>
           <li>Jabón líquido no perfumado y papel desechable</li>
         </ul>
@@ -2272,6 +2277,10 @@ const ANEXO = `
   </label></li>
   <li><label class="checklist-item">
     <input type="checkbox" class="checklist-check">
+    <span>Recipientes herméticos etiquetados con producto y fecha</span>
+  </label></li>
+  <li><label class="checklist-item">
+    <input type="checkbox" class="checklist-check">
     <span>Jabón líquido NO perfumado y papel desechable en tarja</span>
   </label></li>
   <li><label class="checklist-item">
@@ -2326,13 +2335,13 @@ const ANEXO = `
 <ul class="checklist">
   <li><label class="checklist-item">
     <input type="checkbox" class="checklist-check">
-    <span>2 garrafones de 10 litros con agua potable — etiquetados
-  "Potable Water Only"</span>
+    <span>Garrafón portátil con grifo — capacidad mínima 20 litros
+  — etiquetado "POTABLE WATER ONLY"</span>
   </label></li>
   <li><label class="checklist-item">
     <input type="checkbox" class="checklist-check">
     <span>Recipiente de boca ancha para agua residual — etiquetado
-  "Waste Water"</span>
+  "WASTE WATER"</span>
   </label></li>
   <li><label class="checklist-item">
     <input type="checkbox" class="checklist-check">
@@ -2388,6 +2397,31 @@ const ANEXO = `
   <li><label class="checklist-item">
     <input type="checkbox" class="checklist-check">
     <span>Bolígrafos para registros</span>
+  </label></li>
+  <li><label class="checklist-item">
+    <input type="checkbox" class="checklist-check">
+    <span>Alimentos y equipamiento nunca en contacto con el suelo</span>
+  </label></li>
+</ul>
+
+<h2>Entrega a Domicilio (WhatsApp) — verificar antes de cada entrega</h2>
+<ul class="checklist">
+  <li><label class="checklist-item">
+    <input type="checkbox" class="checklist-check">
+    <span>Bolsa isotérmica para transporte</span>
+  </label></li>
+  <li><label class="checklist-item">
+    <input type="checkbox" class="checklist-check">
+    <span>Termómetro de sonda para verificar regeneración ≥70°C</span>
+  </label></li>
+  <li><label class="checklist-item">
+    <input type="checkbox" class="checklist-check">
+    <span>Etiquetas de producto con fecha de producción, fecha de
+  congelación e instrucciones de conservación y recalentamiento</span>
+  </label></li>
+  <li><label class="checklist-item">
+    <input type="checkbox" class="checklist-check">
+    <span>Formato HACCP-11 disponible para registro de cada entrega</span>
   </label></li>
 </ul>
 
