@@ -1880,15 +1880,12 @@ const SECCION_13 = (function () {
   }
 
   function filasZonas(zonas, filasPorZona) {
-    const n = filasPorZona || 3;
+    const n = filasPorZona || 7;
     let out = '';
-    let idx = 0;
     zonas.forEach((zona) => {
-      out += `    <tr style="background:#E0E0E0;"><td></td><td style="font-style:italic;color:#555;">${zona}</td><td></td><td></td><td></td><td></td><td></td></tr>\n`;
       for (let i = 0; i < n; i++) {
-        const cls = idx % 2 === 1 ? ' class="alt"' : '';
-        out += `    <tr${cls}><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>\n`;
-        idx++;
+        const bg = i % 2 === 0 ? '#F5F5F5' : '#FFFFFF';
+        out += `    <tr style="background:${bg};"><td></td><td style="font-style:italic;color:#555;">${zona}</td><td></td><td></td><td></td><td></td><td></td></tr>\n`;
       }
     });
     return out;
