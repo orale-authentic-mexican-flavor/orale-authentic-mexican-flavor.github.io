@@ -1879,13 +1879,15 @@ const SECCION_13 = (function () {
     return out;
   }
 
-  function filasZonas(bloques) {
+  function filasZonas(zonas, filasPorZona) {
+    const n = filasPorZona || 3;
     let out = '';
     let idx = 0;
-    bloques.forEach((bloque) => {
-      for (let i = 0; i < bloque.filas; i++) {
+    zonas.forEach((zona) => {
+      out += `    <tr style="background:#E0E0E0;"><td></td><td style="font-style:italic;color:#555;">${zona}</td><td></td><td></td><td></td><td></td><td></td></tr>\n`;
+      for (let i = 0; i < n; i++) {
         const cls = idx % 2 === 1 ? ' class="alt"' : '';
-        out += `    <tr${cls}><td>&nbsp;</td><td style="background-color:#E0E0E0;">${bloque.zona}</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>\n`;
+        out += `    <tr${cls}><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>\n`;
         idx++;
       }
     });
@@ -2037,12 +2039,12 @@ jornada, para cada zona/equipo indicado en la columna preimpresa
   </thead>
   <tbody>
 ${filasZonas([
-    { zona: 'Superficies cocina doméstica', filas: 4 },
-    { zona: 'Estufa y extractor', filas: 4 },
-    { zona: 'Tablas de corte', filas: 3 },
-    { zona: 'Chafing dishes', filas: 3 },
-    { zona: 'Mesa punto de venta', filas: 3 },
-    { zona: 'Estación lavado de manos', filas: 3 }
+    'Superficies cocina doméstica',
+    'Estufa y extractor',
+    'Tablas de corte',
+    'Chafing dishes',
+    'Mesa punto de venta',
+    'Estación lavado de manos'
   ])}  </tbody>
 </table>
 </div>
