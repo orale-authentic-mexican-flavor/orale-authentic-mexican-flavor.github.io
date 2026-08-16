@@ -1865,13 +1865,15 @@ const SECCION_13 = (function () {
     return out;
   }
 
-  function zoneRows(blocks) {
+  function zoneRows(zones, rowsPerZone) {
+    const n = rowsPerZone || 3;
     let out = '';
     let idx = 0;
-    blocks.forEach((block) => {
-      for (let i = 0; i < block.rows; i++) {
+    zones.forEach((zone) => {
+      out += `    <tr style="background:#E0E0E0;"><td></td><td style="font-style:italic;color:#555;">${zone}</td><td></td><td></td><td></td><td></td><td></td></tr>\n`;
+      for (let i = 0; i < n; i++) {
         const cls = idx % 2 === 1 ? ' class="alt"' : '';
-        out += `    <tr${cls}><td>&nbsp;</td><td style="background-color:#E0E0E0;">${block.zone}</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>\n`;
+        out += `    <tr${cls}><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>\n`;
         idx++;
       }
     });
@@ -2023,12 +2025,12 @@ each working day, for each zone/equipment shown in the pre-printed
   </thead>
   <tbody>
 ${zoneRows([
-    { zone: 'Domestic kitchen surfaces', rows: 4 },
-    { zone: 'Stove and extractor', rows: 4 },
-    { zone: 'Cutting boards', rows: 3 },
-    { zone: 'Chafing dishes', rows: 3 },
-    { zone: 'Point-of-sale table', rows: 3 },
-    { zone: 'Handwashing station', rows: 3 }
+    'Domestic kitchen surfaces',
+    'Hob and extractor',
+    'Chopping boards',
+    'Chafing dishes',
+    'Point of sale table',
+    'Handwashing station'
   ])}  </tbody>
 </table>
 </div>
