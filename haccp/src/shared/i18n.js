@@ -34,17 +34,21 @@ module.exports = {
       s5_2: "5.2 Tabla de Análisis",
 
       s6: "6. Puntos Críticos de Control",
+      s6_1: "6.1 Árbol de Decisiones",
       pcc1: "PCC 1 – Cocción",
+      pcc1b: "PCC 1b – Preparación en Frío",
       pcc2: "PCC 2 – Enfriamiento",
       pcc3: "PCC 3 – Mantenimiento en Caliente",
       pcc4: "PCC 4 – Congelación",
       pcc5: "PCC 5 – Descongelación",
       pcc6: "PCC 6 – Regeneración para Entrega",
+      pcc7: "PCC 7 – Almacenamiento Refrigerado",
 
       s7: "7. Monitoreo y Acciones Correctivas",
       s7_1: "7.1 Resumen de Monitoreo",
       s7_2: "7.2 Equipamiento",
       s7_3: "7.3 Protocolo de Acción Correctiva",
+      s7_4: "7.4 Retirada de Producto",
 
       s8: "8. Verificación y Revisión",
       s8_1: "8.1 Actividades de Verificación",
@@ -61,6 +65,7 @@ module.exports = {
       s10_4: "10.4 Gestión del Agua",
       s10_5: "10.5 Manejo de Residuos",
       s10_6: "10.6 Mantenimiento de Utensilios",
+      s10_7: "10.7 Control de Plagas",
 
       s11: "11. Gestión de Alérgenos",
       s11_1: "11.1 Tabla de Alérgenos",
@@ -74,6 +79,7 @@ module.exports = {
       s13_1: "HACCP-01 al HACCP-09",
       haccp10: "HACCP-10",
       haccp11: "HACCP-11",
+      haccp12: "HACCP-12",
 
       s14: "14. Aprobación y Firma",
 
@@ -112,17 +118,21 @@ module.exports = {
       s5_2: "5.2 Analysis Table",
 
       s6: "6. Critical Control Points",
+      s6_1: "6.1 Decision Tree",
       pcc1: "CCP 1 – Cooking",
+      pcc1b: "CCP 1b – Cold Preparation",
       pcc2: "CCP 2 – Cooling",
       pcc3: "CCP 3 – Hot-Holding",
       pcc4: "CCP 4 – Freezing",
       pcc5: "CCP 5 – Defrosting",
       pcc6: "CCP 6 – Reheating for Delivery",
+      pcc7: "CCP 7 – Refrigerated Storage",
 
       s7: "7. Monitoring and Corrective Actions",
       s7_1: "7.1 Monitoring Summary",
       s7_2: "7.2 Equipment",
       s7_3: "7.3 Corrective Action Protocol",
+      s7_4: "7.4 Product Withdrawal",
 
       s8: "8. Verification and Review",
       s8_1: "8.1 Verification Activities",
@@ -139,6 +149,7 @@ module.exports = {
       s10_4: "10.4 Water Management",
       s10_5: "10.5 Waste Management",
       s10_6: "10.6 Utensil Maintenance",
+      s10_7: "10.7 Pest Control",
 
       s11: "11. Allergen Management",
       s11_1: "11.1 Allergen Table",
@@ -152,6 +163,7 @@ module.exports = {
       s13_1: "HACCP-01 to HACCP-09",
       haccp10: "HACCP-10",
       haccp11: "HACCP-11",
+      haccp12: "HACCP-12",
 
       s14: "14. Approval & Signature",
 
