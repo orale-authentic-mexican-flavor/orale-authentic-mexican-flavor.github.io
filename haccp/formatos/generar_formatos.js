@@ -1,6 +1,7 @@
 // Órale – Authentic Mexican Flavor Limited
-// Generador de formatos HACCP en DOCX (ES/EN) — HACCP-01 a HACCP-09
+// Generador de formatos HACCP en DOCX (ES/EN) — HACCP-01 a HACCP-12
 // Usa la librería npm "docx". No requiere Python ni LibreOffice.
+// Fuente de verdad de contenido: docs/haccp/{es,en}/HACCP_Orale_v{version}_*.html §13
 
 const fs = require('fs');
 const path = require('path');
@@ -140,6 +141,50 @@ function buildTable(formato) {
   });
 }
 
+// HACCP-06: filas fijas por zona (no filas en blanco genéricas),
+// replicando la tabla del HTML §13 (una fila pre-rellenada por zona).
+function fixedRow(zona, numCols, alt) {
+  const pct = Math.floor(10000 / numCols) / 100;
+  const fill = alt ? FILL_GRIS_CLARO : FILL_BLANCO;
+  const cells = [new TableCell({
+    width: { size: pct, type: WidthType.PERCENTAGE },
+    shading: { fill, type: ShadingType.CLEAR, color: 'auto' },
+    borders: CELL_BORDERS,
+    margins: { top: 80, bottom: 80, left: 100, right: 100 },
+    children: [new Paragraph({
+      children: [new TextRun({ text: zona, italics: true, color: COLOR_GRIS_TEXTO, font: 'Arial', size: 20 })]
+    })]
+  })];
+  for (let i = 1; i < numCols; i++) {
+    cells.push(new TableCell({
+      width: { size: pct, type: WidthType.PERCENTAGE },
+      shading: { fill, type: ShadingType.CLEAR, color: 'auto' },
+      borders: CELL_BORDERS,
+      margins: { top: 80, bottom: 80, left: 100, right: 100 },
+      children: [new Paragraph({ children: [new TextRun({ text: '', font: 'Arial', size: 20 })] })]
+    }));
+  }
+  return new TableRow({ height: { value: 480, rule: HeightRule.ATLEAST }, children: cells });
+}
+
+function buildFixedTable(formato) {
+  const rows = [headerRow(formato.columnas)];
+  formato.zonas.forEach((zona, i) => {
+    rows.push(fixedRow(zona, formato.columnas.length, i % 2 === 0));
+  });
+  return new Table({ width: { size: 100, type: WidthType.PERCENTAGE }, rows });
+}
+
+// HACCP-06: línea de campos de cabecera (Fecha / Jornada) fuera de la tabla,
+// como en el HTML.
+function campoCabeceraParagraph(formato) {
+  if (!formato.campoCabecera) return null;
+  return new Paragraph({
+    spacing: { after: 160 },
+    children: [new TextRun({ text: formato.campoCabecera, font: 'Arial', size: 20 })]
+  });
+}
+
 function notaPieParagraph(formato) {
   if (!formato.notaPie) return null;
   return new Paragraph({
@@ -155,9 +200,11 @@ function buildDocument(formato, lang) {
 
   const children = [
     ...headerParagraphs(formato, lang),
-    instruccionParagraph(formato, lang),
-    buildTable(formato)
+    instruccionParagraph(formato, lang)
   ];
+  const campo = campoCabeceraParagraph(formato);
+  if (campo) children.push(campo);
+  children.push(formato.zonas ? buildFixedTable(formato) : buildTable(formato));
   const nota = notaPieParagraph(formato);
   if (nota) children.push(nota);
 
@@ -183,72 +230,96 @@ const FORMATOS_ES = [
     instruccion: 'Registrar la temperatura interna de cada lote cocido. Límite crítico: ≥75°C.',
     orientacion: 'landscape',
     filas: 20,
-    columnas: ['Fecha', 'Platillo / Lote', 'Hora inicio', 'Temperatura interna (°C)', '¿≥75°C? Sí/No', 'Hora fin', 'Acción correctiva', 'Responsable / Firma']
+    columnas: ['Fecha', 'Platillo/Lote', 'Hora inicio', 'Temperatura interna (°C)', '≥75°C Sí/No', 'Hora fin', 'Acción correctiva', 'Responsable/Firma']
   },
   {
     id: 'HACCP-02',
     nombre: 'HACCP-02 — Control de Enfriamiento Rápido',
-    instruccion: 'Registrar temperaturas durante el enfriamiento. Límite crítico: de >63°C a <5°C en máximo 6 horas.',
+    instruccion: 'Registrar las temperaturas durante el proceso de enfriamiento. Límite crítico: de >63°C a ≤5°C en un máximo de 6 horas.',
     orientacion: 'landscape',
     filas: 10,
-    columnas: ['Fecha', 'Producto / Lote', 'Hora inicio', 'Temp. a 30 min (°C)', 'Temp. a 1 h (°C)', 'Temp. a 2 h (°C)', 'Temp. final (°C)', '¿<5°C en 6 h? Sí/No', 'Acción correctiva', 'Responsable']
+    columnas: ['Fecha', 'Producto/Lote', 'Hora inicio', 'Temperatura 30 min (°C)', 'Temperatura 1 h (°C)', 'Temperatura 2 h (°C)', 'Temperatura final (°C)', '≤5°C en 6h Sí/No', 'Acción correctiva', 'Responsable']
   },
   {
     id: 'HACCP-03',
     nombre: 'HACCP-03 — Control de Temperatura en Servicio',
-    instruccion: 'Verificar temperatura en chafing dish cada 2 horas. Límite crítico: ≥63°C en todo momento.',
+    instruccion: 'Verificar el chafing dish cada hora durante el servicio. Límite crítico: ≥63°C en todo momento.',
     orientacion: 'landscape',
     filas: 20,
-    columnas: ['Fecha', 'Producto', 'Hora medición', 'Temperatura (°C)', '¿≥63°C? Sí/No', 'Acción correctiva', 'Responsable / Firma']
+    columnas: ['Fecha', 'Producto', 'Hora medición', 'Temperatura (°C)', '≥63°C Sí/No', 'Acción correctiva', 'Responsable/Firma']
   },
   {
     id: 'HACCP-04',
     nombre: 'HACCP-04 — Control de Recepción de Mercancía y Trazabilidad de Proveedor',
-    instruccion: 'Completar en cada entrega de proveedor. Rechazar si temperatura >5°C en refrigerados o envase dañado. Conservar mínimo 3 años para alimentos de origen animal.',
+    instruccion: 'Completar en cada entrega. GN-16 §3.3 exige conservar hasta que pueda asumirse razonablemente que el alimento ha sido consumido. Como política interna, Órale conserva los registros de alimentos de origen animal durante un mínimo de 3 años.',
     orientacion: 'landscape',
     filas: 15,
-    columnas: ['Fecha', 'Proveedor (nombre y dirección)', 'Producto', '¿Origen animal? Sí/No', 'Temp. recepción (°C)', 'Fecha caducidad', '¿Envase OK? Sí/No', '¿Aspecto OK? Sí/No', '¿Aceptado? Sí/No', 'Acción si rechazo', 'Responsable']
+    columnas: ['Fecha', 'Proveedor (nombre y dirección)', 'Producto', 'Cantidad / Volumen', 'Origen animal Sí/No', 'Temperatura recepción (°C)', 'Fecha caducidad', 'Envase OK Sí/No', 'Aspecto OK Sí/No', '¿Aceptado? Sí/No', 'Acción si rechazo', 'Responsable']
   },
   {
     id: 'HACCP-05',
     nombre: 'HACCP-05 — Control de Temperatura del Refrigerador',
-    instruccion: 'Verificar y registrar dos veces al día. Límite crítico: <5°C en todo momento.',
-    orientacion: 'portrait',
+    instruccion: 'Verificar dos veces al día (mañana y noche). Límite crítico: ≤5°C.',
+    orientacion: 'landscape',
     filas: 31,
-    columnas: ['Fecha', 'Hora mañana', 'Temp. mañana (°C)', '¿<5°C? Sí/No', 'Hora noche', 'Temp. noche (°C)', '¿<5°C? Sí/No', 'Acción correctiva', 'Responsable']
+    columnas: ['Fecha', 'Hora mañana', 'Temperatura mañana (°C)', '≤5°C Sí/No', 'Hora noche', 'Temperatura noche (°C)', '≤5°C Sí/No', 'Acción correctiva', 'Responsable']
   },
   {
     id: 'HACCP-06',
     nombre: 'HACCP-06 — Registro de Limpieza y Desinfección Diaria',
-    instruccion: 'Completar al cierre de cada jornada de preparación y de punto de venta.',
-    orientacion: 'landscape',
-    filas: 20,
-    columnas: ['Fecha', 'Zona / Equipo', 'Hora limpieza', 'Producto usado', '¿Enjuagado? Sí/No', '¿Desinfectado? Sí/No', 'Responsable / Firma'],
-    notaPie: 'Zonas a verificar: Superficies cocina doméstica | Estufa y extractor | Tablas de corte | Chafing dishes | Mesa punto de venta | Estación lavado de manos'
+    instruccion: 'Completar al cierre de cada jornada. Un formulario por día. Archivar en carpeta HACCP.',
+    orientacion: 'portrait',
+    campoCabecera: 'Fecha: _____ / _____ / _______        Jornada:  ☐ Cocina   ☐ Punto de venta',
+    zonas: ['Superficies cocina doméstica', 'Estufa y extractor', 'Tablas de corte', 'Chafing dishes', 'Mesa punto de venta', 'Estación lavado de manos'],
+    columnas: ['Zona / Equipo', 'Hora', 'Producto usado', '¿Enjuagado? Sí/No', '¿Desinfectado? Sí/No', 'Responsable / Firma']
   },
   {
     id: 'HACCP-07',
     nombre: 'HACCP-07 — Registro de Incidentes y Acciones Correctivas',
-    instruccion: 'Completar ante cualquier desviación de límite crítico, queja de cliente o incidente de seguridad alimentaria.',
+    instruccion: 'Completar ante cualquier desviación de un límite crítico o queja de cliente.',
     orientacion: 'landscape',
     filas: 10,
-    columnas: ['Fecha', 'Descripción del incidente', 'PCC / Etapa afectada', 'Producto implicado', 'Acción correctiva tomada', 'Resultado', '¿Notificado al Director? Sí/No', '¿Notificado al HSE? Sí/No', 'Responsable / Firma']
+    columnas: ['Fecha', 'Descripción', 'PCC/Etapa', 'Producto', 'Acción correctiva', 'Resultado', 'Notificado Director Sí/No', 'Notificado HSE Sí/No', 'Responsable/Firma']
   },
   {
     id: 'HACCP-08',
     nombre: 'HACCP-08 — Registro de Calibración de Termómetros',
-    instruccion: 'Calibrar mensualmente con agua helada (0°C) y agua hirviendo (100°C).',
+    instruccion: 'Calibrar mensualmente con agua helada (0°C) y agua hirviendo (100°C). Tolerancia de aceptación: ±1°C respecto del valor de referencia. Una lectura fuera de esta tolerancia invalida el termómetro: se retira de uso y se sustituye antes de la siguiente jornada de producción o servicio.',
     orientacion: 'landscape',
     filas: 12,
-    columnas: ['Fecha', 'Termómetro (ID / descripción)', 'Temp. agua helada registrada (°C)', '¿≈0°C? Sí/No', 'Temp. agua hirviendo registrada (°C)', '¿≈100°C? Sí/No', '¿Calibración correcta? Sí/No', 'Acción si falla', 'Responsable / Firma']
+    columnas: ['Fecha', 'Termómetro ID', 'Temperatura agua helada (°C)', '≈0°C Sí/No', 'Temperatura agua hirviendo (°C)', '≈100°C Sí/No', 'Calibración correcta Sí/No', 'Acción si falla', 'Responsable/Firma']
   },
   {
     id: 'HACCP-09',
     nombre: 'HACCP-09 — Registro de Formación del Personal',
-    instruccion: 'Completar al dar de alta a cada empleado y en revisiones anuales.',
+    instruccion: 'Completar al dar de alta a cada empleado y en cada revisión anual.',
     orientacion: 'landscape',
     filas: 10,
-    columnas: ['Nombre completo', 'Rol', 'Curso / Certificación', 'Nivel (1/2/3)', 'Entidad formadora', 'Fecha de obtención', 'Fecha de renovación', 'Nº certificado', 'Firma del empleado']
+    columnas: ['Nombre completo', 'Rol', 'Curso/Certificación', 'Nivel 1/2/3', 'Entidad formadora', 'Fecha obtención', 'Fecha renovación', 'Número de certificado', 'Firma empleado']
+  },
+  {
+    id: 'HACCP-10',
+    nombre: 'HACCP-10 — Control de Temperatura del Congelador',
+    instruccion: 'Límite crítico: ≤-18°C en todo momento. Verificar dos veces al día. Una vez descongelado, no recongelar.',
+    orientacion: 'landscape',
+    filas: 31,
+    columnas: ['Fecha', 'Hora mañana', 'Temp. mañana (°C)', '¿≤-18°C? Sí/No', 'Hora noche', 'Temp. noche (°C)', '¿≤-18°C? Sí/No', 'Contenido (platillo/lote)', 'Acción correctiva', 'Responsable']
+  },
+  {
+    id: 'HACCP-11',
+    nombre: 'HACCP-11 — Registro de Descongelación y Entregas',
+    instruccion: 'Completar para cada pedido. Descongelar siempre en refrigerador. Nunca a temperatura ambiente. Nunca recongelar.',
+    orientacion: 'landscape',
+    filas: 20,
+    columnas: ['Fecha pedido', 'Referencia de pedido', 'Platillo', 'Fecha producción / congelación', 'Cantidad (porciones)', 'Inicio descongelación', 'Temp. refrigerador (°C)', '¿Caliente o congelado?', 'Temp. regeneración (°C)', '¿≥70°C? Sí/No', 'Hora de entrega', 'Responsable']
+  },
+  {
+    id: 'HACCP-12',
+    nombre: 'HACCP-12 — Verificación de Preparación en Frío (PCC1b)',
+    instruccion: 'Completar antes de cada preparación de ingredientes sin tratamiento térmico posterior y en cada apertura de jornada de servicio. Todos los puntos deben cumplirse. Si alguno no se cumple, aplicar la acción correctiva de PCC1b y registrar la desviación en HACCP-07.',
+    orientacion: 'landscape',
+    filas: 20,
+    columnas: ['Fecha', 'Hora', 'Preparación / platillo', 'Manos lavadas Sí/No', 'Vegetales lavados Sí/No', 'Superficie limpia y desinfectada Sí/No', 'Tabla verde exclusiva Sí/No', 'Utensilios exclusivos Sí/No', 'Sin crudo de origen animal en la superficie Sí/No', 'Temp. de conservación (°C)', '¿≤5°C? Sí/No', 'Manipulación con utensilio o guante Sí/No', 'Responsable']
   }
 ];
 
@@ -259,72 +330,96 @@ const FORMATOS_EN = [
     instruccion: 'Record the internal temperature of each cooked batch. Critical limit: ≥75°C.',
     orientacion: 'landscape',
     filas: 20,
-    columnas: ['Date', 'Dish / Batch', 'Start time', 'Internal temperature (°C)', '≥75°C? Yes/No', 'End time', 'Corrective action', 'Responsible / Signature']
+    columnas: ['Date', 'Dish/Batch', 'Start time', 'Internal temperature (°C)', '≥75°C Yes/No', 'End time', 'Corrective action', 'Responsible/Signature']
   },
   {
     id: 'HACCP-02',
     nombre: 'HACCP-02 — Rapid Cooling Control',
-    instruccion: 'Record temperatures during cooling. Critical limit: from >63°C to <5°C within 6 hours maximum.',
+    instruccion: 'Record temperatures during the cooling process. Critical limit: from >63°C to ≤5°C within a maximum of 6 hours.',
     orientacion: 'landscape',
     filas: 10,
-    columnas: ['Date', 'Product / Batch', 'Start time', 'Temp. at 30 min (°C)', 'Temp. at 1 h (°C)', 'Temp. at 2 h (°C)', 'Final temp. (°C)', '<5°C within 6 h? Yes/No', 'Corrective action', 'Responsible']
+    columnas: ['Date', 'Product/Batch', 'Start time', 'Temperature 30 min (°C)', 'Temperature 1 h (°C)', 'Temperature 2 h (°C)', 'Final temperature (°C)', '≤5°C within 6h Yes/No', 'Corrective action', 'Responsible']
   },
   {
     id: 'HACCP-03',
     nombre: 'HACCP-03 — Service Temperature Control',
-    instruccion: 'Check chafing dish temperature every 2 hours. Critical limit: ≥63°C at all times.',
+    instruccion: 'Check the chafing dish every hour during service. Critical limit: ≥63°C at all times.',
     orientacion: 'landscape',
     filas: 20,
-    columnas: ['Date', 'Product', 'Time of check', 'Temperature (°C)', '≥63°C? Yes/No', 'Corrective action', 'Responsible / Signature']
+    columnas: ['Date', 'Product', 'Measurement time', 'Temperature (°C)', '≥63°C Yes/No', 'Corrective action', 'Responsible/Signature']
   },
   {
     id: 'HACCP-04',
     nombre: 'HACCP-04 — Goods Receipt & Supplier Traceability Control',
-    instruccion: 'Complete for every delivery. Reject if temperature >5°C for refrigerated goods or damaged packaging. Retain minimum 3 years for food of animal origin.',
+    instruccion: 'Complete for every delivery. GN-16 §3.3 requires retaining records until food can reasonably be assumed to have been consumed. As internal policy, Órale retains records for food of animal origin for a minimum of 3 years.',
     orientacion: 'landscape',
     filas: 15,
-    columnas: ['Date', 'Supplier (name & address)', 'Product', 'Animal origin? Yes/No', 'Reception temp. (°C)', 'Best before / Use by', 'Packaging OK? Yes/No', 'Appearance OK? Yes/No', 'Accepted? Yes/No', 'Action if rejected', 'Responsible']
+    columnas: ['Date', 'Supplier (name & address)', 'Product', 'Quantity / Volume', 'Animal origin Y/N', 'Reception temperature (°C)', 'Best before / Use by', 'Packaging OK Y/N', 'Appearance OK Y/N', 'Accepted? Y/N', 'Action if rejected', 'Responsible']
   },
   {
     id: 'HACCP-05',
     nombre: 'HACCP-05 — Refrigerator Temperature Control',
-    instruccion: 'Check and record twice daily. Critical limit: <5°C at all times.',
-    orientacion: 'portrait',
+    instruccion: 'Check twice daily (morning and evening). Limit: ≤5°C.',
+    orientacion: 'landscape',
     filas: 31,
-    columnas: ['Date', 'Morning time', 'Morning temp. (°C)', '<5°C? Yes/No', 'Evening time', 'Evening temp. (°C)', '<5°C? Yes/No', 'Corrective action', 'Responsible']
+    columnas: ['Date', 'Morning time', 'Morning temperature (°C)', '≤5°C Yes/No', 'Evening time', 'Evening temperature (°C)', '≤5°C Yes/No', 'Corrective action', 'Responsible']
   },
   {
     id: 'HACCP-06',
-    nombre: 'HACCP-06 — Daily Cleaning & Disinfection Record',
-    instruccion: 'Complete at the end of each preparation and point of sale session.',
-    orientacion: 'landscape',
-    filas: 20,
-    columnas: ['Date', 'Area / Equipment', 'Cleaning time', 'Product used', 'Rinsed? Yes/No', 'Disinfected? Yes/No', 'Responsible / Signature'],
-    notaPie: 'Areas to check: Domestic kitchen surfaces | Hob and extractor | Chopping boards | Chafing dishes | Point of sale table | Handwashing station'
+    nombre: 'HACCP-06 — Daily Cleaning and Disinfection Log',
+    instruccion: 'Complete at the end of each session. One form per day. File in the HACCP folder.',
+    orientacion: 'portrait',
+    campoCabecera: 'Date: _____ / _____ / _______        Session:  ☐ Kitchen   ☐ Point of sale',
+    zonas: ['Domestic kitchen surfaces', 'Hob and extractor', 'Chopping boards', 'Chafing dishes', 'Point of sale table', 'Handwashing station'],
+    columnas: ['Area / Equipment', 'Time', 'Product used', 'Rinsed? Yes/No', 'Disinfected? Yes/No', 'Responsible / Signature']
   },
   {
     id: 'HACCP-07',
-    nombre: 'HACCP-07 — Incident & Corrective Action Record',
-    instruccion: 'Complete for any critical limit deviation, customer complaint or food safety incident.',
+    nombre: 'HACCP-07 — Incident and Corrective Action Log',
+    instruccion: 'Complete for any deviation from a critical limit or customer complaint.',
     orientacion: 'landscape',
     filas: 10,
-    columnas: ['Date', 'Incident description', 'CCP / Stage', 'Product involved', 'Corrective action taken', 'Result', 'Director notified? Yes/No', 'HSE notified? Yes/No', 'Responsible / Signature']
+    columnas: ['Date', 'Description', 'CCP/Stage', 'Product', 'Corrective action', 'Result', 'Director notified Yes/No', 'HSE notified Yes/No', 'Responsible/Signature']
   },
   {
     id: 'HACCP-08',
-    nombre: 'HACCP-08 — Thermometer Calibration Record',
-    instruccion: 'Calibrate monthly using iced water (0°C) and boiling water (100°C).',
+    nombre: 'HACCP-08 — Thermometer Calibration Log',
+    instruccion: 'Calibrate monthly using ice water (0°C) and boiling water (100°C). Acceptance tolerance: ±1°C from the reference value. A reading outside this tolerance invalidates the thermometer: it is withdrawn from use and replaced before the next production or service session.',
     orientacion: 'landscape',
     filas: 12,
-    columnas: ['Date', 'Thermometer (ID / description)', 'Iced water temp. recorded (°C)', '≈0°C? Yes/No', 'Boiling water temp. recorded (°C)', '≈100°C? Yes/No', 'Calibration correct? Yes/No', 'Action if failed', 'Responsible / Signature']
+    columnas: ['Date', 'Thermometer ID', 'Ice water temperature (°C)', '≈0°C Yes/No', 'Boiling water temperature (°C)', '≈100°C Yes/No', 'Calibration correct Yes/No', 'Action if failed', 'Responsible/Signature']
   },
   {
     id: 'HACCP-09',
-    nombre: 'HACCP-09 — Staff Training Record',
-    instruccion: 'Complete when onboarding each employee and at annual reviews.',
+    nombre: 'HACCP-09 — Staff Training Log',
+    instruccion: 'Complete upon onboarding of each employee and at annual reviews.',
     orientacion: 'landscape',
     filas: 10,
-    columnas: ['Full name', 'Role', 'Course / Certification', 'Level (1/2/3)', 'Training provider', 'Date obtained', 'Renewal date', 'Certificate no.', 'Employee signature']
+    columnas: ['Full name', 'Role', 'Course/Certification', 'Level 1/2/3', 'Training body', 'Date obtained', 'Renewal date', 'Certificate Number', 'Employee signature']
+  },
+  {
+    id: 'HACCP-10',
+    nombre: 'HACCP-10 — Freezer Temperature Control',
+    instruccion: 'Critical limit: ≤-18°C at all times. Check twice a day. Once defrosted, do not refreeze.',
+    orientacion: 'landscape',
+    filas: 31,
+    columnas: ['Date', 'Morning time', 'Morning temp. (°C)', '≤-18°C? Yes/No', 'Evening time', 'Evening temp. (°C)', '≤-18°C? Yes/No', 'Contents (dish/batch)', 'Corrective action', 'Responsible']
+  },
+  {
+    id: 'HACCP-11',
+    nombre: 'HACCP-11 — Defrosting & Delivery Record',
+    instruccion: 'Complete for every order. Always defrost in the refrigerator. Never at room temperature. Never refreeze.',
+    orientacion: 'landscape',
+    filas: 20,
+    columnas: ['Order date', 'Order reference', 'Dish', 'Production / freezing date', 'Quantity (portions)', 'Defrosting start', 'Fridge temp. (°C)', 'Hot or frozen?', 'Reheating temp. (°C)', '≥70°C? Yes/No', 'Delivery time', 'Responsible']
+  },
+  {
+    id: 'HACCP-12',
+    nombre: 'HACCP-12 — Cold Preparation Verification (CCP1b)',
+    instruccion: 'Complete before each preparation of ingredients with no subsequent heat treatment and at every opening of a service session. All points must be met. If any point is not met, apply the CCP1b corrective action and record the deviation in HACCP-07.',
+    orientacion: 'landscape',
+    filas: 20,
+    columnas: ['Date', 'Time', 'Preparation / dish', 'Hands washed Y/N', 'Vegetables washed Y/N', 'Surface cleaned and disinfected Y/N', 'Dedicated green board Y/N', 'Dedicated utensils Y/N', 'No raw animal-origin food on surface Y/N', 'Holding temp. (°C)', '≤5°C? Y/N', 'Handled with utensil or glove Y/N', 'Responsible']
   }
 ];
 

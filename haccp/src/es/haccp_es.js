@@ -1,6 +1,6 @@
 // Órale – Authentic Mexican Flavor Limited
 // Generador del Plan HACCP – Versión en Español
-// Versión: 1.3
+// Versión: 1.4
 // Autor: David Enrique Ochoa Diaz
 // NOTA: Este archivo consume datos desde config.js
 // No hardcodear datos sensibles en este script
@@ -17,7 +17,7 @@ const STYLES_SRC_PATH = path.join(__dirname, '..', 'shared', 'styles.css');
 const STYLES_DEST_PATH = path.join(__dirname, '..', '..', '..', 'docs', 'haccp', 'shared', 'styles.css');
 const PAGINATION_SRC_PATH = path.join(__dirname, '..', 'shared', 'print-pagination.js');
 const PAGINATION_DEST_PATH = path.join(__dirname, '..', '..', '..', 'docs', 'haccp', 'shared', 'print-pagination.js');
-const OUTPUT_PATH = path.join(__dirname, '..', '..', '..', 'docs', 'haccp', 'es', 'HACCP_Orale_v1.3_ES.html');
+const OUTPUT_PATH = path.join(__dirname, '..', '..', '..', 'docs', 'haccp', 'es', 'HACCP_Orale_v1.4_ES.html');
 
 // ---------------------------------------------------------------------------
 // Contenido de las Secciones 1–6 (HTML inyectado en cada div.seccion-contenido)
@@ -1423,10 +1423,11 @@ en frío</em></p>
       <td class="celda-header-verde">Monitoreo</td>
       <td>Verificación visual del cumplimiento de los nueve
       puntos por parte del responsable de cocina, antes de
-      iniciar cada preparación de este tipo y en cada apertura
-      de jornada de servicio. Verificación de la temperatura de
-      conservación con termómetro de sonda. Responsable:
-      {{responsables.chef}}.</td>
+      iniciar cada preparación de este tipo. Durante la jornada
+      de servicio: verificación de la temperatura de
+      conservación con termómetro de sonda desinfectado en la
+      apertura y cada hora hasta el cierre. Registro en
+      HACCP-12. Responsable: {{responsables.chef}}.</td>
     </tr>
     <tr>
       <td class="celda-header-verde">Acción correctiva</td>
@@ -1823,6 +1824,7 @@ const SECCION_7 = `
       <th>¿Cómo?</th>
       <th>Frecuencia</th>
       <th>Responsable</th>
+      <th>Registro</th>
     </tr>
   </thead>
   <tbody>
@@ -1834,6 +1836,7 @@ const SECCION_7 = `
       <td>Termómetro sonda</td>
       <td>Cada lote cocido</td>
       <td>{{responsables.chef}}</td>
+      <td>HACCP-01</td>
     </tr>
     <tr class="celda-riesgo-alto">
       <td>PCC1b</td>
@@ -1841,9 +1844,10 @@ const SECCION_7 = `
       <td>Procedimental — 9 puntos (§6, PCC1b)</td>
       <td>Cumplimiento de los 9 puntos</td>
       <td>Observación directa + termómetro de sonda (≤5°C)</td>
-      <td>Antes de cada preparación y en cada apertura de
-      servicio</td>
+      <td>Antes de cada preparación; en la apertura y cada hora
+      durante el servicio</td>
       <td>{{responsables.chef}}</td>
+      <td>HACCP-12. Desviaciones: HACCP-07.</td>
     </tr>
     <tr>
       <td>PCC2</td>
@@ -1853,6 +1857,7 @@ const SECCION_7 = `
       <td>Termómetro sonda</td>
       <td>Cada 30–60 min</td>
       <td>{{responsables.chef}}</td>
+      <td>HACCP-02</td>
     </tr>
     <tr class="celda-riesgo-alto">
       <td>PCC3</td>
@@ -1862,6 +1867,7 @@ const SECCION_7 = `
       <td>Termómetro sonda</td>
       <td>Cada hora</td>
       <td>{{responsables.operaciones}}</td>
+      <td>HACCP-03</td>
     </tr>
     <tr>
       <td>PCC4</td>
@@ -1871,6 +1877,7 @@ const SECCION_7 = `
       <td>Termómetro de nevera</td>
       <td>2 veces al día</td>
       <td>{{responsables.chef}} / {{responsables.operaciones}}</td>
+      <td>HACCP-10</td>
     </tr>
     <tr>
       <td>PCC5</td>
@@ -1880,6 +1887,7 @@ const SECCION_7 = `
       <td>Termómetro de nevera + verificación visual</td>
       <td>Inicio y retiro de la descongelación</td>
       <td>{{responsables.chef}} / {{responsables.operaciones}}</td>
+      <td>HACCP-11</td>
     </tr>
     <tr class="celda-riesgo-alto">
       <td>PCC6</td>
@@ -1889,6 +1897,7 @@ const SECCION_7 = `
       <td>Termómetro sonda digital</td>
       <td>Antes de empacar cada pedido caliente</td>
       <td>{{responsables.chef}} / {{responsables.operaciones}}</td>
+      <td>HACCP-11</td>
     </tr>
     <tr class="celda-riesgo-alto">
       <td>PCC7</td>
@@ -1898,6 +1907,7 @@ const SECCION_7 = `
       <td>Termómetro visible + verificación de etiqueta</td>
       <td>2 veces al día</td>
       <td>{{responsables.chef}} / {{responsables.operaciones}}</td>
+      <td>HACCP-05</td>
     </tr>
   </tbody>
 </table>
@@ -2108,6 +2118,18 @@ momento.</p>
       <td>Registro de formación del personal</td>
       <td>Alta de cada empleado + anual</td>
       <td>Todas</td>
+    </tr>
+    <tr class="alt">
+      <td>HACCP-10</td>
+      <td>Control de temperatura del congelador</td>
+      <td>2 veces por día</td>
+      <td>Cocina doméstica</td>
+    </tr>
+    <tr>
+      <td>HACCP-11</td>
+      <td>Registro de descongelación y entregas</td>
+      <td>Cada pedido</td>
+      <td>Entrega a domicilio</td>
     </tr>
     <tr class="alt">
       <td>HACCP-12</td>
@@ -2836,7 +2858,7 @@ razonablemente que el alimento ha sido consumido; como política
 interna, Órale los conserva completados durante un mínimo de
 3 años.</p>
 
-<h2 id="sec-13-1">13.1 Formatos de Registro (HACCP-01 a HACCP-09)</h2>
+<h2 id="sec-13-1">13.1 Formatos de Registro (HACCP-01 a HACCP-12)</h2>
 
 <h3 id="haccp-01">HACCP-01 – Control de Temperaturas de Cocción</h3>
 <p><strong>Instrucción de uso:</strong> Registrar la temperatura interna
@@ -3545,7 +3567,7 @@ durante la operación diaria.</p>
       <td>Todas las modalidades</td>
       <td><a href="{{formatosUrl.es}}/HACCP-09_ES.docx">Descargar DOCX</a></td>
     </tr>
-    <tr class="alt" data-pendiente="true">
+    <tr class="alt">
       <td>HACCP-10</td>
       <td>Control temperatura del congelador</td>
       <td>PCC4</td>
@@ -3553,7 +3575,7 @@ durante la operación diaria.</p>
       <td>Cocina doméstica</td>
       <td><a href="{{formatosUrl.es}}/HACCP-10_ES.docx">Descargar DOCX</a></td>
     </tr>
-    <tr data-pendiente="true">
+    <tr>
       <td>HACCP-11</td>
       <td>Registro de descongelación y entregas</td>
       <td>PCC5 / PCC6</td>
@@ -3561,7 +3583,7 @@ durante la operación diaria.</p>
       <td>Entrega a domicilio</td>
       <td><a href="{{formatosUrl.es}}/HACCP-11_ES.docx">Descargar DOCX</a></td>
     </tr>
-    <tr class="alt" data-pendiente="true">
+    <tr class="alt">
       <td>HACCP-12</td>
       <td>Verificación de preparación en frío</td>
       <td>PCC1b</td>

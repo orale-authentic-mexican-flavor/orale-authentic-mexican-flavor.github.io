@@ -1,6 +1,6 @@
 // Órale – Authentic Mexican Flavor Limited
 // HACCP Plan Generator – English Version
-// Version: 1.3
+// Version: 1.4
 // Author: David Enrique Ochoa Diaz
 // NOTE: This file consumes data from config.js
 // Do not hardcode sensitive data in this script
@@ -17,7 +17,7 @@ const STYLES_SRC_PATH = path.join(__dirname, '..', 'shared', 'styles.css');
 const STYLES_DEST_PATH = path.join(__dirname, '..', '..', '..', 'docs', 'haccp', 'shared', 'styles.css');
 const PAGINATION_SRC_PATH = path.join(__dirname, '..', 'shared', 'print-pagination.js');
 const PAGINATION_DEST_PATH = path.join(__dirname, '..', '..', '..', 'docs', 'haccp', 'shared', 'print-pagination.js');
-const OUTPUT_PATH = path.join(__dirname, '..', '..', '..', 'docs', 'haccp', 'en', 'HACCP_Orale_v1.3_EN.html');
+const OUTPUT_PATH = path.join(__dirname, '..', '..', '..', 'docs', 'haccp', 'en', 'HACCP_Orale_v1.4_EN.html');
 
 // ---------------------------------------------------------------------------
 // Content for Sections 1–6 (HTML injected into each div.seccion-contenido)
@@ -1399,9 +1399,10 @@ area</em></p>
       <td class="celda-header-verde">Monitoring</td>
       <td>Visual verification of compliance with the nine
       points by the person in charge of the kitchen, before
-      starting each preparation of this kind and at every
-      opening of a service session. Verification of storage
-      temperature with a probe thermometer. Responsible:
+      starting each preparation of this kind. During the
+      service session: verification of storage temperature
+      with a disinfected probe thermometer at opening and every
+      hour until close. Recorded in HACCP-12. Responsible:
       {{responsables.chef}}.</td>
     </tr>
     <tr>
@@ -1786,6 +1787,7 @@ const SECCION_7 = `
       <th>How?</th>
       <th>Frequency</th>
       <th>Responsible</th>
+      <th>Record</th>
     </tr>
   </thead>
   <tbody>
@@ -1797,6 +1799,7 @@ const SECCION_7 = `
       <td>Probe thermometer</td>
       <td>Every cooked batch</td>
       <td>{{responsables.chef}}</td>
+      <td>HACCP-01</td>
     </tr>
     <tr class="celda-riesgo-alto">
       <td>CCP1b</td>
@@ -1804,9 +1807,10 @@ const SECCION_7 = `
       <td>Procedural — 9 points (§6, CCP1b)</td>
       <td>Compliance with the 9 points</td>
       <td>Direct observation + probe thermometer (≤5°C)</td>
-      <td>Before each preparation and at every service
-      opening</td>
+      <td>Before each preparation; at opening and every hour
+      during service</td>
       <td>{{responsables.chef}}</td>
+      <td>HACCP-12. Deviations: HACCP-07.</td>
     </tr>
     <tr>
       <td>CCP2</td>
@@ -1816,6 +1820,7 @@ const SECCION_7 = `
       <td>Probe thermometer</td>
       <td>Every 30–60 min</td>
       <td>{{responsables.chef}}</td>
+      <td>HACCP-02</td>
     </tr>
     <tr class="celda-riesgo-alto">
       <td>CCP3</td>
@@ -1825,6 +1830,7 @@ const SECCION_7 = `
       <td>Probe thermometer</td>
       <td>Every hour</td>
       <td>{{responsables.operaciones}}</td>
+      <td>HACCP-03</td>
     </tr>
     <tr>
       <td>CCP4</td>
@@ -1834,6 +1840,7 @@ const SECCION_7 = `
       <td>Fridge thermometer</td>
       <td>Twice a day</td>
       <td>{{responsables.chef}} / {{responsables.operaciones}}</td>
+      <td>HACCP-10</td>
     </tr>
     <tr>
       <td>CCP5</td>
@@ -1843,6 +1850,7 @@ const SECCION_7 = `
       <td>Fridge thermometer + visual check</td>
       <td>Start and removal of defrosting</td>
       <td>{{responsables.chef}} / {{responsables.operaciones}}</td>
+      <td>HACCP-11</td>
     </tr>
     <tr class="celda-riesgo-alto">
       <td>CCP6</td>
@@ -1852,6 +1860,7 @@ const SECCION_7 = `
       <td>Digital probe thermometer</td>
       <td>Before packing each hot order</td>
       <td>{{responsables.chef}} / {{responsables.operaciones}}</td>
+      <td>HACCP-11</td>
     </tr>
     <tr class="celda-riesgo-alto">
       <td>CCP7</td>
@@ -1861,6 +1870,7 @@ const SECCION_7 = `
       <td>Visible thermometer + label check</td>
       <td>Twice a day</td>
       <td>{{responsables.chef}} / {{responsables.operaciones}}</td>
+      <td>HACCP-05</td>
     </tr>
   </tbody>
 </table>
@@ -2071,6 +2081,18 @@ inspection at any time.</p>
       <td>Staff training record</td>
       <td>On hire + annually</td>
       <td>All</td>
+    </tr>
+    <tr class="alt">
+      <td>HACCP-10</td>
+      <td>Freezer temperature control</td>
+      <td>Twice a day</td>
+      <td>Domestic kitchen</td>
+    </tr>
+    <tr>
+      <td>HACCP-11</td>
+      <td>Defrosting and delivery record</td>
+      <td>Every order</td>
+      <td>Home delivery</td>
     </tr>
     <tr class="alt">
       <td>HACCP-12</td>
@@ -2775,7 +2797,7 @@ keeping them at least until it can reasonably be assumed that the
 food has been consumed; as internal policy, Órale keeps completed
 copies for a minimum of 3 years.</p>
 
-<h2 id="sec-13-1">13.1 Recording Formats (HACCP-01 to HACCP-09)</h2>
+<h2 id="sec-13-1">13.1 Recording Formats (HACCP-01 to HACCP-12)</h2>
 
 <h3 id="haccp-01">HACCP-01 – Cooking Temperature Control</h3>
 <p><strong>Instructions for use:</strong> Record the internal
@@ -3479,7 +3501,7 @@ operation.</p>
       <td>All modalities</td>
       <td><a href="{{formatosUrl.en}}/HACCP-09_EN.docx">Download DOCX</a></td>
     </tr>
-    <tr class="alt" data-pendiente="true">
+    <tr class="alt">
       <td>HACCP-10</td>
       <td>Freezer temperature control</td>
       <td>CCP4</td>
@@ -3487,7 +3509,7 @@ operation.</p>
       <td>Domestic kitchen</td>
       <td><a href="{{formatosUrl.en}}/HACCP-10_EN.docx">Download DOCX</a></td>
     </tr>
-    <tr data-pendiente="true">
+    <tr>
       <td>HACCP-11</td>
       <td>Defrosting and delivery record</td>
       <td>CCP5 / CCP6</td>
@@ -3495,7 +3517,7 @@ operation.</p>
       <td>Home delivery</td>
       <td><a href="{{formatosUrl.en}}/HACCP-11_EN.docx">Download DOCX</a></td>
     </tr>
-    <tr class="alt" data-pendiente="true">
+    <tr class="alt">
       <td>HACCP-12</td>
       <td>Cold preparation verification</td>
       <td>CCP1b</td>
