@@ -11,7 +11,7 @@ const {
   VerticalAlign, PageOrientation, Header, Footer
 } = require('docx');
 
-const config = require('../config.js');
+const config = require('../_private/config.js');
 
 const COLOR_ROJO = 'B22222';
 const COLOR_GRIS_OSCURO = '2E4053';

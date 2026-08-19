@@ -7,8 +7,8 @@
 
 const fs = require('fs');
 const path = require('path');
-const config = require('../../config');
-const i18n = require('../shared/i18n');
+const config = require('../../_private/config');
+const i18n = require('../../shared/i18n');
 
 const LANG = 'es';
 
